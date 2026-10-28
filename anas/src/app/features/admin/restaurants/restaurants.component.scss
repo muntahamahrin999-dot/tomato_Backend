@@ -1,0 +1,869 @@
+/* =====================================================
+   PAGE
+===================================================== */
+
+.restaurants-page {
+
+  min-height: calc(100vh - 78px);
+
+  background: #f8faf9;
+
+  color: #18352f;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.page-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 25px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.eyebrow {
+
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #e5483f;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+}
+
+
+.page-header h1 {
+
+  margin: 0;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  color: #173f35;
+
+}
+
+
+.page-header p {
+
+  margin: 7px 0 0;
+
+  color: #71807b;
+
+  font-size: 13px;
+
+}
+
+
+/* =====================================================
+   ADD BUTTON
+===================================================== */
+
+.add-btn {
+
+  border: 0;
+
+  padding: 11px 17px;
+
+  border-radius: 9px;
+
+  background: #e5483f;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow: 0 7px 18px rgba(229, 72, 63, .18);
+
+  transition: .2s ease;
+
+}
+
+
+.add-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 22px rgba(229, 72, 63, .24);
+
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.stat-card {
+
+  min-height: 92px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 17px;
+
+  background: #ffffff;
+
+  border: 1px solid #e7ece9;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 20px rgba(23, 63, 53, .04);
+
+}
+
+
+.stat-icon {
+
+  width: 45px;
+
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 11px;
+
+  font-size: 18px;
+
+}
+
+
+.stat-icon.red {
+
+  background: #fff0ed;
+
+  color: #e5483f;
+
+}
+
+
+.stat-icon.green {
+
+  background: #e8f5ed;
+
+  color: #278354;
+
+}
+
+
+.stat-icon.orange {
+
+  background: #fff5df;
+
+  color: #c98220;
+
+}
+
+
+.stat-icon.purple {
+
+  background: #f1edff;
+
+  color: #765bc4;
+
+}
+
+
+.stat-content {
+
+  min-width: 0;
+
+}
+
+
+.stat-content span {
+
+  display: block;
+
+  color: #71807b;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+}
+
+
+.stat-content strong {
+
+  display: block;
+
+  margin-top: 4px;
+
+  color: #18352f;
+
+  font-size: 21px;
+
+  font-weight: 800;
+
+}
+
+
+.stat-content small {
+
+  display: block;
+
+  margin-top: 4px;
+
+  color: #929d99;
+
+  font-size: 8px;
+
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.restaurant-card {
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e7ece9;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 20px rgba(23, 63, 53, .04);
+
+}
+
+
+.card-header {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #edf1ef;
+
+}
+
+
+.card-label {
+
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #e5483f;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+}
+
+
+.card-header h2 {
+
+  margin: 0;
+
+  color: #173f35;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+}
+
+
+.card-header p {
+
+  margin: 5px 0 0;
+
+  color: #87938f;
+
+  font-size: 10px;
+
+}
+
+
+/* =====================================================
+   HEADER TOOLS
+===================================================== */
+
+.header-tools {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+}
+
+
+.header-tools select,
+
+.header-tools input {
+
+  height: 36px;
+
+  border: 1px solid #dfe7e3;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #52635e;
+
+  font-family: inherit;
+
+  font-size: 10px;
+
+}
+
+
+.header-tools select {
+
+  padding: 0 9px;
+
+}
+
+
+.header-tools input {
+
+  width: 190px;
+
+  padding: 0 11px;
+
+}
+
+
+.header-tools input:focus,
+
+.header-tools select:focus {
+
+  border-color: #e5483f;
+
+  box-shadow:
+    0 0 0 3px rgba(229, 72, 63, .07);
+
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-wrapper {
+
+  overflow-x: auto;
+
+}
+
+
+table {
+
+  width: 100%;
+
+  min-width: 900px;
+
+  border-collapse: collapse;
+
+}
+
+
+thead {
+
+  background: #f8faf9;
+
+}
+
+
+th {
+
+  padding: 12px 20px;
+
+  text-align: left;
+
+  color: #71807b;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: .6px;
+
+}
+
+
+td {
+
+  padding: 14px 20px;
+
+  border-top: 1px solid #edf1ef;
+
+  color: #52635e;
+
+  font-size: 10px;
+
+}
+
+
+tbody tr {
+
+  transition: .2s ease;
+
+}
+
+
+tbody tr:hover {
+
+  background: #fbfcfb;
+
+}
+
+
+/* =====================================================
+   RESTAURANT INFO
+===================================================== */
+
+.restaurant-info {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+
+.restaurant-avatar {
+
+  width: 38px;
+
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 10px;
+
+  background: #fff0ed;
+
+  color: #e5483f;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+}
+
+
+.restaurant-info strong {
+
+  display: block;
+
+  color: #18352f;
+
+  font-size: 11px;
+
+}
+
+
+.restaurant-info span {
+
+  display: block;
+
+  margin-top: 3px;
+
+  color: #87938f;
+
+  font-size: 8px;
+
+}
+
+
+.owner-name {
+
+  color: #52635e;
+
+  font-weight: 600;
+
+}
+
+
+.location {
+
+  color: #71807b;
+
+  font-size: 9px;
+
+}
+
+
+.orders-count {
+
+  color: #173f35;
+
+  font-size: 11px;
+
+}
+
+
+.rating {
+
+  color: #c98220;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status-badge {
+
+  display: inline-flex;
+
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+}
+
+
+.status-badge.active {
+
+  background: #e8f5ed;
+
+  color: #278354;
+
+}
+
+
+.status-badge.pending {
+
+  background: #fff5df;
+
+  color: #bd7b1c;
+
+}
+
+
+.status-badge.inactive {
+
+  background: #f0f2f1;
+
+  color: #78847f;
+
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.action-buttons {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+}
+
+
+.action-buttons button {
+
+  width: 30px;
+
+  height: 30px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid #e4ebe7;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  transition: .2s ease;
+
+}
+
+
+.action-buttons button:hover {
+
+  transform: translateY(-1px);
+
+}
+
+
+.view-action:hover {
+
+  background: #edf3ff;
+
+  border-color: #d7e2fb;
+
+}
+
+
+.edit-action:hover {
+
+  background: #fff5df;
+
+  border-color: #f2dfb9;
+
+}
+
+
+.delete-action:hover {
+
+  background: #fff0ed;
+
+  border-color: #f3d2cd;
+
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.empty-state {
+
+  padding: 45px 20px !important;
+
+  text-align: center;
+
+}
+
+
+.empty-icon {
+
+  width: 48px;
+
+  height: 48px;
+
+  display: grid;
+
+  place-items: center;
+
+  margin: 0 auto 10px;
+
+  border-radius: 12px;
+
+  background: #fff0ed;
+
+  font-size: 21px;
+
+}
+
+
+.empty-state strong {
+
+  display: block;
+
+  color: #173f35;
+
+  font-size: 12px;
+
+}
+
+
+.empty-state span {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: #929d99;
+
+  font-size: 9px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1150px) {
+
+  .stats-grid {
+
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .page-header {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+
+  .card-header {
+
+    flex-direction: column;
+
+  }
+
+
+  .header-tools {
+
+    width: 100%;
+
+  }
+
+
+  .header-tools input {
+
+    flex: 1;
+
+    width: auto;
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .stats-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .page-header h1 {
+
+    font-size: 24px;
+
+  }
+
+
+  .header-tools {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+  }
+
+
+  .header-tools select,
+
+  .header-tools input {
+
+    width: 100%;
+
+  }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE — CARD MODE
+===================================================== */
+
+@media (max-width: 700px) {
+  .table-wrapper { overflow-x: visible; }
+  table, thead, tbody, th, td, tr { display: block; width: 100%; }
+  thead { display: none; }
+  table { min-width: 0 !important; background: transparent; }
+  tbody tr {
+    background: #fff; border: 1px solid #e8ece9; border-radius: 12px;
+    margin-bottom: 12px; padding: 10px 14px; box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  }
+  tbody td {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    border: none !important; border-bottom: 1px solid #f0f3f1 !important;
+    padding: 9px 0 !important; text-align: right; min-width: 0 !important; width: 100% !important;
+  }
+  tbody td > * { min-width: 0 !important; max-width: 100% !important; }
+  tbody td:last-child { border-bottom: none !important; }
+  tbody td::before {
+    content: attr(data-label); font-size: 10px; font-weight: 800;
+    letter-spacing: .8px; text-transform: uppercase; color: #899590; text-align: left;
+    flex-shrink: 0;
+  }
+}

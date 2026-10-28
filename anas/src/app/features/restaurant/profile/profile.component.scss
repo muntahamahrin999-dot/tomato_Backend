@@ -1,0 +1,395 @@
+.restaurant-profile-page {
+  min-height: 100vh;
+  background: #f6f0e5;
+  color: #173f2c;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+  background: #173f2c;
+
+  padding: 60px 40px 75px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+
+.page-header > div {
+  max-width: 900px;
+}
+
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #d89b3d;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.page-header h1 {
+  margin: 0;
+
+  color: #fffaf0;
+
+  font-size: 48px;
+  line-height: 1.15;
+
+  font-weight: 700;
+}
+
+
+.page-header h1 span {
+  color: #d97943;
+}
+
+
+.page-header p {
+  margin: 16px 0 0;
+
+  color: #f4eee3;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   PROFILE SECTION
+========================= */
+
+.profile-section {
+  max-width: 1100px;
+
+  margin: -35px auto 0;
+
+  padding: 0 20px 70px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.profile-card {
+  padding: 35px;
+
+  background: #fffaf0;
+
+  border: 1px solid #eadfce;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(23, 63, 44, 0.08);
+}
+
+
+/* =========================
+   PROFILE TOP
+========================= */
+
+.profile-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding-bottom: 30px;
+
+  border-bottom: 1px solid #eadfce;
+}
+
+
+.restaurant-avatar {
+  width: 82px;
+  height: 82px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #dfeadf;
+
+  font-size: 34px;
+}
+
+
+.restaurant-heading {
+  flex: 1;
+}
+
+
+.profile-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #c68b32;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.restaurant-heading h2 {
+  margin: 0 0 6px;
+
+  color: #173f2c;
+
+  font-size: 26px;
+
+  font-weight: 700;
+}
+
+
+.restaurant-heading p {
+  margin: 0;
+
+  color: #738078;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   INFORMATION
+========================= */
+
+.profile-information {
+  padding: 30px 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 22px;
+}
+
+
+.info-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.info-group.full-width {
+  grid-column: 1 / -1;
+}
+
+
+.info-group label {
+  color: #6d7b72;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+}
+
+
+.info-value {
+  min-height: 46px;
+
+  padding: 0 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  background: #f6f0e5;
+
+  border: 1px solid #eadfce;
+
+  border-radius: 10px;
+
+  color: #173f2c;
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.profile-actions {
+  padding-top: 25px;
+
+  display: flex;
+
+  gap: 12px;
+
+  border-top: 1px solid #eadfce;
+}
+
+
+.primary-button,
+.secondary-button {
+  min-height: 45px;
+
+  padding: 0 22px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.primary-button {
+  border: none;
+
+  background: #173f2c;
+
+  color: #fffaf0;
+}
+
+
+.primary-button:hover {
+  background: #245b40;
+
+  transform: translateY(-2px);
+}
+
+
+.secondary-button {
+  border: 1px solid #173f2c;
+
+  background: transparent;
+
+  color: #173f2c;
+}
+
+
+.secondary-button:hover {
+  background: #173f2c;
+
+  color: #fffaf0;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .page-header {
+    padding: 50px 25px 70px;
+  }
+
+
+  .page-header h1 {
+    font-size: 40px;
+  }
+
+
+  .profile-section {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .page-header {
+    padding: 45px 20px 65px;
+
+    display: block;
+  }
+
+
+  .page-header h1 {
+    font-size: 32px;
+  }
+
+
+  .page-header p {
+    font-size: 15px;
+  }
+
+
+  .profile-card {
+    padding: 25px 20px;
+  }
+
+
+  .profile-top {
+    align-items: flex-start;
+  }
+
+
+  .restaurant-avatar {
+    width: 65px;
+    height: 65px;
+
+    font-size: 27px;
+  }
+
+
+  .restaurant-heading h2 {
+    font-size: 21px;
+  }
+
+
+  .profile-information {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+
+  .info-group.full-width {
+    grid-column: auto;
+  }
+
+
+  .profile-actions {
+    flex-direction: column;
+  }
+
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+
+}

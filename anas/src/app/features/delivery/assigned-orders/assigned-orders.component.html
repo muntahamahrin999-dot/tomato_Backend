@@ -1,0 +1,446 @@
+<div class="assigned-page">
+
+  <!-- ================= PAGE HEADER ================= -->
+  <section class="page-header">
+    <div class="header-content">
+      <span class="eyebrow">DELIVERY MANAGEMENT</span>
+
+      <h1>Assigned Orders</h1>
+
+      <p>
+        Manage your assigned orders, accept new requests,
+        and start deliveries from one place.
+      </p>
+    </div>
+
+    <div class="header-count">
+      <span>Total Assigned</span>
+      <strong>{{ filteredOrders.length }}</strong>
+    </div>
+  </section>
+
+
+  <!-- ================= SUMMARY ================= -->
+  <section class="summary-grid">
+
+    <div class="summary-card">
+      <div class="summary-icon red">📦</div>
+
+      <div class="summary-content">
+        <span>New Orders</span>
+        <strong>{{ newOrdersCount }}</strong>
+        <small>Waiting for acceptance</small>
+      </div>
+    </div>
+
+
+    <div class="summary-card">
+      <div class="summary-icon green">✓</div>
+
+      <div class="summary-content">
+        <span>Accepted</span>
+        <strong>{{ acceptedOrdersCount }}</strong>
+        <small>Ready for delivery</small>
+      </div>
+    </div>
+
+
+    <div class="summary-card">
+      <div class="summary-icon orange">🛵</div>
+
+      <div class="summary-content">
+        <span>Active</span>
+        <strong>{{ activeOrdersCount }}</strong>
+        <small>Currently delivering</small>
+      </div>
+    </div>
+
+
+    <div class="summary-card">
+      <div class="summary-icon yellow">৳</div>
+
+      <div class="summary-content">
+        <span>Total Value</span>
+        <strong>৳ {{ totalOrderValue | number }}</strong>
+        <small>Today's assigned orders</small>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ================= TOOLBAR ================= -->
+  <section class="orders-card">
+
+    <div class="card-header">
+
+      <div class="card-title">
+        <span class="card-label">TODAY'S ASSIGNMENTS</span>
+        <h2>Order List</h2>
+      </div>
+
+      <div class="live-status">
+        <span class="live-dot"></span>
+        Live
+      </div>
+
+    </div>
+
+
+    <!-- ================= FILTER TOOLBAR ================= -->
+    <div class="toolbar">
+
+      <div class="search-box">
+        <span class="search-icon">⌕</span>
+
+        <input
+          type="text"
+          placeholder="Search order, customer or restaurant..."
+          [(ngModel)]="searchTerm"
+          (input)="applyFilters()"
+        />
+
+        <button
+          *ngIf="searchTerm"
+          type="button"
+          class="clear-search"
+          (click)="clearSearch()"
+          aria-label="Clear search"
+        >
+          ×
+        </button>
+      </div>
+
+
+      <div class="filter-tabs">
+
+        <button
+          type="button"
+          [class.active]="selectedStatus === 'All'"
+          (click)="setStatus('All')"
+        >
+          All
+          <span>{{ orders.length }}</span>
+        </button>
+
+        <button
+          type="button"
+          [class.active]="selectedStatus === 'New'"
+          (click)="setStatus('New')"
+        >
+          New
+          <span>{{ newOrdersCount }}</span>
+        </button>
+
+        <button
+          type="button"
+          [class.active]="selectedStatus === 'Accepted'"
+          (click)="setStatus('Accepted')"
+        >
+          Accepted
+          <span>{{ acceptedOrdersCount }}</span>
+        </button>
+
+        <button
+          type="button"
+          [class.active]="selectedStatus === 'Active'"
+          (click)="setStatus('Active')"
+        >
+          Active
+          <span>{{ activeOrdersCount }}</span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= ORDER LIST ================= -->
+    <div class="orders-container">
+
+      <article
+        class="order-card"
+        *ngFor="let order of filteredOrders; trackBy: trackByOrderId"
+      >
+
+        <!-- ORDER TOP -->
+        <div class="order-top">
+
+          <div class="order-number">
+
+            <div class="order-icon">
+              🛵
+            </div>
+
+            <div class="order-heading">
+              <strong>{{ order.id }}</strong>
+              <span>{{ order.time }}</span>
+            </div>
+
+          </div>
+
+
+          <span
+            class="status"
+            [class.new]="order.status === 'New'"
+            [class.accepted]="order.status === 'Accepted'"
+            [class.active]="order.status === 'Active'"
+          >
+            <span class="status-dot"></span>
+            {{ order.status }}
+          </span>
+
+        </div>
+
+
+        <!-- ORDER INFORMATION -->
+        <div class="order-details">
+
+          <div class="detail-block">
+
+            <span>RESTAURANT</span>
+
+            <div class="detail-value">
+              <span class="detail-icon">🍽️</span>
+              <strong>{{ order.restaurant }}</strong>
+            </div>
+
+          </div>
+
+
+          <div class="detail-block">
+
+            <span>CUSTOMER</span>
+
+            <div class="detail-value">
+              <span class="detail-icon">👤</span>
+              <strong>{{ order.customer }}</strong>
+            </div>
+
+          </div>
+
+
+          <div class="detail-block address">
+
+            <span>DELIVERY ADDRESS</span>
+
+            <div class="detail-value">
+              <span class="detail-icon">📍</span>
+              <strong>{{ order.address }}</strong>
+            </div>
+
+          </div>
+
+
+          <div class="detail-block">
+
+            <span>ORDER VALUE</span>
+
+            <div class="detail-value amount">
+              <strong>৳ {{ order.amount | number }}</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ORDER META -->
+        <div class="order-meta">
+
+          <div class="meta-item">
+            <span class="meta-icon">📍</span>
+            <span>{{ order.distance }}</span>
+          </div>
+
+          <div class="meta-item">
+            <span class="meta-icon">💳</span>
+            <span>{{ order.payment }}</span>
+          </div>
+
+          <div class="meta-item">
+            <span class="meta-icon">📦</span>
+            <span>{{ order.items }} items</span>
+          </div>
+
+          <div
+            class="meta-item"
+            *ngIf="order.status === 'New'"
+          >
+            <span class="meta-icon">⏱</span>
+            <span>{{ order.eta }}</span>
+          </div>
+
+        </div>
+
+
+        <!-- ORDER ACTIONS -->
+        <div class="order-bottom">
+
+          <div class="order-note">
+
+            <span
+              class="availability-dot"
+              [class.active-dot]="
+                order.status === 'Active'
+              "
+            ></span>
+
+            <span *ngIf="order.status === 'New'">
+              Waiting for acceptance
+            </span>
+
+            <span *ngIf="order.status === 'Accepted'">
+              Ready to start delivery
+            </span>
+
+            <span *ngIf="order.status === 'Active'">
+              Delivery in progress
+            </span>
+
+          </div>
+
+
+          <div class="order-actions">
+
+            <!-- VIEW -->
+            <button
+              type="button"
+              class="view-btn"
+              (click)="viewOrder(order)"
+            >
+              <span>View Details</span>
+              <b>→</b>
+            </button>
+
+
+            <!-- ACCEPT -->
+            <button
+              *ngIf="order.status === 'New'"
+              type="button"
+              class="accept-btn"
+              (click)="acceptOrder(order)"
+            >
+              <span>Accept Order</span>
+              <b>✓</b>
+            </button>
+
+
+            <!-- START DELIVERY -->
+            <button
+              *ngIf="order.status === 'Accepted'"
+              type="button"
+              class="start-btn"
+              (click)="startDelivery(order)"
+            >
+              <span>Start Delivery</span>
+              <b>→</b>
+            </button>
+
+
+            <!-- ACTIVE -->
+            <button
+              *ngIf="order.status === 'Active'"
+              type="button"
+              class="active-btn"
+              (click)="continueDelivery(order)"
+            >
+              <span>Continue Delivery</span>
+              <b>→</b>
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- ================= EMPTY STATE ================= -->
+      <div
+        class="empty-state"
+        *ngIf="filteredOrders.length === 0"
+      >
+
+        <div class="empty-icon">
+          📦
+        </div>
+
+        <h3>No orders found</h3>
+
+        <p *ngIf="searchTerm">
+          No orders match your search.
+          Try another order ID, customer or restaurant.
+        </p>
+
+        <p *ngIf="!searchTerm">
+          There are no orders in this category right now.
+        </p>
+
+        <button
+          type="button"
+          (click)="resetFilters()"
+        >
+          Show All Orders
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= WORKFLOW INFO ================= -->
+  <section class="workflow-card">
+
+    <div class="workflow-header">
+      <span class="card-label">DELIVERY WORKFLOW</span>
+      <h2>Order Progress</h2>
+    </div>
+
+    <div class="workflow">
+
+      <div class="workflow-step">
+        <div class="step-icon">📦</div>
+        <div>
+          <strong>New</strong>
+          <span>Review order</span>
+        </div>
+      </div>
+
+      <span class="workflow-arrow">→</span>
+
+      <div class="workflow-step">
+        <div class="step-icon">✓</div>
+        <div>
+          <strong>Accepted</strong>
+          <span>Prepare for pickup</span>
+        </div>
+      </div>
+
+      <span class="workflow-arrow">→</span>
+
+      <div class="workflow-step">
+        <div class="step-icon">🛵</div>
+        <div>
+          <strong>Active</strong>
+          <span>Deliver order</span>
+        </div>
+      </div>
+
+      <span class="workflow-arrow">→</span>
+
+      <div class="workflow-step">
+        <div class="step-icon">🏁</div>
+        <div>
+          <strong>Completed</strong>
+          <span>Move to history</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

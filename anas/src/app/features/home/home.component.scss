@@ -1,0 +1,2029 @@
+/* =========================================================
+   TOMATO FOOD DELIVERY
+   HOME PAGE - PREMIUM COLOR THEME
+   ========================================================= */
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.hero {
+  min-height: calc(100vh - 78px);
+  display: flex;
+  align-items: center;
+  padding: 70px 0;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(194, 155, 91, 0.16),
+      transparent 32%
+    ),
+    #f4efe6;
+
+  overflow: hidden;
+}
+
+.hero-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  gap: 70px;
+}
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.hero-content {
+  max-width: 610px;
+}
+
+/* =========================================================
+   BADGE
+   ========================================================= */
+
+.hero-badge {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 13px;
+  margin-bottom: 22px;
+
+  border: 1px solid #d8cdbb;
+  border-radius: 30px;
+
+  background: #fff9ef;
+  color: #356348;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #c96b45;
+
+  box-shadow:
+    0 0 0 4px rgba(201, 107, 69, 0.12);
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.hero-title {
+  margin: 0;
+
+  color: #1d3b2c;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -3px;
+  font-weight: 700;
+}
+
+.hero-title span {
+  display: block;
+
+  color: #c96b45;
+
+  margin-top: 8px;
+}
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+  max-width: 510px;
+
+  margin: 25px 0 0;
+
+  color: #68746c;
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 46px;
+
+  padding: 0 20px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.primary-button {
+  background: #1d3b2c;
+  color: #ffffff;
+
+  box-shadow:
+    0 7px 18px rgba(29, 59, 44, 0.20);
+}
+
+.primary-button:hover {
+  background: #356348;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 22px rgba(29, 59, 44, 0.26);
+}
+
+.primary-button span {
+  font-size: 18px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+.primary-button:hover span {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.secondary-button {
+  border: 1px solid #d1c6b5;
+
+  background: #fff9ef;
+  color: #1d3b2c;
+}
+
+.secondary-button:hover {
+  background: #dce4d8;
+  border-color: #c5d1c5;
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   TRUST
+   ========================================================= */
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  margin-top: 40px;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.trust-item strong {
+  color: #1d3b2c;
+  font-size: 17px;
+}
+
+.trust-item span {
+  color: #8b918c;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.trust-divider {
+  width: 1px;
+  height: 30px;
+
+  background: #d4cdbf;
+}
+
+/* =========================================================
+   RIGHT VISUAL
+   ========================================================= */
+
+.hero-visual {
+  min-height: 500px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   BACKGROUND CIRCLE
+   ========================================================= */
+
+.visual-circle {
+  width: 390px;
+  height: 390px;
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #d9e1d4,
+      #c5d1c5
+    );
+
+  opacity: 1;
+}
+
+/* =========================================================
+   FOOD CARD
+   ========================================================= */
+
+.food-card {
+  width: 300px;
+
+  position: relative;
+  z-index: 2;
+
+  padding: 12px;
+
+  background: #fffaf1;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 50px rgba(29, 59, 44, 0.15);
+
+  transform: rotate(2deg);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.food-card:hover {
+  transform:
+    rotate(0deg)
+    translateY(-5px);
+
+  box-shadow:
+    0 25px 60px rgba(29, 59, 44, 0.19);
+}
+
+/* =========================================================
+   FOOD IMAGE
+   ========================================================= */
+
+.food-image {
+  height: 245px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e4d8c5,
+      #f3e8d5
+    );
+
+  font-size: 115px;
+}
+
+/* =========================================================
+   FOOD INFO
+   ========================================================= */
+
+.food-info {
+  padding: 15px 8px 7px;
+}
+
+.food-category {
+  color: #c96b45;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.food-info h3 {
+  margin: 5px 0 12px;
+
+  color: #1d3b2c;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 20px;
+}
+
+.food-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rating {
+  color: #c49a52;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.food-bottom strong {
+  color: #1d3b2c;
+  font-size: 17px;
+}
+
+/* =========================================================
+   FLOATING BRAND
+   ========================================================= */
+
+.floating-brand {
+  position: absolute;
+  z-index: 4;
+
+  top: 55px;
+  right: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 11px 14px;
+
+  background: #fffaf1;
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 10px 30px rgba(29, 59, 44, 0.10);
+
+  animation:
+    floating 4s ease-in-out infinite;
+}
+
+.mini-tomato {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #c96b45;
+
+  font-size: 19px;
+}
+
+.floating-brand strong {
+  display: block;
+
+  color: #1d3b2c;
+  font-size: 12px;
+}
+
+.floating-brand span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #8b918c;
+  font-size: 9px;
+}
+
+/* =========================================================
+   DELIVERY BADGE
+   ========================================================= */
+
+.delivery-badge {
+  position: absolute;
+  z-index: 4;
+
+  left: 10px;
+  bottom: 70px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 11px 14px;
+
+  background: #1d3b2c;
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 10px 25px rgba(29, 59, 44, 0.20);
+
+  animation:
+    floating 4s ease-in-out infinite 1s;
+}
+
+.delivery-icon {
+  width: 33px;
+  height: 33px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  font-size: 17px;
+}
+
+.delivery-badge strong {
+  display: block;
+
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.delivery-badge span:last-child {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #b9c9bf;
+  font-size: 9px;
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* =========================================================
+   HERO RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 55px 0;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .hero-content {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    text-align: center;
+  }
+
+  .hero-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-trust {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 45px 0;
+  }
+
+  .hero-container {
+    width: calc(100% - 30px);
+  }
+
+  .hero-title {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+
+  .hero-trust {
+    gap: 10px;
+  }
+
+  .visual-circle {
+    width: 290px;
+    height: 290px;
+  }
+
+  .food-card {
+    width: 260px;
+  }
+
+  .food-image {
+    height: 210px;
+    font-size: 90px;
+  }
+
+  .floating-brand {
+    right: 0;
+    top: 30px;
+  }
+
+  .delivery-badge {
+    left: 0;
+    bottom: 40px;
+  }
+}
+
+/* =========================================================
+   FOOD CATEGORIES
+   ========================================================= */
+
+.categories {
+  padding: 80px 0;
+  background: #fffaf1;
+}
+
+.categories-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #c96b45;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  color: #1d3b2c;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.view-all {
+  color: #356348;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.view-all:hover {
+  color: #c96b45;
+
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   CATEGORY GRID
+   ========================================================= */
+
+.category-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, 1fr);
+
+  gap: 14px;
+}
+
+/* =========================================================
+   CATEGORY CARD
+   ========================================================= */
+
+.category-card {
+  min-height: 175px;
+
+  padding: 20px 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  text-decoration: none;
+
+  background: #f5f0e7;
+
+  border: 1px solid #ded5c7;
+  border-radius: 16px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+
+  background: #dce4d8;
+
+  border-color: #c7d2c6;
+
+  box-shadow:
+    0 12px 28px rgba(29, 59, 44, 0.10);
+}
+
+/* =========================================================
+   CATEGORY ICON
+   ========================================================= */
+
+.category-icon {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 14px;
+
+  border-radius: 50%;
+
+  font-size: 35px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.category-card:hover .category-icon {
+  transform:
+    scale(1.08)
+    rotate(-3deg);
+}
+
+/* Individual icon colors */
+
+.category-icon.burger {
+  background: #ead4b8;
+}
+
+.category-icon.pizza {
+  background: #efd0c4;
+}
+
+.category-icon.chicken {
+  background: #ead9b9;
+}
+
+.category-icon.biryani {
+  background: #d6dfcc;
+}
+
+.category-icon.pasta {
+  background: #e5d8c4;
+}
+
+.category-icon.healthy {
+  background: #ccd9ca;
+}
+
+/* =========================================================
+   CATEGORY TEXT
+   ========================================================= */
+
+.category-card h3 {
+  margin: 0 0 5px;
+
+  color: #1d3b2c;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.category-card span {
+  color: #858d87;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   CATEGORY RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .category-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .categories {
+    padding: 60px 0;
+  }
+
+  .categories-container {
+    width: calc(100% - 30px);
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .section-heading h2 {
+    font-size: 27px;
+  }
+
+  .category-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 10px;
+  }
+
+  .category-card {
+    min-height: 155px;
+  }
+}
+
+/* =========================================================
+   POPULAR FOODS
+   ========================================================= */
+
+.popular-foods {
+  padding: 85px 0;
+  background: #f4efe6;
+}
+
+.popular-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   FOOD GRID
+   ========================================================= */
+
+.food-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 18px;
+}
+
+/* =========================================================
+   FOOD CARD
+   ========================================================= */
+
+.food-card-item {
+  overflow: hidden;
+
+  background: #fffaf1;
+
+  border: 1px solid #ded5c7;
+
+  border-radius: 17px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.food-card-item:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 16px 35px rgba(29, 59, 44, 0.12);
+}
+
+/* =========================================================
+   IMAGE AREA
+   ========================================================= */
+
+.food-card-image {
+  height: 205px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dce4d8,
+      #eadbc5
+    );
+}
+
+.food-placeholder {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+
+.food-card-item:hover .food-placeholder img {
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   FOOD TAG
+   ========================================================= */
+
+.food-tag {
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  padding: 5px 9px;
+
+  background: #1d3b2c;
+  color: #ffffff;
+
+  border-radius: 6px;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   FAVORITE
+   ========================================================= */
+
+.favorite-button {
+  position: absolute;
+
+  top: 10px;
+  right: 10px;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #fffaf1;
+  color: #68746c;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(29, 59, 44, 0.10);
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.favorite-button:hover {
+  color: #c96b45;
+
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   FOOD CONTENT
+   ========================================================= */
+
+.food-card-content {
+  padding: 16px;
+}
+
+.food-type {
+  color: #c96b45;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.food-card-content h3 {
+  margin: 6px 0 9px;
+
+  color: #1d3b2c;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+/* =========================================================
+   RATING
+   ========================================================= */
+
+.food-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.food-rating span {
+  color: #c49a52;
+  font-size: 13px;
+}
+
+.food-rating strong {
+  color: #1d3b2c;
+  font-size: 11px;
+}
+
+.food-rating small {
+  color: #8b918c;
+  font-size: 10px;
+}
+
+/* =========================================================
+   FOOD BOTTOM
+   ========================================================= */
+
+.food-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 15px;
+}
+
+.food-price {
+  color: #1d3b2c;
+  font-size: 19px;
+}
+
+/* =========================================================
+   ADD BUTTON
+   ========================================================= */
+
+.add-cart-button {
+  min-width: 70px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: #1d3b2c;
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.add-cart-button span {
+  font-size: 16px;
+}
+
+.add-cart-button:hover {
+  background: #356348;
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   POPULAR RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .food-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .popular-foods {
+    padding: 60px 0;
+  }
+
+  .popular-container {
+    width: calc(100% - 30px);
+  }
+
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-card-image {
+    height: 220px;
+  }
+}
+
+/* =========================================================
+   SPECIAL OFFERS
+   ========================================================= */
+
+.special-offers {
+  padding: 90px 24px;
+  background: #fffaf1;
+}
+
+.offers-container {
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  min-height: 430px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.05fr 0.95fr;
+
+  align-items: center;
+
+  padding: 60px 70px;
+
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #18382a 0%,
+      #28543d 55%,
+      #356348 100%
+    );
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================================
+   OFFER LEFT
+   ========================================================= */
+
+.offer-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 540px;
+}
+
+.offer-label {
+  display: inline-block;
+
+  margin-bottom: 16px;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  color: #d9e3d8;
+}
+
+.offer-content h2 {
+  margin: 0;
+
+  max-width: 500px;
+
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.08;
+
+  font-weight: 800;
+
+  color: #fffaf1;
+}
+
+.offer-content h2 span {
+  display: block;
+  color: #e1b766;
+}
+
+.offer-description {
+  max-width: 470px;
+
+  margin: 22px 0;
+
+  font-size: 15px;
+  line-height: 1.8;
+
+  color: #d5dfd7;
+}
+
+/* =========================================================
+   DISCOUNT
+   ========================================================= */
+
+.discount-box {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+
+  margin: 4px 0 20px;
+}
+
+.discount-box strong {
+  font-size: 42px;
+  line-height: 1;
+
+  color: #fffaf1;
+}
+
+.discount-box span {
+  font-size: 16px;
+  font-weight: 800;
+
+  color: #e1b766;
+}
+
+/* =========================================================
+   PROMO
+   ========================================================= */
+
+.promo-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: fit-content;
+
+  margin-bottom: 24px;
+
+  padding: 9px 14px;
+
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.promo-box span {
+  font-size: 12px;
+  color: #d5dfd7;
+}
+
+.promo-box strong {
+  font-size: 13px;
+
+  letter-spacing: 1px;
+
+  color: #fffaf1;
+}
+
+/* =========================================================
+   OFFER BUTTON
+   ========================================================= */
+
+.offer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 22px;
+
+  border-radius: 10px;
+
+  background: #fffaf1;
+  color: #18382a;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  transition:
+    all 0.25s ease;
+}
+
+.offer-button span {
+  font-size: 18px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.offer-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.16);
+}
+
+.offer-button:hover span {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   OFFER VISUAL
+   ========================================================= */
+
+.offer-visual {
+  min-height: 340px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offer-circle {
+  width: 300px;
+  height: 300px;
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 250, 241, 0.09);
+}
+
+/* =========================================================
+   OFFER FOOD CARD
+   ========================================================= */
+
+.offer-food-card {
+  width: 285px;
+
+  position: relative;
+  z-index: 2;
+
+  padding: 22px;
+
+  border-radius: 24px;
+
+  background: #fffaf1;
+
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.22);
+
+  transform: rotate(-3deg);
+
+  transition:
+    transform 0.3s ease;
+}
+
+.offer-food-card:hover {
+  transform:
+    rotate(0deg)
+    translateY(-5px);
+}
+
+.offer-food-icon {
+  width: 100%;
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f0dfc4,
+      #e4cfad
+    );
+
+  font-size: 82px;
+}
+
+.offer-food-info {
+  padding-top: 16px;
+}
+
+.offer-food-info span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  color: #8b918c;
+}
+
+.offer-food-info strong {
+  display: block;
+
+  font-size: 18px;
+
+  color: #1d3b2c;
+}
+
+/* =========================================================
+   OFFER PRICE
+   ========================================================= */
+
+.offer-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+.offer-price .old-price {
+  font-size: 13px;
+
+  text-decoration: line-through;
+
+  color: #9a9f9b;
+}
+
+.offer-price strong {
+  font-size: 22px;
+  color: #c96b45;
+}
+
+/* =========================================================
+   OFFER BADGE
+   ========================================================= */
+
+.offer-badge {
+  width: 82px;
+  height: 82px;
+
+  position: absolute;
+
+  right: 20px;
+  top: 15px;
+
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #c96b45;
+
+  color: #fffaf1;
+
+  transform: rotate(8deg);
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.20);
+}
+
+.offer-badge strong {
+  font-size: 23px;
+  line-height: 1;
+}
+
+.offer-badge span {
+  margin-top: 3px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   DECORATIVE LEAVES
+   ========================================================= */
+
+.offer-leaf {
+  position: absolute;
+
+  width: 65px;
+  height: 28px;
+
+  border-radius:
+    100% 0 100% 0;
+
+  background:
+    rgba(220, 228, 216, 0.18);
+
+  transform: rotate(35deg);
+}
+
+.leaf-one {
+  left: 25px;
+  top: 35px;
+}
+
+.leaf-two {
+  right: 15px;
+  bottom: 30px;
+
+  transform: rotate(-35deg);
+}
+
+/* =========================================================
+   OFFER RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .offers-container {
+    grid-template-columns: 1fr;
+
+    padding: 50px 40px;
+
+    text-align: center;
+  }
+
+  .offer-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .offer-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .promo-box {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .offer-visual {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .special-offers {
+    padding: 60px 16px;
+  }
+
+  .offers-container {
+    padding: 40px 22px;
+
+    border-radius: 24px;
+  }
+
+  .offer-content h2 {
+    font-size: 36px;
+  }
+
+  .offer-description {
+    font-size: 14px;
+  }
+
+  .offer-circle {
+    width: 240px;
+    height: 240px;
+  }
+
+  .offer-food-card {
+    width: 250px;
+  }
+
+  .offer-food-icon {
+    height: 125px;
+    font-size: 65px;
+  }
+
+  .offer-badge {
+    right: 0;
+  }
+}
+
+/* =========================================================
+   RESTAURANTS
+   ========================================================= */
+
+.restaurants {
+  padding: 90px 24px;
+
+  background: #f4efe6;
+}
+
+.restaurants-container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.restaurant-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 22px;
+}
+
+/* =========================================================
+   RESTAURANT CARD
+   ========================================================= */
+
+.restaurant-card {
+  overflow: hidden;
+
+  background: #fffaf1;
+
+  border: 1px solid #ded5c7;
+
+  border-radius: 18px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 16px 35px rgba(29, 59, 44, 0.10);
+}
+
+/* =========================================================
+   RESTAURANT IMAGE
+   ========================================================= */
+
+.restaurant-image {
+  height: 190px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dce4d8,
+      #eadbc5
+    );
+}
+
+.restaurant-placeholder {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+
+.restaurant-card:hover .restaurant-placeholder img {
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   RESTAURANT BADGE
+   ========================================================= */
+
+.restaurant-badge {
+  position: absolute;
+
+  top: 14px;
+  left: 14px;
+
+  padding: 6px 10px;
+
+  border-radius: 7px;
+
+  background: #1d3b2c;
+  color: #fffaf1;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   RESTAURANT CONTENT
+   ========================================================= */
+
+.restaurant-content {
+  padding: 18px;
+}
+
+.restaurant-content h3 {
+  margin: 0 0 7px;
+
+  font-size: 19px;
+  font-weight: 800;
+
+  color: #1d3b2c;
+}
+
+.restaurant-cuisine {
+  margin: 0 0 13px;
+
+  font-size: 13px;
+
+  color: #858d87;
+}
+
+/* =========================================================
+   RESTAURANT META
+   ========================================================= */
+
+.restaurant-meta {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 12px;
+
+  color: #68746c;
+}
+
+.rating {
+  color: #c49a52;
+}
+
+.rating strong {
+  color: #1d3b2c;
+}
+
+/* =========================================================
+   RESTAURANT BOTTOM
+   ========================================================= */
+
+.restaurant-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 18px;
+  padding-top: 14px;
+
+  border-top:
+    1px solid #e9e1d6;
+}
+
+.delivery-fee {
+  font-size: 12px;
+  color: #68746c;
+}
+
+.restaurant-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 15px;
+
+  border-radius: 8px;
+
+  background: #dce4d8;
+  color: #1d3b2c;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  transition:
+    all 0.2s ease;
+}
+
+.restaurant-button:hover {
+  background: #356348;
+  color: #fffaf1;
+}
+
+/* =========================================================
+   RESTAURANT RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .restaurant-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .restaurants {
+    padding: 65px 16px;
+  }
+
+  .restaurant-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .restaurant-image {
+    height: 210px;
+  }
+}
+
+/* =========================================================
+   HOW IT WORKS
+   ========================================================= */
+
+.how-it-works {
+  padding: 90px 24px;
+
+  background: #fffaf1;
+}
+
+.how-container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.how-heading {
+  text-align: center;
+
+  margin-bottom: 55px;
+}
+
+.how-heading h2 {
+  margin: 10px 0 10px;
+
+  font-size: clamp(32px, 4vw, 44px);
+
+  font-weight: 800;
+
+  color: #1d3b2c;
+}
+
+.how-heading p {
+  margin: 0;
+
+  font-size: 15px;
+
+  color: #68746c;
+}
+
+/* =========================================================
+   STEPS
+   ========================================================= */
+
+.steps-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 25px;
+}
+
+.step-card {
+  position: relative;
+
+  padding: 35px 24px;
+
+  text-align: center;
+
+  background: #f5f0e7;
+
+  border: 1px solid #ded5c7;
+
+  border-radius: 20px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(29, 59, 44, 0.09);
+}
+
+/* =========================================================
+   STEP NUMBER
+   ========================================================= */
+
+.step-number {
+  position: absolute;
+
+  top: 15px;
+  right: 17px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  color: #c49a52;
+}
+
+/* =========================================================
+   STEP ICON
+   ========================================================= */
+
+.step-icon {
+  width: 78px;
+  height: 78px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #dce4d8;
+
+  font-size: 34px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.step-card:hover .step-icon {
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   STEP TEXT
+   ========================================================= */
+
+.step-card h3 {
+  margin: 0 0 10px;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #1d3b2c;
+}
+
+.step-card p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #68746c;
+}
+
+/* =========================================================
+   HOW IT WORKS RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+  .steps-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .how-it-works {
+    padding: 65px 16px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .step-card {
+    padding: 30px 22px;
+  }
+}

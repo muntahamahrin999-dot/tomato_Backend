@@ -1,0 +1,252 @@
+<div class="restaurant-dashboard">
+
+  <!-- Hero Section -->
+  <section class="dashboard-hero">
+
+    <div class="hero-content">
+
+      <span class="eyebrow">
+        RESTAURANT OWNER
+      </span>
+
+      <h1>
+        Welcome back,
+        <span>{{ user?.name || 'Restaurant Owner' }}.</span>
+      </h1>
+
+      <p>
+        Manage your restaurant, food items, orders and business
+        from one place.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Restaurant Profile -->
+  <section class="restaurant-profile">
+
+    <div class="profile-avatar">
+      🍽️
+    </div>
+
+    <div class="profile-info">
+
+      <span class="profile-label">
+        RESTAURANT ACCOUNT
+      </span>
+
+      <h2>
+        {{ user?.name || 'Demo Restaurant' }}
+      </h2>
+
+      <p>
+        {{ user?.email || 'restaurant@tomato.com' }}
+      </p>
+
+    </div>
+
+    <a
+      routerLink="/restaurant/profile"
+      class="profile-button"
+    >
+      View Profile
+    </a>
+
+  </section>
+
+
+  <!-- Main Section -->
+  <section class="management-section">
+
+    <span class="section-label">
+      RESTAURANT MANAGEMENT
+    </span>
+
+    <h2>
+      What would you like to manage?
+    </h2>
+
+
+    <div class="dashboard-grid">
+
+
+      <!-- Orders -->
+      <a
+        routerLink="/restaurant/orders"
+        class="dashboard-card"
+      >
+
+        <div class="card-icon">
+          📦
+        </div>
+
+        <div class="card-content">
+
+          <h3>
+            Orders
+          </h3>
+
+          <p>
+            View and manage customer orders.
+          </p>
+
+        </div>
+
+        <span class="arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- Food Management -->
+      <a
+        routerLink="/restaurant/food-management"
+        class="dashboard-card"
+      >
+
+        <div class="card-icon">
+          🍔
+        </div>
+
+        <div class="card-content">
+
+          <h3>
+            Food Management
+          </h3>
+
+          <p>
+            Add, edit and manage your food items.
+          </p>
+
+        </div>
+
+        <span class="arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- Categories -->
+      <a
+        routerLink="/restaurant/categories"
+        class="dashboard-card"
+      >
+
+        <div class="card-icon">
+          📂
+        </div>
+
+        <div class="card-content">
+
+          <h3>
+            Categories
+          </h3>
+
+          <p>
+            Organize your food categories.
+          </p>
+
+        </div>
+
+        <span class="arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- Inventory -->
+      <a
+        routerLink="/restaurant/inventory"
+        class="dashboard-card"
+      >
+
+        <div class="card-icon">
+          📦
+        </div>
+
+        <div class="card-content">
+
+          <h3>
+            Inventory
+          </h3>
+
+          <p>
+            Monitor your food inventory.
+          </p>
+
+        </div>
+
+        <span class="arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- Offers -->
+      <a
+        routerLink="/restaurant/offers"
+        class="dashboard-card"
+      >
+
+        <div class="card-icon">
+          🏷️
+        </div>
+
+        <div class="card-content">
+
+          <h3>
+            Offers
+          </h3>
+
+          <p>
+            Create and manage special offers.
+          </p>
+
+        </div>
+
+        <span class="arrow">
+          →
+        </span>
+
+      </a>
+
+
+      <!-- Reports -->
+      <a
+        routerLink="/restaurant/reports"
+        class="dashboard-card"
+      >
+
+        <div class="card-icon">
+          📊
+        </div>
+
+        <div class="card-content">
+
+          <h3>
+            Reports
+          </h3>
+
+          <p>
+            View restaurant performance reports.
+          </p>
+
+        </div>
+
+        <span class="arrow">
+          →
+        </span>
+
+      </a>
+
+    </div>
+
+  </section>
+
+</div>

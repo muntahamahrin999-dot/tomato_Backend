@@ -1,0 +1,281 @@
+<div class="earnings-page">
+
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">FINANCIAL OVERVIEW</span>
+      <h1>Earnings</h1>
+      <p>Track your delivery income and performance.</p>
+    </div>
+
+    <div class="period-buttons">
+
+      <button
+        [class.active]="selectedPeriod === 'Today'"
+        (click)="setPeriod('Today')"
+      >
+        Today
+      </button>
+
+      <button
+        [class.active]="selectedPeriod === 'Week'"
+        (click)="setPeriod('Week')"
+      >
+        This Week
+      </button>
+
+      <button
+        [class.active]="selectedPeriod === 'Month'"
+        (click)="setPeriod('Month')"
+      >
+        This Month
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- Earnings Stats -->
+  <div class="earnings-grid">
+
+    <div class="earning-card main">
+
+      <div class="earning-icon">
+        ৳
+      </div>
+
+      <span>Total Earnings</span>
+
+      <h2>৳ 1,550</h2>
+
+      <small>
+        ↑ 18% compared to last week
+      </small>
+
+    </div>
+
+
+    <div class="earning-card">
+
+      <div class="small-icon green">
+        🛵
+      </div>
+
+      <span>Deliveries</span>
+
+      <h2>28</h2>
+
+      <small>
+        Completed this week
+      </small>
+
+    </div>
+
+
+    <div class="earning-card">
+
+      <div class="small-icon yellow">
+        ⭐
+      </div>
+
+      <span>Average / Delivery</span>
+
+      <h2>৳ 55</h2>
+
+      <small>
+        Based on completed orders
+      </small>
+
+    </div>
+
+
+    <div class="earning-card">
+
+      <div class="small-icon red">
+        🎁
+      </div>
+
+      <span>Bonus</span>
+
+      <h2>৳ 250</h2>
+
+      <small>
+        Performance bonus
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <div class="earnings-content">
+
+    <!-- Chart -->
+    <div class="chart-card">
+
+      <div class="card-header">
+
+        <div>
+          <span class="card-label">WEEKLY PERFORMANCE</span>
+          <h2>Earnings Overview</h2>
+        </div>
+
+        <span class="total-label">
+          ৳ 1,550
+        </span>
+
+      </div>
+
+
+      <div class="chart">
+
+        <div class="chart-y">
+          <span>৳600</span>
+          <span>৳450</span>
+          <span>৳300</span>
+          <span>৳150</span>
+          <span>৳0</span>
+        </div>
+
+        <div class="chart-area">
+
+          <div class="grid-line one"></div>
+          <div class="grid-line two"></div>
+          <div class="grid-line three"></div>
+          <div class="grid-line four"></div>
+
+          <div class="bars">
+
+            <div class="bar-item">
+              <div class="bar" style="height: 48%"></div>
+              <span>Mon</span>
+            </div>
+
+            <div class="bar-item">
+              <div class="bar" style="height: 70%"></div>
+              <span>Tue</span>
+            </div>
+
+            <div class="bar-item">
+              <div class="bar" style="height: 55%"></div>
+              <span>Wed</span>
+            </div>
+
+            <div class="bar-item">
+              <div class="bar" style="height: 82%"></div>
+              <span>Thu</span>
+            </div>
+
+            <div class="bar-item">
+              <div class="bar active" style="height: 92%"></div>
+              <span>Fri</span>
+            </div>
+
+            <div class="bar-item">
+              <div class="bar" style="height: 63%"></div>
+              <span>Sat</span>
+            </div>
+
+            <div class="bar-item">
+              <div class="bar" style="height: 38%"></div>
+              <span>Sun</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Breakdown -->
+    <div class="breakdown-card">
+
+      <div class="card-header">
+        <div>
+          <span class="card-label">INCOME BREAKDOWN</span>
+          <h2>This Week</h2>
+        </div>
+      </div>
+
+      <div class="breakdown-item">
+        <div>
+          <span>Delivery Fees</span>
+          <small>28 deliveries</small>
+        </div>
+
+        <strong>৳ 1,300</strong>
+      </div>
+
+      <div class="breakdown-item">
+        <div>
+          <span>Performance Bonus</span>
+          <small>Weekly target</small>
+        </div>
+
+        <strong>৳ 250</strong>
+      </div>
+
+      <div class="breakdown-total">
+        <span>Total</span>
+        <strong>৳ 1,550</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- History -->
+  <div class="history-card">
+
+    <div class="card-header">
+
+      <div>
+        <span class="card-label">RECENT PAYMENTS</span>
+        <h2>Earnings History</h2>
+      </div>
+
+    </div>
+
+    <div class="earning-history">
+
+      <div
+        class="history-row"
+        *ngFor="let item of earnings"
+      >
+
+        <div class="history-date">
+          <div class="date-icon">৳</div>
+
+          <div>
+            <strong>{{ item.date }}</strong>
+            <span>{{ item.deliveries }} deliveries</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="history-label">DELIVERY</span>
+          <strong>{{ item.deliveryFee }}</strong>
+        </div>
+
+        <div>
+          <span class="history-label">BONUS</span>
+          <strong>{{ item.bonus }}</strong>
+        </div>
+
+        <div class="history-total">
+          <span class="history-label">TOTAL</span>
+          <strong>{{ item.total }}</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

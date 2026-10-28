@@ -1,0 +1,355 @@
+<div class="checkout-page">
+
+  <!-- Header -->
+  <section class="checkout-header">
+    <div class="container">
+
+      <a routerLink="/cart" class="back-link">
+        ← Back to Cart
+      </a>
+
+      <div class="header-content">
+        <div>
+          <span class="eyebrow">ORDER CHECKOUT</span>
+          <h1>Complete Your Order</h1>
+          <p>
+            Enter your delivery details and choose your preferred payment method.
+          </p>
+        </div>
+
+        <div class="secure-badge">
+          <span>✓</span>
+          Secure Checkout
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Checkout Content -->
+  <main class="checkout-content">
+
+    <div class="container checkout-grid">
+
+      <!-- Left Side -->
+      <div class="checkout-left">
+
+        <!-- Delivery Information -->
+        <section class="checkout-card">
+
+          <div class="section-title">
+            <div class="title-icon">📍</div>
+
+            <div>
+              <h2>Delivery Information</h2>
+              <p>Where should we deliver your order?</p>
+            </div>
+          </div>
+
+
+          <div class="form-grid">
+
+            <!-- Name -->
+            <div class="form-group full-width">
+              <label for="customerName">
+                Full Name <span>*</span>
+              </label>
+
+              <input
+                id="customerName"
+                type="text"
+                [(ngModel)]="customerName"
+                placeholder="Enter your full name"
+              />
+            </div>
+
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phone">
+                Phone Number <span>*</span>
+              </label>
+
+              <input
+                id="phone"
+                type="tel"
+                [(ngModel)]="phone"
+                placeholder="01XXXXXXXXX"
+              />
+            </div>
+
+
+            <!-- City -->
+            <div class="form-group">
+              <label for="city">
+                City
+              </label>
+
+              <select
+                id="city"
+                [(ngModel)]="city"
+              >
+                <option value="Dhaka">Dhaka</option>
+                <option value="Chattogram">Chattogram</option>
+                <option value="Sylhet">Sylhet</option>
+                <option value="Rajshahi">Rajshahi</option>
+                <option value="Khulna">Khulna</option>
+              </select>
+            </div>
+
+
+            <!-- Address -->
+            <div class="form-group full-width">
+              <label for="address">
+                Delivery Address <span>*</span>
+              </label>
+
+              <textarea
+                id="address"
+                [(ngModel)]="address"
+                rows="4"
+                placeholder="House / Road / Area / Landmark"
+              ></textarea>
+            </div>
+
+
+            <!-- Note -->
+            <div class="form-group full-width">
+              <label for="deliveryNote">
+                Delivery Note
+                <small>(Optional)</small>
+              </label>
+
+              <textarea
+                id="deliveryNote"
+                [(ngModel)]="deliveryNote"
+                rows="3"
+                placeholder="Any special instructions for the rider?"
+              ></textarea>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- Payment Method -->
+        <section class="checkout-card">
+
+          <div class="section-title">
+            <div class="title-icon">💳</div>
+
+            <div>
+              <h2>Payment Method</h2>
+              <p>Select how you want to pay.</p>
+            </div>
+          </div>
+
+
+          <div class="payment-options">
+
+            <!-- Cash -->
+            <label
+              class="payment-option"
+              [class.selected]="paymentMethod === 'Cash on Delivery'"
+            >
+
+              <input
+                type="radio"
+                name="payment"
+                value="Cash on Delivery"
+                [(ngModel)]="paymentMethod"
+              />
+
+              <div class="payment-icon">💵</div>
+
+              <div class="payment-info">
+                <strong>Cash on Delivery</strong>
+                <span>Pay when your order arrives.</span>
+              </div>
+
+              <div class="radio-circle"></div>
+
+            </label>
+
+
+            <!-- Card -->
+            <label
+              class="payment-option"
+              [class.selected]="paymentMethod === 'Card'"
+            >
+
+              <input
+                type="radio"
+                name="payment"
+                value="Card"
+                [(ngModel)]="paymentMethod"
+              />
+
+              <div class="payment-icon">💳</div>
+
+              <div class="payment-info">
+                <strong>Credit / Debit Card</strong>
+                <span>Pay securely with your card.</span>
+              </div>
+
+              <div class="radio-circle"></div>
+
+            </label>
+
+
+            <!-- Mobile Banking -->
+            <label
+              class="payment-option"
+              [class.selected]="paymentMethod === 'Mobile Banking'"
+            >
+
+              <input
+                type="radio"
+                name="payment"
+                value="Mobile Banking"
+                [(ngModel)]="paymentMethod"
+              />
+
+              <div class="payment-icon">📱</div>
+
+              <div class="payment-info">
+                <strong>Mobile Banking</strong>
+                <span>bKash, Nagad and other services.</span>
+              </div>
+
+              <div class="radio-circle"></div>
+
+            </label>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- Right Side -->
+      <aside class="checkout-right">
+
+        <section class="order-summary">
+
+          <div class="summary-header">
+            <div>
+              <span class="summary-label">YOUR ORDER</span>
+              <h2>Order Summary</h2>
+            </div>
+
+            <span class="item-count">
+              {{ totalQuantity }} items
+            </span>
+          </div>
+
+
+          <!-- Empty -->
+          <div
+            class="empty-summary"
+            *ngIf="cartItems.length === 0"
+          >
+            <div class="empty-icon">🛒</div>
+
+            <h3>Your cart is empty</h3>
+
+            <p>Add some delicious food first.</p>
+
+            <a routerLink="/food" class="browse-button">
+              Browse Food
+            </a>
+          </div>
+
+
+          <!-- Items -->
+          <div
+            class="summary-items"
+            *ngIf="cartItems.length > 0"
+          >
+
+            <div
+              class="summary-item"
+              *ngFor="let item of cartItems"
+            >
+
+              <img
+                [src]="item.image"
+                [alt]="item.name"
+              />
+
+              <div class="item-details">
+                <h3>{{ item.name }}</h3>
+
+                <span>
+                  {{ item.restaurant }}
+                </span>
+
+                <div class="item-bottom">
+                  <span>Qty: {{ item.quantity }}</span>
+
+                  <strong>
+                    ৳{{ item.price * item.quantity }}
+                  </strong>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Price -->
+          <div
+            class="price-section"
+            *ngIf="cartItems.length > 0"
+          >
+
+            <div class="price-row">
+              <span>Subtotal</span>
+              <strong>৳{{ subtotal }}</strong>
+            </div>
+
+            <div class="price-row">
+              <span>Delivery Fee</span>
+              <strong>৳{{ deliveryFee }}</strong>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="total-row">
+              <span>Total</span>
+              <strong>৳{{ total }}</strong>
+            </div>
+
+          </div>
+
+
+          <!-- Place Order -->
+          <button
+            type="button"
+            class="place-order-button"
+            *ngIf="cartItems.length > 0"
+            (click)="placeOrder()"
+          >
+            <span>Place Order</span>
+            <span>৳{{ total }} →</span>
+          </button>
+
+
+          <div class="secure-note">
+            <span>🔒</span>
+            Your information is securely protected.
+          </div>
+
+        </section>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+</div>

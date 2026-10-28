@@ -1,0 +1,553 @@
+<div class="reports-page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">ANALYTICS</span>
+
+      <h1>Reports & Analytics</h1>
+
+      <p>
+        Track sales, orders, customers and overall Tomato performance.
+      </p>
+    </div>
+
+    <div class="header-actions">
+
+      <div class="period-selector">
+        <button
+          *ngFor="let period of periods"
+          [class.active]="selectedPeriod === period"
+          (click)="changePeriod(period)">
+          {{ period }}
+        </button>
+      </div>
+
+      <button
+        class="export-btn"
+        (click)="exportReport()">
+        <span>↓</span>
+        Export
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- SUMMARY CARDS -->
+  <div class="summary-grid">
+
+    <div class="summary-card">
+
+      <div class="summary-icon red">
+        ৳
+      </div>
+
+      <div>
+        <span>Total Sales</span>
+        <strong>৳ 485,600</strong>
+        <small class="positive">+12.8% this month</small>
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-icon green">
+        🛍
+      </div>
+
+      <div>
+        <span>Total Orders</span>
+        <strong>3,842</strong>
+        <small class="positive">+8.4% this month</small>
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-icon blue">
+        👥
+      </div>
+
+      <div>
+        <span>Total Customers</span>
+        <strong>2,486</strong>
+        <small class="positive">+15.2% this month</small>
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-icon orange">
+        ⭐
+      </div>
+
+      <div>
+        <span>Average Rating</span>
+        <strong>4.7</strong>
+        <small class="positive">+0.3 this month</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SALES + ORDER STATUS -->
+  <div class="two-column-grid">
+
+    <!-- SALES TREND -->
+    <div class="report-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Sales Trend</h2>
+          <p>Monthly sales performance</p>
+        </div>
+
+        <span class="card-badge">
+          2026
+        </span>
+
+      </div>
+
+
+      <div class="sales-chart">
+
+        <div
+          class="sales-column"
+          *ngFor="let item of salesData">
+
+          <span class="sales-value">
+            ৳{{ item.sales / 1000 | number:'1.0-0' }}k
+          </span>
+
+          <div class="sales-bar-area">
+
+            <div
+              class="sales-bar"
+              [style.height.%]="getSalesHeight(item.sales)">
+            </div>
+
+          </div>
+
+          <span class="sales-month">
+            {{ item.month }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ORDER STATUS -->
+    <div class="report-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Order Status</h2>
+          <p>Current order distribution</p>
+        </div>
+
+        <span class="status-total">
+          3,842
+        </span>
+
+      </div>
+
+
+      <div class="status-list">
+
+        <div
+          class="status-row"
+          *ngFor="let status of orderStatuses">
+
+          <div class="status-info">
+
+            <div class="status-name">
+
+              <span
+                class="status-dot"
+                [ngClass]="status.className">
+              </span>
+
+              {{ status.name }}
+
+            </div>
+
+            <strong>
+              {{ status.count }}
+            </strong>
+
+          </div>
+
+          <div class="status-progress">
+
+            <div
+              class="status-fill"
+              [ngClass]="status.className"
+              [style.width.%]="status.percentage">
+            </div>
+
+          </div>
+
+          <span class="status-percent">
+            {{ status.percentage }}%
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- MONTHLY REVENUE -->
+  <div class="report-card revenue-card">
+
+    <div class="card-header">
+
+      <div>
+        <h2>Monthly Revenue</h2>
+        <p>Revenue generated throughout the year</p>
+      </div>
+
+      <div class="revenue-total">
+        <span>Total</span>
+        <strong>৳ 485,600</strong>
+      </div>
+
+    </div>
+
+
+    <div class="revenue-chart">
+
+      <div
+        class="revenue-column"
+        *ngFor="let item of monthlyRevenue">
+
+        <span class="revenue-value">
+          ৳{{ item.revenue / 1000 | number:'1.0-0' }}k
+        </span>
+
+        <div class="revenue-bar-area">
+
+          <div
+            class="revenue-bar"
+            [style.height.%]="getRevenueHeight(item.revenue)">
+          </div>
+
+        </div>
+
+        <span class="revenue-month">
+          {{ item.month }}
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- POPULAR MENU + LOCATION -->
+  <div class="two-column-grid">
+
+    <!-- POPULAR MENU -->
+    <div class="report-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Popular Menu Items</h2>
+          <p>Best performing food items</p>
+        </div>
+
+        <span class="menu-icon">
+          🍽
+        </span>
+
+      </div>
+
+
+      <div class="menu-list">
+
+        <div
+          class="menu-row"
+          *ngFor="let item of popularMenuItems; let i = index">
+
+          <div class="menu-rank">
+            {{ i + 1 }}
+          </div>
+
+          <div class="menu-details">
+
+            <strong>
+              {{ item.name }}
+            </strong>
+
+            <span>
+              {{ item.category }} • {{ item.orders }} orders
+            </span>
+
+          </div>
+
+          <div class="menu-revenue">
+
+            <strong>
+              ৳{{ item.revenue | number }}
+            </strong>
+
+            <span>
+              ⭐ {{ item.rating }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- CUSTOMERS BY LOCATION -->
+    <div class="report-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Customers by Location</h2>
+          <p>Customer distribution</p>
+        </div>
+
+        <span class="location-icon">
+          📍
+        </span>
+
+      </div>
+
+
+      <div class="location-list">
+
+        <div
+          class="location-row"
+          *ngFor="let location of locationData">
+
+          <div class="location-top">
+
+            <strong>
+              {{ location.location }}
+            </strong>
+
+            <span>
+              {{ location.customers }}
+            </span>
+
+          </div>
+
+          <div class="location-progress">
+
+            <div
+              class="location-fill"
+              [style.width.%]="location.percentage">
+            </div>
+
+          </div>
+
+          <small>
+            {{ location.percentage }}% of customers
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- RECENT REVIEWS -->
+  <div class="report-card reviews-card">
+
+    <div class="card-header">
+
+      <div>
+        <h2>Recent Reviews</h2>
+        <p>Latest customer feedback</p>
+      </div>
+
+      <button class="view-btn">
+        View All
+      </button>
+
+    </div>
+
+
+    <div class="reviews-grid">
+
+      <div
+        class="review-item"
+        *ngFor="let review of recentReviews">
+
+        <div class="review-top">
+
+          <div class="customer-info">
+
+            <div class="customer-avatar">
+              {{ review.customer.charAt(0) }}
+            </div>
+
+            <div>
+
+              <strong>
+                {{ review.customer }}
+              </strong>
+
+              <small>
+                {{ review.date }}
+              </small>
+
+            </div>
+
+          </div>
+
+          <div class="rating">
+            <span *ngFor="let star of [1,2,3,4,5]">
+              {{ star <= review.rating ? '★' : '☆' }}
+            </span>
+          </div>
+
+        </div>
+
+        <p>
+          "{{ review.comment }}"
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TRENDING + RIDERS -->
+  <div class="two-column-grid">
+
+    <!-- TRENDING MENU -->
+    <div class="report-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Trending Menu Items</h2>
+          <p>Fast growing food items</p>
+        </div>
+
+        <span class="trend-icon">
+          ↗
+        </span>
+
+      </div>
+
+
+      <div class="trending-list">
+
+        <div
+          class="trending-row"
+          *ngFor="let item of trendingItems; let i = index">
+
+          <div class="trend-number">
+            0{{ i + 1 }}
+          </div>
+
+          <div class="trend-details">
+
+            <strong>
+              {{ item.name }}
+            </strong>
+
+            <span>
+              {{ item.orders }} orders
+            </span>
+
+          </div>
+
+          <span class="growth">
+            {{ item.growth }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- AVAILABLE RIDERS -->
+    <div class="report-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Available Riders</h2>
+          <p>Riders currently available</p>
+        </div>
+
+        <span class="rider-count">
+          {{ availableRiders.length }}
+        </span>
+
+      </div>
+
+
+      <div class="rider-list">
+
+        <div
+          class="rider-row"
+          *ngFor="let rider of availableRiders">
+
+          <div class="rider-avatar">
+            {{ rider.name.charAt(0) }}
+          </div>
+
+          <div class="rider-info">
+
+            <strong>
+              {{ rider.name }}
+            </strong>
+
+            <span>
+              {{ rider.deliveries }} deliveries
+            </span>
+
+          </div>
+
+          <span class="available-badge">
+            ● {{ rider.status }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

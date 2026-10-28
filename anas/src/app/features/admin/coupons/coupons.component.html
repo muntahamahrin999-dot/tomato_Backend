@@ -1,0 +1,543 @@
+<div class="coupons-page">
+
+  <!-- ================= LIST VIEW ================= -->
+  <ng-container *ngIf="!showForm">
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="page-header">
+
+    <div class="header-content">
+
+      <span class="eyebrow">
+        PROMOTION MANAGEMENT
+      </span>
+
+      <h1>
+        Coupons <span>Management</span>
+      </h1>
+
+      <p>
+        Create and manage discount coupons, promotional codes and offers.
+      </p>
+
+    </div>
+
+    <button
+      type="button"
+      class="add-coupon-btn"
+      (click)="addCoupon()"
+    >
+      <span>＋</span>
+      Add Coupon
+    </button>
+
+  </section>
+
+
+  <!-- ================= STATS ================= -->
+
+  <section class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon red">
+        🎟️
+      </div>
+
+      <div class="stat-content">
+        <span>Total Coupons</span>
+        <strong>{{ totalCoupons }}</strong>
+        <small>All promotional codes</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon green">
+        ✓
+      </div>
+
+      <div class="stat-content">
+        <span>Active Coupons</span>
+        <strong>{{ activeCoupons }}</strong>
+        <small>Currently available</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon orange">
+        ◷
+      </div>
+
+      <div class="stat-content">
+        <span>Expired Coupons</span>
+        <strong>{{ expiredCoupons }}</strong>
+        <small>Past expiry date</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon yellow">
+        ⤴
+      </div>
+
+      <div class="stat-content">
+        <span>Total Usage</span>
+        <strong>{{ totalUsage }}</strong>
+        <small>Times redeemed</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TOOLBAR ================= -->
+
+  <section class="toolbar-card">
+
+    <div class="search-box">
+
+      <span class="search-icon">
+        🔍
+      </span>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search coupon code or title..."
+      />
+
+      <button
+        *ngIf="searchText"
+        type="button"
+        class="clear-search"
+        (click)="searchText = ''"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="filters">
+
+      <div class="filter-item">
+
+        <label>
+          Status
+        </label>
+
+        <select [(ngModel)]="selectedStatus">
+
+          <option value="All">
+            All Status
+          </option>
+
+          <option value="Active">
+            Active
+          </option>
+
+          <option value="Inactive">
+            Inactive
+          </option>
+
+          <option value="Expired">
+            Expired
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="reset-btn"
+        (click)="clearFilters()"
+      >
+        Reset
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= COUPONS TABLE ================= -->
+
+  <section class="coupons-card">
+
+    <div class="card-header">
+
+      <div>
+
+        <h2>
+          Promotional Coupons
+        </h2>
+
+        <p>
+          {{ filteredCoupons.length }} coupons found
+        </p>
+
+      </div>
+
+
+      <div class="active-summary">
+
+        <span></span>
+
+        {{ activeCoupons }} Active
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Coupon
+            </th>
+
+            <th>
+              Discount
+            </th>
+
+            <th>
+              Min. Order
+            </th>
+
+            <th>
+              Usage
+            </th>
+
+            <th>
+              Validity
+            </th>
+
+            <th>
+              Status
+            </th>
+
+            <th>
+              Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let coupon of filteredCoupons;
+              trackBy: trackByCoupon
+            "
+          >
+
+            <!-- COUPON -->
+
+            <td data-label="Coupon">
+
+              <div class="coupon-cell">
+
+                <div class="coupon-icon">
+                  🎟️
+                </div>
+
+                <div class="coupon-info">
+
+                  <strong>
+                    {{ coupon.code }}
+                  </strong>
+
+                  <span>
+                    {{ coupon.title }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- DISCOUNT -->
+
+            <td data-label="Discount">
+
+              <div class="discount-cell">
+
+                <strong>
+                  {{ getDiscountText(coupon) }}
+                </strong>
+
+                <span>
+                  {{ coupon.discountType }}
+                </span>
+
+              </div>
+
+            </td>
+
+
+            <!-- MIN ORDER -->
+
+            <td data-label="Min. Order">
+
+              <strong class="minimum-order">
+                ৳{{ coupon.minOrder | number:'1.0-0' }}
+              </strong>
+
+            </td>
+
+
+            <!-- USAGE -->
+
+            <td data-label="Usage">
+
+              <div class="usage-cell">
+
+                <div class="usage-top">
+
+                  <strong>
+                    {{ coupon.usedCount }}
+                  </strong>
+
+                  <span>
+                    / {{ coupon.usageLimit }}
+                  </span>
+
+                </div>
+
+                <div class="usage-progress">
+
+                  <div
+                    class="usage-fill"
+                    [style.width.%]="getUsagePercentage(coupon)"
+                  ></div>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- VALIDITY -->
+
+            <td data-label="Validity">
+
+              <div class="validity-cell">
+
+                <span>
+                  {{ coupon.startDate }}
+                </span>
+
+                <small>
+                  to {{ coupon.expiryDate }}
+                </small>
+
+              </div>
+
+            </td>
+
+
+            <!-- STATUS -->
+
+            <td data-label="Status">
+
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  'active': coupon.status === 'Active',
+                  'inactive': coupon.status === 'Inactive',
+                  'expired': coupon.status === 'Expired'
+                }"
+              >
+
+                <span class="status-dot"></span>
+
+                {{ coupon.status }}
+
+              </span>
+
+            </td>
+
+
+            <!-- ACTIONS -->
+
+            <td data-label="Actions">
+
+              <div class="actions">
+
+                <button
+                  type="button"
+                  class="action-btn view"
+                  title="View Coupon"
+                  (click)="viewCoupon(coupon)"
+                >
+                  👁
+                </button>
+
+
+                <button
+                  type="button"
+                  class="action-btn edit"
+                  title="Edit Coupon"
+                  (click)="editCoupon(coupon)"
+                >
+                  ✎
+                </button>
+
+
+                <button
+                  *ngIf="coupon.status !== 'Expired'"
+                  type="button"
+                  class="action-btn toggle"
+                  [title]="
+                    coupon.status === 'Active'
+                      ? 'Deactivate Coupon'
+                      : 'Activate Coupon'
+                  "
+                  (click)="toggleStatus(coupon)"
+                >
+                  {{ coupon.status === 'Active' ? '⏸' : '▶' }}
+                </button>
+
+
+                <button
+                  type="button"
+                  class="action-btn delete"
+                  title="Delete Coupon"
+                  (click)="deleteCoupon(coupon)"
+                >
+                  🗑
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+
+          <!-- EMPTY -->
+
+          <tr *ngIf="filteredCoupons.length === 0">
+
+            <td colspan="7">
+
+              <div class="empty-state">
+
+                <div class="empty-icon">
+                  🎟️
+                </div>
+
+                <h3>
+                  No Coupons Found
+                </h3>
+
+                <p>
+                  Try changing your search or status filter.
+                </p>
+
+                <button
+                  type="button"
+                  (click)="clearFilters()"
+                >
+                  Clear Filters
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= BOTTOM INFO ================= -->
+
+  <section class="bottom-info">
+
+    <div class="info-box">
+
+      <div class="info-icon">
+        🎟️
+      </div>
+
+      <div>
+
+        <strong>
+          {{ activeCoupons }} Active Coupons
+        </strong>
+
+        <span>
+          Promotional codes currently available for customers.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="info-box warning">
+
+      <div class="info-icon">
+        !
+      </div>
+
+      <div>
+
+        <strong>
+          {{ expiredCoupons }} Expired Coupons
+        </strong>
+
+        <span>
+          These promotional codes are no longer available.
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  </ng-container>
+
+  <!-- ================= FORM VIEW ================= -->
+  <ng-container *ngIf="showForm">
+    <app-add-coupon
+      [couponToEdit]="selectedCouponToEdit"
+      (saved)="onFormSaved($event)"
+      (close)="closeForm()">
+    </app-add-coupon>
+  </ng-container>
+
+</div>

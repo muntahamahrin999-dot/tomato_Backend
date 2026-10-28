@@ -1,0 +1,244 @@
+<div class="auth-page">
+
+  <!-- Decorative Background -->
+  <div class="bg-circle circle-one"></div>
+  <div class="bg-circle circle-two"></div>
+
+  <div class="auth-card">
+
+    <!-- ================= LEFT BRAND PANEL ================= -->
+    <section class="brand-panel">
+
+      <div class="brand-content">
+
+        <!-- Logo -->
+        <div class="brand-logo">
+          <span>🍅</span>
+        </div>
+
+        <div class="brand-name">
+          <h2>Tomato</h2>
+          <span>FOOD DELIVERY</span>
+        </div>
+
+        <p class="brand-subtitle">
+          Food Delivery Management System
+        </p>
+
+        <div class="brand-divider"></div>
+
+        <h3>
+          Good Food.
+          <br>
+          <span>Delivered Fast.</span>
+        </h3>
+
+        <p class="brand-description">
+          Order your favorite meals from the best restaurants
+          and enjoy fast, reliable delivery right to your door.
+        </p>
+
+        <!-- Features -->
+        <div class="brand-features">
+
+          <div class="brand-feature">
+            <div class="feature-icon">🍔</div>
+            <div>
+              <strong>Delicious Food</strong>
+              <small>Fresh & tasty meals</small>
+            </div>
+          </div>
+
+          <div class="brand-feature">
+            <div class="feature-icon">🛵</div>
+            <div>
+              <strong>Fast Delivery</strong>
+              <small>Quick doorstep delivery</small>
+            </div>
+          </div>
+
+          <div class="brand-feature">
+            <div class="feature-icon">📍</div>
+            <div>
+              <strong>Live Tracking</strong>
+              <small>Track your order easily</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="brand-footer">
+        <span>© 2026 Tomato</span>
+        <span>•</span>
+        <span>Food Delivery System</span>
+      </div>
+
+    </section>
+
+
+    <!-- ================= RIGHT FORM PANEL ================= -->
+    <section class="form-panel">
+
+      <div class="form-container">
+
+        <!-- Heading -->
+        <div class="form-heading">
+
+          <div class="welcome-badge">
+            <span>👋</span>
+            Welcome back
+          </div>
+
+          <h1>Sign in to your account</h1>
+
+          <p>
+            Enter your details to continue to Tomato.
+          </p>
+
+        </div>
+
+
+        <!-- ================= LOGIN FORM ================= -->
+        <form
+          class="login-form"
+          (ngSubmit)="login()"
+        >
+
+          <!-- Email -->
+          <div class="form-group">
+
+            <label for="email">
+              Email Address
+            </label>
+
+            <div class="input-wrapper">
+
+              <span class="input-icon">
+                ✉
+              </span>
+
+              <input
+                id="email"
+                type="email"
+                name="email"
+                [(ngModel)]="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- Password -->
+          <div class="form-group">
+
+            <div class="label-row">
+
+              <label for="password">
+                Password
+              </label>
+
+              <a
+                routerLink="/forgot-password"
+                class="forgot-link"
+              >
+                Forgot password?
+              </a>
+
+            </div>
+
+            <div class="input-wrapper">
+
+              <span class="input-icon">
+                🔒
+              </span>
+
+              <input
+                id="password"
+                type="password"
+                name="password"
+                [(ngModel)]="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- Login Button -->
+          <button
+            type="submit"
+            class="submit-button"
+          >
+
+            <span class="button-icon">↪</span>
+
+            <span>Sign In</span>
+
+          </button>
+
+
+          <!-- Divider -->
+          <div class="divider">
+
+            <span>OR</span>
+
+          </div>
+
+
+          <!-- Demo -->
+          <button
+            type="button"
+            class="demo-button"
+            (click)="createDemoAccounts()"
+          >
+
+            <span class="demo-icon">🧪</span>
+
+            <span>Use Demo Accounts</span>
+
+          </button>
+
+          <p class="demo-info">
+            Quickly create Customer, Restaurant,
+            Rider & Admin demo accounts.
+          </p>
+
+        </form>
+
+
+        <!-- Footer -->
+        <div class="auth-footer">
+
+          <p>
+            Don't have an account?
+            <a routerLink="/register">
+              Create an account
+            </a>
+          </p>
+
+          <a
+            routerLink="/"
+            class="back-home"
+          >
+            <span>←</span>
+            Back to Home
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

@@ -1,0 +1,134 @@
+<div class="favorites-page">
+
+  <section class="favorites-hero">
+    <div class="hero-content">
+
+      <span class="eyebrow">MY FAVORITES</span>
+
+      <h1>Your <span>favorite food.</span></h1>
+
+      <p>
+        Keep your favorite dishes here and order them whenever you want.
+      </p>
+
+    </div>
+  </section>
+
+
+  <main class="favorites-content">
+
+    <div class="section-heading">
+
+      <div>
+        <span class="section-label">SAVED FOOD</span>
+
+        <h2>Your favorites</h2>
+      </div>
+
+      <a
+        routerLink="/food"
+        class="browse-button"
+      >
+        Browse Food
+      </a>
+
+    </div>
+
+
+    @if (favorites.length > 0) {
+
+      <section class="favorites-grid">
+
+        @for (food of favorites; track food.id) {
+
+          <article class="favorite-card">
+
+            <div class="food-image-wrapper">
+
+              <img
+                [src]="food.image"
+                [alt]="food.name"
+                class="food-image"
+              >
+
+              <button
+                type="button"
+                class="remove-button"
+                (click)="removeFavorite(food.id)"
+                title="Remove from favorites"
+              >
+                ♥
+              </button>
+
+            </div>
+
+
+            <div class="food-content">
+
+              <span class="food-category">
+                {{ food.category }}
+              </span>
+
+              <h3>{{ food.name }}</h3>
+
+              <p class="restaurant">
+                {{ food.restaurant }}
+              </p>
+
+              <p class="description">
+                {{ food.description }}
+              </p>
+
+
+              <div class="food-bottom">
+
+                <strong class="price">
+                  ৳{{ food.price }}
+                </strong>
+
+                <button
+                  type="button"
+                  class="cart-button"
+                  (click)="addToCart(food)"
+                >
+                  + Add
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </section>
+
+    } @else {
+
+      <section class="empty-favorites">
+
+        <div class="empty-icon">
+          ♡
+        </div>
+
+        <h2>No favorites yet</h2>
+
+        <p>
+          You haven't saved any food to your favorites.
+        </p>
+
+        <a
+          routerLink="/food"
+          class="browse-button"
+        >
+          Explore Food
+        </a>
+
+      </section>
+
+    }
+
+  </main>
+
+</div>

@@ -1,0 +1,303 @@
+<div class="admin-shell">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="admin-sidebar" [class.collapsed]="!sidebarOpen">
+
+    <!-- Brand -->
+    <div class="brand">
+
+      <div class="brand-logo">
+        <span class="tomato-icon">🍅</span>
+      </div>
+
+      <div class="brand-text" *ngIf="sidebarOpen">
+        <h2>Tomato</h2>
+        <span>Admin Panel</span>
+      </div>
+
+    </div>
+
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+
+      <p class="nav-label" *ngIf="sidebarOpen">
+        MAIN MENU
+      </p>
+
+
+      <!-- Dashboard -->
+      <a
+        routerLink="/admin/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-item">
+
+        <span class="nav-icon">📊</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Dashboard
+        </span>
+
+      </a>
+
+
+      <!-- Orders -->
+      <a
+        routerLink="/admin/orders"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">🛍️</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Orders
+        </span>
+
+      </a>
+
+
+      <!-- Payments -->
+      <a
+        routerLink="/admin/payments"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">💳</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Payments
+        </span>
+
+      </a>
+
+
+      <!-- Reports -->
+      <a
+        routerLink="/admin/reports"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">📈</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Reports
+        </span>
+
+      </a>
+
+
+      <p class="nav-label" *ngIf="sidebarOpen">
+        MANAGEMENT
+      </p>
+
+
+      <!-- Restaurants -->
+      <a
+        routerLink="/admin/restaurants"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">🍽️</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Restaurants
+        </span>
+
+      </a>
+
+
+      <!-- Reviews -->
+      <a
+        routerLink="/admin/reviews"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">⭐</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Reviews
+        </span>
+
+      </a>
+
+
+      <!-- Riders -->
+      <a
+        routerLink="/admin/riders"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">🏍️</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Riders
+        </span>
+
+      </a>
+
+
+      <!-- Users -->
+      <a
+        routerLink="/admin/users"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">👥</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Users
+        </span>
+
+      </a>
+
+
+      <!-- Coupons -->
+      <a
+        routerLink="/admin/coupons"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">🎟️</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Coupons
+        </span>
+
+      </a>
+
+
+      <p class="nav-label" *ngIf="sidebarOpen">
+        SYSTEM
+      </p>
+
+
+      <!-- Settings -->
+      <a
+        routerLink="/admin/settings"
+        routerLinkActive="active"
+        class="nav-item">
+
+        <span class="nav-icon">⚙️</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Settings
+        </span>
+
+      </a>
+
+    </nav>
+
+
+    <!-- Sidebar Bottom -->
+    <div class="sidebar-bottom">
+
+      <button
+        class="logout-btn"
+        type="button"
+        (click)="logout()">
+
+        <span class="nav-icon">↪</span>
+
+        <span class="nav-text" *ngIf="sidebarOpen">
+          Logout
+        </span>
+
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ================= MAIN AREA ================= -->
+  <main class="admin-main">
+
+    <!-- Top Navbar -->
+    <header class="admin-navbar">
+
+      <div class="navbar-left">
+
+        <button
+          class="menu-btn"
+          type="button"
+          (click)="toggleSidebar()">
+
+          <span>☰</span>
+
+        </button>
+
+        <div class="page-heading">
+          <h3>Admin Dashboard</h3>
+          <span>Manage your Tomato food delivery system</span>
+        </div>
+
+      </div>
+
+
+      <div class="navbar-right">
+
+        <!-- Search -->
+        <button
+          class="icon-btn"
+          type="button"
+          title="Search">
+
+          🔍
+
+        </button>
+
+
+        <!-- Notification -->
+        <button
+          class="icon-btn notification-btn"
+          type="button"
+          title="Notifications">
+
+          🔔
+
+          <span class="notification-dot"></span>
+
+        </button>
+
+
+        <!-- Admin Profile -->
+        <div class="admin-profile">
+
+          <div class="avatar">
+            {{ userName.charAt(0).toUpperCase() }}
+          </div>
+
+          <div class="profile-info">
+
+            <strong>
+              {{ userName }}
+            </strong>
+
+            <span>
+              Administrator
+            </span>
+
+          </div>
+
+          <span class="profile-arrow">
+            ▾
+          </span>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- Page Content -->
+    <section class="admin-content">
+
+      <router-outlet></router-outlet>
+
+    </section>
+
+  </main>
+
+</div>

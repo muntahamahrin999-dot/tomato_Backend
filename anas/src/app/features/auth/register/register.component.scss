@@ -1,0 +1,646 @@
+/* =====================================================
+   TOMATO REGISTRATION
+   ===================================================== */
+
+.auth-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 35px 20px;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f7f9fa 0%,
+      #fff5f2 100%
+    );
+}
+
+
+/* =====================================================
+   MAIN CARD
+   ===================================================== */
+
+.auth-card {
+  width: 100%;
+
+  max-width: 1080px;
+
+  display: grid;
+
+  grid-template-columns: 29% 71%;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  border: 1px solid #e7eaeb;
+
+  box-shadow:
+    0 20px 60px rgba(38, 50, 56, 0.14);
+}
+
+
+/* =====================================================
+   LEFT BRAND PANEL
+   ===================================================== */
+
+.brand-panel {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 45px 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #d32f2f 0%,
+      #e53935 55%,
+      #ef6c00 100%
+    );
+
+  color: #ffffff;
+}
+
+
+.brand-content {
+  text-align: center;
+
+  margin-top: 50px;
+}
+
+
+.brand-logo {
+  width: 78px;
+  height: 78px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border-radius: 21px;
+
+  font-size: 39px;
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+
+.brand-panel h2 {
+  margin: 0;
+
+  font-size: 32px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+
+.brand-subtitle {
+  margin: 8px 0 0;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  opacity: 0.9;
+}
+
+
+.brand-line {
+  width: 52px;
+  height: 4px;
+
+  margin: 27px auto;
+
+  background: #ffffff;
+
+  border-radius: 10px;
+}
+
+
+.brand-message {
+  margin: 0;
+
+  font-size: 16px;
+
+  line-height: 2;
+
+  font-weight: 500;
+}
+
+
+.brand-features {
+  width: 190px;
+
+  margin: 32px auto 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+.brand-feature {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  text-align: left;
+}
+
+
+.brand-feature span {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.16);
+
+  font-size: 14px;
+}
+
+
+.brand-feature p {
+  margin: 0;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+
+.brand-footer {
+  text-align: center;
+
+  font-size: 10px;
+
+  opacity: 0.8;
+}
+
+
+/* =====================================================
+   RIGHT FORM
+   ===================================================== */
+
+.form-panel {
+  padding: 38px 45px;
+
+  background: #ffffff;
+}
+
+
+.form-container {
+  width: 100%;
+}
+
+
+/* =====================================================
+   TITLE
+   ===================================================== */
+
+.form-title {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+
+  margin-bottom: 23px;
+}
+
+
+.title-icon {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #fff1f0;
+
+  font-size: 18px;
+}
+
+
+.form-title h1 {
+  margin: 0 0 4px;
+
+  color: #263238;
+
+  font-size: 26px;
+
+  font-weight: 800;
+}
+
+
+.form-title p {
+  margin: 0;
+
+  color: #7b858a;
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   FORM SECTION
+   ===================================================== */
+
+.form-section {
+  margin-bottom: 15px;
+
+  padding: 15px 16px;
+
+  border: 1px solid #e1e5e7;
+
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  transition: 0.2s ease;
+}
+
+
+.form-section:hover {
+  border-color: #d7dcde;
+}
+
+
+/* =====================================================
+   SECTION TITLE
+   ===================================================== */
+
+.section-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 13px;
+
+  color: #263238;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+
+/* =====================================================
+   FORM GRID
+   ===================================================== */
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  column-gap: 16px;
+
+  row-gap: 1px;
+}
+
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+
+/* =====================================================
+   FORM GROUP
+   ===================================================== */
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #37474f;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   INPUT / SELECT / TEXTAREA
+   ===================================================== */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #dce1e3;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #37474f;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.form-group input,
+.form-group select {
+  height: 38px;
+
+  padding: 0 11px;
+}
+
+
+.form-group textarea {
+  min-height: 60px;
+
+  padding: 9px 11px;
+
+  resize: vertical;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aeb6b9;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #e53935;
+
+  box-shadow:
+    0 0 0 3px rgba(229, 57, 53, 0.08);
+}
+
+
+.form-group select {
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   FIELD HINT
+   ===================================================== */
+
+.field-hint {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #9aa2a5;
+
+  font-size: 9px;
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+   ===================================================== */
+
+.submit-button {
+  width: 100%;
+
+  height: 45px;
+
+  margin-top: 3px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e53935,
+      #d32f2f
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px rgba(229, 57, 53, 0.20);
+
+  transition: all 0.2s ease;
+}
+
+
+.submit-button span {
+  margin-right: 7px;
+}
+
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 10px 22px rgba(229, 57, 53, 0.28);
+}
+
+
+.submit-button:disabled {
+  background: #cfd4d6;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.auth-footer {
+  margin-top: 17px;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #eeeeee;
+
+  text-align: center;
+
+  color: #7b858a;
+
+  font-size: 11px;
+}
+
+
+.auth-footer p {
+  margin: 0 0 9px;
+}
+
+
+.auth-footer a {
+  color: #e53935;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+.auth-footer a:hover {
+  color: #c62828;
+
+  text-decoration: underline;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 850px) {
+
+  .auth-card {
+    grid-template-columns: 1fr;
+
+    max-width: 680px;
+  }
+
+
+  .brand-panel {
+    min-height: 300px;
+
+    padding: 30px;
+  }
+
+
+  .brand-content {
+    margin-top: 5px;
+  }
+
+
+  .brand-features {
+    display: none;
+  }
+
+
+  .brand-footer {
+    margin-top: 25px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .auth-page {
+    padding: 15px;
+  }
+
+
+  .auth-card {
+    border-radius: 16px;
+  }
+
+
+  .brand-panel {
+    padding: 30px 20px;
+  }
+
+
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+
+    font-size: 30px;
+  }
+
+
+  .brand-panel h2 {
+    font-size: 27px;
+  }
+
+
+  .form-panel {
+    padding: 28px 20px;
+  }
+
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .full-width {
+    grid-column: auto;
+  }
+
+
+  .form-section {
+    padding: 13px;
+  }
+
+
+  .form-title h1 {
+    font-size: 23px;
+  }
+}

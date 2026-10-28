@@ -1,0 +1,669 @@
+<div class="dashboard-page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">ADMIN OVERVIEW</span>
+
+      <h1>Dashboard</h1>
+
+      <p>
+        Welcome back, Admin. Here's your Tomato business overview.
+      </p>
+    </div>
+
+    <div class="header-actions">
+
+      <div class="period-selector">
+
+        <button
+          *ngFor="let period of periods"
+          [class.active]="selectedPeriod === period"
+          (click)="changePeriod(period)">
+          {{ period }}
+        </button>
+
+      </div>
+
+      <button
+        class="refresh-btn"
+        (click)="refreshDashboard()">
+        ↻ Refresh
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= 8 STAT CARDS ================= -->
+
+  <div class="stats-grid">
+
+    <div
+      class="stat-card"
+      *ngFor="let stat of stats">
+
+      <div
+        class="stat-icon"
+        [ngClass]="stat.type">
+
+        {{ stat.icon }}
+
+      </div>
+
+      <div class="stat-content">
+
+        <span>
+          {{ stat.title }}
+        </span>
+
+        <strong>
+          {{ stat.value }}
+        </strong>
+
+        <small>
+          <b>{{ stat.change }}</b>
+          from previous period
+        </small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= ANALYTICS ================= -->
+
+  <div class="section-title">
+
+    <div>
+      <span class="eyebrow">ANALYTICS</span>
+
+      <h2>Business Analytics</h2>
+
+      <p>
+        Monitor sales, orders and overall platform performance.
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- SALES + ORDER STATUS -->
+
+  <div class="main-grid">
+
+
+    <!-- SALES OVERVIEW -->
+
+    <div class="dashboard-card sales-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Sales & Revenue Trend</h2>
+
+          <p>
+            Monthly revenue performance
+          </p>
+        </div>
+
+        <div class="sales-total">
+
+          <span>Total Revenue</span>
+
+          <strong>
+            ৳ 485,600
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="sales-chart">
+
+        <div
+          class="sales-column"
+          *ngFor="let item of salesData">
+
+          <span class="sales-value">
+            ৳{{ item.revenue / 1000 | number:'1.0-0' }}k
+          </span>
+
+          <div class="bar-area">
+
+            <div
+              class="sales-bar"
+              [style.height.%]="getRevenueHeight(item.revenue)">
+            </div>
+
+          </div>
+
+          <span class="month">
+            {{ item.month }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ORDER STATUS -->
+
+    <div class="dashboard-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Order Status</h2>
+
+          <p>
+            Current order distribution
+          </p>
+        </div>
+
+        <span class="total-orders">
+          3,842
+        </span>
+
+      </div>
+
+
+      <div class="status-list">
+
+        <div
+          class="status-row"
+          *ngFor="let status of orderStatuses">
+
+          <div class="status-info">
+
+            <span class="status-name">
+
+              <i
+                class="status-dot"
+                [ngClass]="status.className">
+              </i>
+
+              {{ status.name }}
+
+            </span>
+
+            <strong>
+              {{ status.count }}
+            </strong>
+
+          </div>
+
+
+          <div class="status-progress">
+
+            <div
+              class="status-fill"
+              [ngClass]="status.className"
+              [style.width.%]="status.percentage">
+            </div>
+
+          </div>
+
+
+          <span class="status-percent">
+            {{ status.percentage }}%
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RECENT ORDERS ================= -->
+
+  <div class="dashboard-card orders-card">
+
+    <div class="card-header">
+
+      <div>
+        <h2>Recent Orders</h2>
+
+        <p>
+          Latest customer orders
+        </p>
+      </div>
+
+      <button
+        class="view-btn"
+        (click)="viewAllOrders()">
+
+        View All →
+
+      </button>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Restaurant</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Time</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="let order of recentOrders">
+
+            <td>
+
+              <strong class="order-id">
+                {{ order.id }}
+              </strong>
+
+            </td>
+
+            <td>
+              <span class="customer-name">
+                {{ order.customer }}
+              </span>
+            </td>
+
+            <td>
+              {{ order.restaurant }}
+            </td>
+
+            <td>
+              <strong>
+                ৳ {{ order.amount | number }}
+              </strong>
+            </td>
+
+            <td>
+
+              <span
+                class="order-status"
+                [class.delivered]="order.status === 'Delivered'"
+                [class.processing]="order.status === 'Processing'"
+                [class.ontheway]="order.status === 'On the Way'"
+                [class.cancelled]="order.status === 'Cancelled'">
+
+                {{ order.status }}
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <span class="time">
+                {{ order.time }}
+              </span>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= TOP RESTAURANTS + POPULAR FOODS ================= -->
+
+  <div class="two-column-grid">
+
+
+    <!-- TOP RESTAURANTS -->
+
+    <div class="dashboard-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Top Restaurants</h2>
+
+          <p>
+            Best performing restaurants
+          </p>
+        </div>
+
+        <button
+          class="view-btn"
+          (click)="viewAllRestaurants()">
+
+          View All
+
+        </button>
+
+      </div>
+
+
+      <div class="restaurant-list">
+
+        <div
+          class="restaurant-row"
+          *ngFor="let restaurant of topRestaurants; let i = index">
+
+          <div class="rank">
+            {{ i + 1 }}
+          </div>
+
+          <div class="restaurant-avatar">
+            {{ restaurant.name.charAt(0) }}
+          </div>
+
+          <div class="restaurant-info">
+
+            <strong>
+              {{ restaurant.name }}
+            </strong>
+
+            <span>
+              {{ restaurant.orders }} orders
+            </span>
+
+          </div>
+
+          <div class="restaurant-rating">
+            ⭐ {{ restaurant.rating }}
+          </div>
+
+          <div class="restaurant-revenue">
+            ৳{{ restaurant.revenue | number }}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- POPULAR MENU -->
+
+    <div class="dashboard-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Popular Menu Items</h2>
+
+          <p>
+            Most ordered food items
+          </p>
+        </div>
+
+        <span class="food-icon">
+          🍽
+        </span>
+
+      </div>
+
+
+      <div class="food-list">
+
+        <div
+          class="food-row"
+          *ngFor="let food of popularFoods; let i = index">
+
+          <div class="food-rank">
+            0{{ i + 1 }}
+          </div>
+
+          <div class="food-info">
+
+            <strong>
+              {{ food.name }}
+            </strong>
+
+            <span>
+              {{ food.orders }} orders
+            </span>
+
+          </div>
+
+          <strong class="food-revenue">
+            ৳{{ food.revenue | number }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RIDERS + REVIEWS ================= -->
+
+  <div class="two-column-grid">
+
+
+    <!-- AVAILABLE RIDERS -->
+
+    <div class="dashboard-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Available Riders</h2>
+
+          <p>
+            Riders ready for delivery
+          </p>
+        </div>
+
+        <span class="available-count">
+          {{ availableRiders.length }} Online
+        </span>
+
+      </div>
+
+
+      <div class="rider-list">
+
+        <div
+          class="rider-row"
+          *ngFor="let rider of availableRiders">
+
+          <div class="rider-avatar">
+            {{ rider.name.charAt(0) }}
+          </div>
+
+          <div class="rider-info">
+
+            <strong>
+              {{ rider.name }}
+            </strong>
+
+            <span>
+              {{ rider.deliveries }} deliveries today
+            </span>
+
+          </div>
+
+          <span class="available-badge">
+            ● {{ rider.status }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- RECENT REVIEWS -->
+
+    <div class="dashboard-card">
+
+      <div class="card-header">
+
+        <div>
+          <h2>Recent Reviews</h2>
+
+          <p>
+            Latest customer feedback
+          </p>
+        </div>
+
+        <button
+          class="view-btn"
+          (click)="viewAllReviews()">
+
+          View All
+
+        </button>
+
+      </div>
+
+
+      <div class="review-list">
+
+        <div
+          class="review-row"
+          *ngFor="let review of recentReviews">
+
+          <div class="review-avatar">
+            {{ review.customer.charAt(0) }}
+          </div>
+
+          <div class="review-content">
+
+            <div class="review-top">
+
+              <strong>
+                {{ review.customer }}
+              </strong>
+
+              <span class="rating">
+
+                <span
+                  *ngFor="let star of [1,2,3,4,5]">
+
+                  {{ star <= review.rating ? '★' : '☆' }}
+
+                </span>
+
+              </span>
+
+            </div>
+
+            <p>
+              {{ review.comment }}
+            </p>
+
+            <small>
+              {{ review.date }}
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= QUICK ACTIONS ================= -->
+
+  <div class="quick-actions-card">
+
+    <div>
+
+      <span class="eyebrow">
+        QUICK ACTIONS
+      </span>
+
+      <h2>
+        Manage Tomato
+      </h2>
+
+      <p>
+        Quickly access important admin sections.
+      </p>
+
+    </div>
+
+
+    <div class="quick-actions">
+
+      <button
+        (click)="quickAction('Manage Orders')">
+
+        <span>🛍</span>
+
+        <strong>
+          Orders
+        </strong>
+
+      </button>
+
+
+      <button
+        (click)="quickAction('Manage Restaurants')">
+
+        <span>🍽</span>
+
+        <strong>
+          Restaurants
+        </strong>
+
+      </button>
+
+
+      <button
+        (click)="quickAction('Manage Riders')">
+
+        <span>🛵</span>
+
+        <strong>
+          Riders
+        </strong>
+
+      </button>
+
+
+      <button
+        (click)="quickAction('Manage Customers')">
+
+        <span>👥</span>
+
+        <strong>
+          Customers
+        </strong>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

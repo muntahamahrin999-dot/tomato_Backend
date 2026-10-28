@@ -1,0 +1,579 @@
+<section class="hero">
+
+  <div class="hero-container">
+
+    <!-- =========================
+         LEFT CONTENT
+    ========================== -->
+
+    <div class="hero-content">
+
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Fresh food, delivered with care
+      </div>
+
+
+      <h1 class="hero-title">
+        Good Food.
+        <span>Good Mood.</span>
+      </h1>
+
+
+      <p class="hero-description">
+        Discover delicious meals from your favorite restaurants
+        and get them delivered fresh to your doorstep.
+      </p>
+
+
+      <div class="hero-actions">
+
+        <a
+          routerLink="/food"
+          class="primary-button">
+
+          Explore Foods
+
+          <span>→</span>
+
+        </a>
+
+
+        <a
+          routerLink="/restaurants"
+          class="secondary-button">
+
+          View Restaurants
+
+        </a>
+
+      </div>
+
+
+      <!-- Small trust information -->
+
+      <div class="hero-trust">
+
+        <div class="trust-item">
+          <strong>500+</strong>
+          <span>Food Items</span>
+        </div>
+
+        <div class="trust-divider"></div>
+
+        <div class="trust-item">
+          <strong>100+</strong>
+          <span>Restaurants</span>
+        </div>
+
+        <div class="trust-divider"></div>
+
+        <div class="trust-item">
+          <strong>4.8</strong>
+          <span>Customer Rating</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         RIGHT VISUAL
+    ========================== -->
+
+    <div class="hero-visual">
+
+      <div class="visual-circle"></div>
+
+      <div class="food-card">
+
+        <div class="food-image">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Classic Burger" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <div class="food-info">
+
+          <span class="food-category">
+            Popular Choice
+          </span>
+
+          <h3>
+            Classic Burger
+          </h3>
+
+          <div class="food-bottom">
+
+            <span class="rating">
+              ★ 4.8
+            </span>
+
+            <strong>
+              ৳ 249
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Floating Tomato Brand -->
+
+      <div class="floating-brand">
+
+        <div class="mini-tomato">
+          🍅
+        </div>
+
+        <div>
+          <strong>Tomato</strong>
+          <span>Fresh & Delicious</span>
+        </div>
+
+      </div>
+
+
+      <!-- Delivery badge -->
+
+      <div class="delivery-badge">
+
+        <span class="delivery-icon">
+          🛵
+        </span>
+
+        <div>
+          <strong>Fast Delivery</strong>
+          <span>Under 30 min</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     FOOD CATEGORIES
+========================= -->
+
+<section class="categories">
+
+  <div class="categories-container">
+
+    <div class="section-heading">
+
+      <div>
+        <span class="section-label">
+          EXPLORE MENU
+        </span>
+
+        <h2>
+          What are you craving?
+        </h2>
+      </div>
+
+      <a
+        routerLink="/food"
+        class="view-all">
+        View all →
+      </a>
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+      <!-- Burger -->
+
+      <a
+        routerLink="/food"
+        class="category-card">
+
+        <div class="category-icon burger">
+          🍔
+        </div>
+
+        <h3>Burger</h3>
+
+        <span>24 items</span>
+
+      </a>
+
+
+      <!-- Pizza -->
+
+      <a
+        routerLink="/food"
+        class="category-card">
+
+        <div class="category-icon pizza">
+          🍕
+        </div>
+
+        <h3>Pizza</h3>
+
+        <span>18 items</span>
+
+      </a>
+
+
+      <!-- Chicken -->
+
+      <a
+        routerLink="/food"
+        class="category-card">
+
+        <div class="category-icon chicken">
+          🍗
+        </div>
+
+        <h3>Chicken</h3>
+
+        <span>21 items</span>
+
+      </a>
+
+
+      <!-- Biryani -->
+
+      <a
+        routerLink="/food"
+        class="category-card">
+
+        <div class="category-icon biryani">
+          🍚
+        </div>
+
+        <h3>Biryani</h3>
+
+        <span>16 items</span>
+
+      </a>
+
+
+      <!-- Pasta -->
+
+      <a
+        routerLink="/food"
+        class="category-card">
+
+        <div class="category-icon pasta">
+          🍝
+        </div>
+
+        <h3>Pasta</h3>
+
+        <span>14 items</span>
+
+      </a>
+
+
+      <!-- Healthy -->
+
+      <a
+        routerLink="/food"
+        class="category-card">
+
+        <div class="category-icon healthy">
+          🥗
+        </div>
+
+        <h3>Healthy</h3>
+
+        <span>12 items</span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================
+     POPULAR FOODS
+========================= -->
+
+
+<section class="popular-foods">
+  <div class="popular-container">
+
+    <!-- Section Heading -->
+    <div class="section-heading">
+      <div>
+        <span class="section-label">CUSTOMER FAVORITES</span>
+        <h2>Popular Foods</h2>
+      </div>
+
+      <a routerLink="/food" class="view-all">
+        View all →
+      </a>
+    </div>
+
+    <!-- Food Cards -->
+    <div class="food-grid">
+
+      @for (food of featuredFoods; track food.id) {
+        <article class="food-card-item">
+
+          <!-- Food Image -->
+          <div class="food-card-image">
+            <span class="food-tag">
+              {{ food.category || 'Popular' }}
+            </span>
+
+            <div class="food-placeholder">
+              <img
+                [src]="(food.image || food.icon || 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600') | imageUrl"
+                [alt]="food.name"
+                class="food-img"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Food Details -->
+          <div class="food-card-content">
+
+            <span class="food-type">
+              {{ food.categoryName || food.category || 'Food' }}
+            </span>
+
+            <h3>{{ food.name }}</h3>
+
+            <div class="food-rating">
+              <span>★</span>
+              <strong>4.8</strong>
+            </div>
+
+            <p class="food-desc">
+              {{ food.description || 'Freshly prepared delicious meal' }}
+            </p>
+
+            <!-- Price and Add to Cart -->
+            <div class="food-card-bottom">
+              <span class="food-price">
+                ৳{{ food.price }}
+              </span>
+
+              <button
+                type="button"
+                class="add-cart-button"
+                (click)="addToCart(food)">
+                <span>+</span>
+                Add
+              </button>
+            </div>
+
+          </div>
+        </article>
+      }
+
+      @if (!isLoading && featuredFoods.length === 0) {
+        <p class="empty-food-message">
+          No food items available right now.
+        </p>
+      }
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     SPECIAL OFFERS
+========================= -->
+<section class="special-offers">
+  <div class="offers-container">
+
+    <div class="offer-content">
+
+      <span class="offer-label">LIMITED TIME OFFER</span>
+
+      <h2>
+        Delicious Food,
+        <span>Special Price!</span>
+      </h2>
+
+      <p class="offer-description">
+        Enjoy your favorite meals with an exclusive discount.
+        Fresh, delicious and delivered right to your door.
+      </p>
+
+      <div class="discount-box">
+        <strong>30%</strong>
+        <span>OFF</span>
+      </div>
+
+      <div class="promo-box">
+        <span>Use Promo Code</span>
+        <strong>TOMATO30</strong>
+      </div>
+
+      <a routerLink="/food" class="offer-button">
+        Order Now
+        <span>→</span>
+      </a>
+
+    </div>
+
+    <div class="offer-visual">
+
+      <div class="offer-circle"></div>
+
+      <div class="offer-food-card">
+        <div class="offer-food-icon">🍕</div>
+
+        <div class="offer-food-info">
+          <span>Today's Special</span>
+          <strong>Italian Cheese Pizza</strong>
+
+          <div class="offer-price">
+            <span class="old-price">৳499</span>
+            <strong>৳349</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="offer-badge">
+        <strong>30%</strong>
+        <span>OFF</span>
+      </div>
+
+      <div class="offer-leaf leaf-one"></div>
+      <div class="offer-leaf leaf-two"></div>
+
+    </div>
+
+  </div>
+</section>
+<!-- =========================
+     RESTAURANTS
+========================= -->
+<section class="restaurants">
+  <div class="restaurants-container">
+
+    <div class="section-heading">
+      <div>
+        <span class="section-label">TOP RESTAURANTS</span>
+        <h2>Explore Restaurants</h2>
+      </div>
+
+      <a routerLink="/restaurants" class="view-all">
+        See all restaurants →
+      </a>
+    </div>
+
+    <div class="restaurant-grid">
+      @for (res of popularRestaurants; track res.id) {
+        <article class="restaurant-card">
+          <div class="restaurant-image" style="padding: 0; overflow: hidden;">
+            <span class="restaurant-badge">Popular</span>
+            <img [src]="((res.imageUrls && res.imageUrls[0]) || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800')" [alt]="res.name" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="restaurant-content">
+            <h3>{{ res.name }}</h3>
+            <p class="restaurant-cuisine">{{ res.category || res.description || 'Fast Food, Restaurant' }}</p>
+            <div class="restaurant-meta">
+              <span class="rating">★ <strong>{{ res.rating || 4.8 }}</strong></span>
+              <span>•</span>
+              <span>25–35 min</span>
+            </div>
+            <div class="restaurant-bottom">
+              <span class="delivery-fee">Delivery ৳40</span>
+              <a routerLink="/restaurants" class="restaurant-button">View</a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+<section class="how-it-works">
+  <div class="how-container">
+
+    <div class="how-heading">
+      <span class="section-label">SIMPLE & EASY</span>
+      <h2>How It Works</h2>
+      <p>
+        Ordering your favorite food has never been easier.
+      </p>
+    </div>
+
+    <div class="steps-grid">
+
+      <!-- Step 1 -->
+      <article class="step-card">
+        <div class="step-number">01</div>
+
+        <div class="step-icon">
+          🍽️
+        </div>
+
+        <h3>Choose Your Food</h3>
+
+        <p>
+          Browse through our delicious foods and
+          choose what you love.
+        </p>
+      </article>
+
+
+      <!-- Step 2 -->
+      <article class="step-card">
+        <div class="step-number">02</div>
+
+        <div class="step-icon">
+          🛒
+        </div>
+
+        <h3>Place Your Order</h3>
+
+        <p>
+          Add your favorite items to cart and
+          place your order easily.
+        </p>
+      </article>
+
+
+      <!-- Step 3 -->
+      <article class="step-card">
+        <div class="step-number">03</div>
+
+        <div class="step-icon">
+          👨‍🍳
+        </div>
+
+        <h3>We Prepare It</h3>
+
+        <p>
+          Our restaurant partners prepare your
+          food fresh with care.
+        </p>
+      </article>
+
+
+      <!-- Step 4 -->
+      <article class="step-card">
+        <div class="step-number">04</div>
+
+        <div class="step-icon">
+          🚴
+        </div>
+
+        <h3>Fast Delivery</h3>
+
+        <p>
+          Sit back and enjoy fast delivery
+          right to your doorstep.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>

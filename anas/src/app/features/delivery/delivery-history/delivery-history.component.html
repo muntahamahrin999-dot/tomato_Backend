@@ -1,0 +1,124 @@
+<div class="history-page">
+
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">DELIVERY RECORDS</span>
+      <h1>Delivery History</h1>
+      <p>Review your completed deliveries and earnings.</p>
+    </div>
+
+    <div class="total-earned">
+      <span>TOTAL EARNED</span>
+      <strong>৳ 350</strong>
+    </div>
+
+  </div>
+
+
+  <div class="history-card">
+
+    <div class="card-top">
+
+      <div>
+        <span class="card-label">COMPLETED DELIVERIES</span>
+        <h2>Delivery History</h2>
+      </div>
+
+      <div class="filters">
+
+        <button
+          [class.active]="selectedFilter === 'All'"
+          (click)="setFilter('All')"
+        >
+          All
+        </button>
+
+        <button
+          [class.active]="selectedFilter === 'Today'"
+          (click)="setFilter('Today')"
+        >
+          Today
+        </button>
+
+        <button
+          [class.active]="selectedFilter === 'Yesterday'"
+          (click)="setFilter('Yesterday')"
+        >
+          Yesterday
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>ORDER</th>
+            <th>CUSTOMER</th>
+            <th>RESTAURANT</th>
+            <th>DATE</th>
+            <th>ORDER VALUE</th>
+            <th>YOUR EARNING</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let item of filteredDeliveries">
+
+            <td>
+              <strong class="order-id">
+                {{ item.id }}
+              </strong>
+            </td>
+
+            <td>
+              <div class="customer">
+                <div class="avatar">
+                  {{ item.customer.charAt(0) }}
+                </div>
+
+                <span>{{ item.customer }}</span>
+              </div>
+            </td>
+
+            <td>{{ item.restaurant }}</td>
+
+            <td class="date">
+              {{ item.date }}
+            </td>
+
+            <td>
+              <strong>{{ item.amount }}</strong>
+            </td>
+
+            <td>
+              <strong class="earning">
+                {{ item.earned }}
+              </strong>
+            </td>
+
+            <td>
+              <span class="status">
+                ✓ Delivered
+              </span>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

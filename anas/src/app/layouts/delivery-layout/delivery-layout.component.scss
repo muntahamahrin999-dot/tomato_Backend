@@ -1,0 +1,892 @@
+// ======================================
+// TOMATO RIDER PANEL
+// DELIVERY LAYOUT
+// ======================================
+
+$primary: #e5483f;
+$primary-dark: #c93630;
+
+$green: #173f35;
+$green-light: #e8f1ed;
+
+$cream: #fff9f5;
+$white: #ffffff;
+
+$text: #18352f;
+$muted: #71807b;
+
+$border: #e8ebe9;
+
+$sidebar-width: 265px;
+$sidebar-collapsed: 78px;
+
+
+// ======================================
+// RESET
+// ======================================
+
+* {
+  box-sizing: border-box;
+}
+
+
+// ======================================
+// MAIN LAYOUT
+// ======================================
+
+.delivery-layout {
+  min-height: 100vh;
+
+  background: $cream;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+
+// ======================================
+// SIDEBAR
+// ======================================
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: $sidebar-width;
+
+  background:
+    linear-gradient(
+      180deg,
+      #173f35 0%,
+      #12372f 100%
+    );
+
+  color: $white;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 1000;
+
+  transition: width 0.3s ease;
+
+  box-shadow:
+    5px 0 25px rgba(0, 0, 0, 0.04);
+
+  overflow: hidden;
+
+  &.closed {
+    width: $sidebar-collapsed;
+  }
+}
+
+
+// ======================================
+// LOGO
+// ======================================
+
+.logo-area {
+  height: 82px;
+
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 13px;
+
+  background: $white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+
+  flex-shrink: 0;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.logo-content {
+  margin-left: 12px;
+
+  white-space: nowrap;
+}
+
+.brand-name {
+  font-size: 21px;
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+.brand-subtitle {
+  margin-top: 3px;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 1.7px;
+
+  color:
+    rgba(255, 255, 255, 0.5);
+}
+
+
+// ======================================
+// NAVIGATION
+// ======================================
+
+.sidebar-nav {
+  flex: 1;
+
+  padding: 20px 11px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.nav-section-title {
+  padding: 7px 13px 9px;
+
+  color:
+    rgba(255, 255, 255, 0.38);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  white-space: nowrap;
+}
+
+.account-title {
+  margin-top: 20px;
+}
+
+
+// ======================================
+// NAV ITEM
+// ======================================
+
+.nav-item {
+  height: 48px;
+
+  width: 100%;
+
+  margin: 4px 0;
+
+  padding: 0 13px;
+
+  border-radius: 11px;
+
+  color:
+    rgba(255, 255, 255, 0.68);
+
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  white-space: nowrap;
+
+  &:hover {
+    color: $white;
+
+    background:
+      rgba(255, 255, 255, 0.07);
+
+    transform: translateX(2px);
+  }
+
+  &.active {
+    color: $white;
+
+    background:
+      linear-gradient(
+        90deg,
+        $primary,
+        #ed5b53
+      );
+
+    box-shadow:
+      0 6px 18px rgba(229, 72, 63, 0.2);
+
+    &::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+
+      width: 3px;
+
+      border-radius:
+        0 4px 4px 0;
+
+      background: $white;
+    }
+  }
+}
+
+
+// ======================================
+// NAV ICON
+// ======================================
+
+.nav-icon {
+  width: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+
+  flex-shrink: 0;
+}
+
+.nav-text {
+  margin-left: 10px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.nav-badge {
+  margin-left: auto;
+
+  min-width: 21px;
+  height: 21px;
+
+  padding: 0 6px;
+
+  border-radius: 20px;
+
+  background: $primary;
+  color: $white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+
+// ======================================
+// SIDEBAR FOOTER
+// ======================================
+
+.sidebar-footer {
+  padding: 14px 11px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logout-btn {
+  width: 100%;
+  height: 46px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  color:
+    rgba(255, 255, 255, 0.68);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 13px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: $white;
+
+    background:
+      rgba(229, 72, 63, 0.18);
+  }
+}
+
+.logout-icon {
+  width: 26px;
+
+  display: flex;
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+
+// ======================================
+// MAIN AREA
+// ======================================
+
+.main-area {
+  min-height: 100vh;
+
+  margin-left: $sidebar-width;
+
+  width:
+    calc(100% - #{$sidebar-width});
+
+  transition:
+    margin-left 0.3s ease,
+    width 0.3s ease;
+
+  &.expanded {
+    margin-left: $sidebar-collapsed;
+
+    width:
+      calc(100% - #{$sidebar-collapsed});
+  }
+}
+
+
+// ======================================
+// TOP NAVBAR
+// ======================================
+
+.topbar {
+  height: 82px;
+
+  padding: 0 30px;
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  border-bottom:
+    1px solid $border;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 900;
+
+  backdrop-filter: blur(12px);
+}
+
+
+// ======================================
+// TOPBAR LEFT
+// ======================================
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 1px solid $border;
+
+  border-radius: 11px;
+
+  background: $white;
+
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  transition: all 0.2s ease;
+
+  span {
+    width: 17px;
+    height: 2px;
+
+    border-radius: 3px;
+
+    background: $green;
+
+    transition: all 0.2s ease;
+  }
+
+  &:hover {
+    background: $green-light;
+
+    border-color: #d9e5e0;
+  }
+}
+
+
+// ======================================
+// TOPBAR TITLE
+// ======================================
+
+.topbar-title {
+  margin-left: 15px;
+}
+
+.small-title {
+  display: block;
+
+  color: $primary;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.topbar-title h2 {
+  margin: 4px 0 0;
+
+  color: $text;
+
+  font-size: 18px;
+  font-weight: 750;
+
+  letter-spacing: -0.3px;
+}
+
+
+// ======================================
+// TOPBAR RIGHT
+// ======================================
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+}
+
+
+// ======================================
+// AVAILABILITY
+// ======================================
+
+.availability {
+  height: 38px;
+
+  padding: 0 11px;
+
+  border: 1px solid #d9e9df;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eff9f3,
+      #e7f3ec
+    );
+
+  color: $green;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    all 0.2s ease;
+
+  box-shadow:
+    0 3px 10px rgba(39, 131, 84, 0.06);
+
+  &:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+      0 5px 14px rgba(39, 131, 84, 0.12);
+  }
+
+  &.unavailable {
+    background:
+      linear-gradient(
+        135deg,
+        #fff5f3,
+        #ffecea
+      );
+
+    border-color: #f2d8d4;
+
+    color: $primary;
+  }
+}
+
+.online-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #42b873;
+
+  box-shadow:
+    0 0 0 4px rgba(66, 184, 115, 0.12);
+
+  transition: 0.2s ease;
+}
+
+.offline-dot {
+  background: $primary;
+
+  box-shadow:
+    0 0 0 4px rgba(229, 72, 63, 0.10);
+}
+
+.availability-arrow {
+  margin-left: 2px;
+
+  color: #98a39f;
+
+  font-size: 10px;
+}
+
+
+// ======================================
+// DIVIDER
+// ======================================
+
+.top-divider {
+  width: 1px;
+  height: 28px;
+
+  background: $border;
+}
+
+
+// ======================================
+// NOTIFICATION
+// ======================================
+
+.notification-button {
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid $border;
+
+  border-radius: 11px;
+
+  background: $white;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #fafafa;
+
+    border-color: #dce2df;
+  }
+}
+
+.notification-icon {
+  color: $green;
+
+  font-size: 20px;
+
+  transform: rotate(-25deg);
+}
+
+.notification-count {
+  position: absolute;
+
+  top: -4px;
+  right: -4px;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  background: $primary;
+
+  color: $white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  border: 2px solid $white;
+}
+
+
+// ======================================
+// USER MENU
+// ======================================
+
+.user-menu {
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      $green-light,
+      #d7e8e1
+    );
+
+  color: $green;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.user-details {
+  margin-left: 9px;
+
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    color: $text;
+
+    font-size: 12px;
+    font-weight: 750;
+  }
+
+  span {
+    margin-top: 3px;
+
+    color: $muted;
+
+    font-size: 9px;
+  }
+}
+
+.user-arrow {
+  margin-left: 9px;
+
+  color: #98a39f;
+
+  font-size: 13px;
+}
+
+
+// ======================================
+// CONTENT
+// ======================================
+
+.content-area {
+  min-height:
+    calc(100vh - 82px);
+
+  padding: 30px;
+
+  background: $cream;
+}
+
+
+// ======================================
+// SCROLLBAR
+// ======================================
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  border-radius: 10px;
+}
+
+
+// ======================================
+// TABLET
+// ======================================
+
+@media (max-width: 1000px) {
+
+  .sidebar {
+    width: $sidebar-collapsed;
+
+    .logo-area {
+      padding: 0 18px;
+    }
+
+    .nav-item {
+      justify-content: center;
+
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .sidebar-footer {
+      padding-left: 11px;
+      padding-right: 11px;
+    }
+
+    .logout-btn {
+      justify-content: center;
+
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .main-area {
+    margin-left: $sidebar-collapsed;
+
+    width:
+      calc(100% - #{$sidebar-collapsed});
+  }
+
+  .topbar {
+    padding: 0 22px;
+  }
+
+  .content-area {
+    padding: 22px;
+  }
+}
+
+
+// ======================================
+// MOBILE
+// ======================================
+
+@media (max-width: 650px) {
+
+  .sidebar {
+    width: 0;
+
+    box-shadow: none;
+
+    &.closed {
+      width: 0;
+    }
+  }
+
+  .main-area,
+  .main-area.expanded {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+  .topbar {
+    height: 72px;
+
+    padding: 0 15px;
+  }
+
+  .topbar-title {
+    display: none;
+  }
+
+  .topbar-right {
+    gap: 8px;
+  }
+
+  .availability {
+    height: 34px;
+
+    padding: 0 9px;
+
+    font-size: 9px;
+  }
+
+  .availability-arrow {
+    display: none;
+  }
+
+  .top-divider {
+    display: none;
+  }
+
+  .user-details,
+  .user-arrow {
+    display: none;
+  }
+
+  .user-menu {
+    margin-left: 2px;
+  }
+
+  .content-area {
+    min-height:
+      calc(100vh - 72px);
+
+    padding: 15px;
+  }
+}

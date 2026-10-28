@@ -1,0 +1,250 @@
+<div class="food-page">
+
+  <!-- HERO -->
+  <section class="food-hero">
+
+    <div class="hero-content">
+
+      <span class="eyebrow">
+        EXPLORE OUR MENU
+      </span>
+
+      <h1>
+        Delicious food,
+        <span>delivered to you.</span>
+      </h1>
+
+      <p>
+        Discover delicious meals from your favorite restaurants
+        and order your next favorite dish.
+      </p>
+
+      <!-- SEARCH -->
+      <div class="food-search">
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5"></circle>
+          <path d="M16 16 L21 21"></path>
+        </svg>
+
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          placeholder="Search for food, restaurant..."
+        />
+
+        @if (searchTerm) {
+          <button
+            type="button"
+            class="clear-search"
+            (click)="clearSearch()"
+          >
+            ×
+          </button>
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN -->
+  <main class="food-content">
+
+    <!-- CATEGORY -->
+    <section class="category-section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">
+            CATEGORIES
+          </span>
+
+          <h2>
+            What are you craving?
+          </h2>
+        </div>
+
+        <span class="food-count">
+          {{ filteredFoods.length }} foods
+        </span>
+
+      </div>
+
+
+      <div class="category-list">
+
+        @for (category of categories; track category) {
+
+          <button
+            type="button"
+            class="category-button"
+            [class.active]="selectedCategory === category"
+            (click)="selectCategory(category)"
+          >
+            {{ category }}
+          </button>
+
+        }
+
+      </div>
+
+    </section>
+
+
+    <!-- FOOD -->
+    <section class="food-section">
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="section-label">
+            OUR MENU
+          </span>
+
+          <h2>
+
+            @if (selectedCategory === 'All') {
+              Popular & delicious
+            } @else {
+              {{ selectedCategory }} dishes
+            }
+
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <!-- FOOD GRID -->
+
+      @if (filteredFoods.length > 0) {
+
+        <div class="food-grid">
+
+          @for (food of filteredFoods; track food.id) {
+
+            <article class="food-card">
+
+              <!-- IMAGE -->
+              <div class="food-image">
+
+                <img
+                  [src]="food.image"
+                  [alt]="food.name"
+                  loading="lazy"
+                />
+
+                @if (food.popular) {
+
+                  <span class="popular-badge">
+                    Popular
+                  </span>
+
+                }
+
+                <button
+                  type="button"
+                  class="favorite-button"
+                  aria-label="Add to favorites"
+                >
+                  ♡
+                </button>
+
+              </div>
+
+
+              <!-- CONTENT -->
+              <div class="food-card-content">
+
+                <div class="food-top">
+
+                  <span class="food-category">
+                    {{ food.category }}
+                  </span>
+
+                  <span class="rating">
+                    ★ {{ food.rating }}
+                  </span>
+
+                </div>
+
+
+                <h3>
+                  {{ food.name }}
+                </h3>
+
+
+                <p class="restaurant">
+                  {{ food.restaurant }}
+                </p>
+
+
+                <p class="description">
+                  {{ food.description }}
+                </p>
+
+
+                <div class="food-bottom">
+
+                  <div class="price">
+                    ৳{{ food.price }}
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-button"
+                    (click)="addToCart(food)"
+                  >
+                    <span>+</span>
+                    Add
+                  </button>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+      } @else {
+
+        <!-- EMPTY -->
+        <div class="empty-food">
+
+          <div class="empty-icon">
+            🍽
+          </div>
+
+          <h3>
+            No food found
+          </h3>
+
+          <p>
+            Try another food name or select a different category.
+          </p>
+
+          <button
+            type="button"
+            (click)="clearSearch(); selectCategory('All')"
+          >
+            View all foods
+          </button>
+
+        </div>
+
+      }
+
+    </section>
+
+  </main>
+
+</div>

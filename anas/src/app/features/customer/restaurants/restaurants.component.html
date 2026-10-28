@@ -1,0 +1,190 @@
+<div class="restaurants-page">
+
+  <!-- =========================
+       HERO SECTION
+  ========================== -->
+
+  <section class="restaurants-hero">
+
+    <div class="hero-content">
+
+      <span class="eyebrow">
+        DISCOVER
+      </span>
+
+      <h1>
+        Find your <span>restaurant.</span>
+      </h1>
+
+      <p>
+        Explore local restaurants and discover delicious food
+        delivered right to your door.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main class="restaurants-content">
+
+    <!-- SECTION HEADING -->
+
+    <div class="section-heading">
+
+      <div>
+
+        <span class="section-label">
+          RESTAURANTS
+        </span>
+
+        <h2>
+          Popular restaurants
+        </h2>
+
+        <p>
+          Choose from our collection of trusted food partners.
+        </p>
+
+      </div>
+
+      <a
+        routerLink="/food"
+        class="food-button"
+      >
+        Browse Food →
+      </a>
+
+    </div>
+
+
+    <!-- =========================
+         RESTAURANT GRID
+    ========================== -->
+
+    <section class="restaurant-grid">
+
+      @for (restaurant of restaurants; track restaurant.id) {
+
+        <article class="restaurant-card">
+
+          <!-- =========================
+               IMAGE
+          ========================== -->
+
+          <div class="restaurant-image-wrapper">
+
+            <img
+              [src]="restaurant.image"
+              [alt]="restaurant.name"
+              class="restaurant-image"
+              loading="lazy"
+            >
+
+
+            <!-- RATING -->
+
+            <div class="rating">
+              ★ {{ restaurant.rating }}
+            </div>
+
+          </div>
+
+
+          <!-- =========================
+               RESTAURANT BODY
+          ========================== -->
+
+          <div class="restaurant-body">
+
+            @if (restaurant.cuisine) {
+
+              <span class="cuisine">
+                {{ restaurant.cuisine }}
+              </span>
+
+            }
+
+
+            <h3>
+              {{ restaurant.name }}
+            </h3>
+
+
+            <p class="description">
+              {{ restaurant.description }}
+            </p>
+
+
+            <!-- =========================
+                 RESTAURANT INFO
+            ========================== -->
+
+            @if (restaurant.deliveryTime || restaurant.deliveryFee !== null || restaurant.hours) {
+
+              <div class="restaurant-info">
+
+                @if (restaurant.deliveryTime) {
+
+                  <span>
+                    🛵 {{ restaurant.deliveryTime }}
+                  </span>
+
+                }
+
+                @if (restaurant.deliveryFee !== null) {
+
+                  <span>
+                    Delivery ৳{{ restaurant.deliveryFee }}
+                  </span>
+
+                }
+
+                @if (restaurant.hours) {
+
+                  <span>
+                    🕒 {{ restaurant.hours }}
+                  </span>
+
+                }
+
+              </div>
+
+            }
+
+
+            <!-- =========================
+                 FOOTER
+            ========================== -->
+
+            <div class="restaurant-footer">
+
+              <span class="open-status">
+                ● Open now
+              </span>
+
+
+              <a
+                routerLink="/food"
+                class="view-button"
+              >
+                View Menu →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      }
+
+    </section>
+
+  </main>
+
+</div>

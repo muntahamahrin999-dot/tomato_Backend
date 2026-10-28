@@ -1,0 +1,174 @@
+<div class="active-page">
+
+  <div class="page-header">
+    <div>
+      <span class="eyebrow">CURRENT DELIVERY</span>
+      <h1>Active Delivery</h1>
+      <p>Track and manage your current delivery.</p>
+    </div>
+
+    <div class="delivery-id">
+      <span>ORDER</span>
+      <strong>{{ orderNumber }}</strong>
+    </div>
+  </div>
+
+
+  <div class="active-grid">
+
+    <!-- Delivery Details -->
+    <div class="main-card">
+
+      <div class="card-header">
+        <div>
+          <span class="card-label">DELIVERY DETAILS</span>
+          <h2>Order {{ orderNumber }}</h2>
+        </div>
+
+        <span class="status">
+          {{ deliveryStatus }}
+        </span>
+      </div>
+
+
+      <div class="route">
+
+        <div class="route-point">
+
+          <div class="point restaurant-point">
+            🍽️
+          </div>
+
+          <div>
+            <span>COLLECT FROM</span>
+            <strong>{{ restaurantName }}</strong>
+            <p>Ready for Pickup</p>
+          </div>
+
+        </div>
+
+
+        <div class="route-line">
+          <span>2.4 km</span>
+        </div>
+
+
+        <div class="route-point">
+
+          <div class="point customer-point">
+            📍
+          </div>
+
+          <div>
+            <span>DELIVER TO</span>
+            <strong>{{ customerName }}</strong>
+            <p>{{ deliveryAddress }}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="customer-box">
+
+        <div class="customer-avatar">
+          👤
+        </div>
+
+        <div class="customer-info">
+          <span>CUSTOMER</span>
+          <strong>{{ customerName }}</strong>
+          <small>{{ customerPhone }}</small>
+        </div>
+
+        <button
+          class="call-btn"
+          (click)="callCustomer()"
+        >
+          ☎ Call
+        </button>
+
+      </div>
+
+
+      <div class="action-area">
+
+        <button
+          class="status-btn"
+          *ngIf="deliveryStatus === 'Picked Up'"
+          (click)="updateStatus('On the Way')"
+        >
+          🛵 Start Delivery
+        </button>
+
+        <button
+          class="status-btn"
+          *ngIf="deliveryStatus === 'On the Way'"
+          (click)="completeDelivery()"
+        >
+          ✓ Mark as Delivered
+        </button>
+
+        <div
+          class="completed-message"
+          *ngIf="deliveryStatus === 'Delivered'"
+        >
+          ✓ Delivery Completed
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Side Info -->
+    <div class="side-column">
+
+      <div class="info-card">
+
+        <span class="card-label">ORDER SUMMARY</span>
+
+        <div class="summary-item">
+          <span>Food Total</span>
+          <strong>৳ {{ foodTotal }}</strong>
+        </div>
+
+        <div class="summary-item">
+          <span>Delivery Fee</span>
+          <strong>৳ {{ deliveryFee }}</strong>
+        </div>
+
+        <div class="summary-item total">
+          <span>Total Amount</span>
+          <strong>৳ {{ totalAmount }}</strong>
+        </div>
+
+        <div class="payment">
+          💳 {{ paymentMethod }}
+        </div>
+
+      </div>
+
+
+      <div class="info-card tips-card">
+
+        <div class="tip-icon">
+          💡
+        </div>
+
+        <h3>Delivery Tip</h3>
+
+        <p>
+          Keep the food package safe and contact
+          the customer when you are close to the
+          delivery location.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

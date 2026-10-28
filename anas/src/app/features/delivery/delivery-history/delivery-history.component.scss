@@ -1,0 +1,181 @@
+$primary: #e5483f;
+$green: #173f35;
+$green-light: #e8f1ed;
+$cream: #fff9f5;
+$white: #fff;
+$text: #18352f;
+$muted: #71807b;
+$border: #e8ebe9;
+
+.history-page {
+  max-width: 1450px;
+  margin: auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.eyebrow,
+.card-label {
+  color: $primary;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  margin: 6px 0;
+  color: $text;
+  font-size: 28px;
+}
+
+.page-header p {
+  margin: 0;
+  color: $muted;
+  font-size: 13px;
+}
+
+.total-earned {
+  padding: 12px 19px;
+  background: $green;
+  border-radius: 12px;
+  text-align: right;
+
+  span {
+    display: block;
+    color: rgba(255, 255, 255, .55);
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  strong {
+    display: block;
+    margin-top: 4px;
+    color: $white;
+    font-size: 19px;
+  }
+}
+
+.history-card {
+  background: $white;
+  border: 1px solid $border;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.card-top {
+  padding: 21px 23px;
+  border-bottom: 1px solid $border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    margin: 5px 0 0;
+    color: $text;
+    font-size: 18px;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 5px;
+
+  button {
+    border: 1px solid $border;
+    background: $white;
+    color: $muted;
+    padding: 7px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10px;
+
+    &.active {
+      background: $green;
+      color: $white;
+      border-color: $green;
+    }
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+th {
+  padding: 14px 18px;
+  text-align: left;
+  background: #fafbfa;
+  color: #98a29f;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+td {
+  padding: 16px 18px;
+  border-top: 1px solid #f0f2f1;
+  color: #52635e;
+  font-size: 10px;
+}
+
+.order-id {
+  color: $text;
+  font-size: 11px;
+}
+
+.customer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $text;
+  font-weight: 600;
+}
+
+.avatar {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: $green-light;
+  color: $green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.date {
+  color: $muted;
+}
+
+.earning {
+  color: $green;
+}
+
+.status {
+  padding: 5px 9px;
+  background: $green-light;
+  color: $green;
+  border-radius: 20px;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .page-header,
+  .card-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

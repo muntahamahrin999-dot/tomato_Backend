@@ -1,0 +1,298 @@
+<div class="tracking-page">
+
+  <!-- Hero -->
+  <section class="tracking-hero">
+    <div class="hero-content">
+
+      <span class="eyebrow">ORDER TRACKING</span>
+
+      <h1>
+        Track your
+        <span>order.</span>
+      </h1>
+
+      <p>
+        Follow your food from the kitchen to your doorstep.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- Main -->
+  <main class="tracking-content">
+
+    <div class="order-header">
+
+      <div>
+        <span class="section-label">ORDER ID</span>
+        <h2>{{ orderId }}</h2>
+      </div>
+
+      <span class="status-badge">
+        {{ statusLabel }}
+      </span>
+
+    </div>
+
+
+    <!-- Restaurant -->
+    <section class="restaurant-card">
+
+      <div class="restaurant-icon">
+        🍽️
+      </div>
+
+      <div>
+        <span>RESTAURANT</span>
+        <h3>{{ restaurantName }}</h3>
+        <p>{{ statusDescription }}</p>
+      </div>
+
+    </section>
+
+<!-- Order Progress -->
+<section class="tracking-card">
+
+  <div class="progress-header">
+
+    <div>
+      <span class="section-label">LIVE ORDER STATUS</span>
+
+      <h2>Track your order</h2>
+
+      <p class="progress-subtitle">
+        Your order is moving towards your doorstep.
+      </p>
+    </div>
+
+    <div class="eta-card">
+      <span>ESTIMATED ARRIVAL</span>
+      <strong>{{ estimatedArrival }}</strong>
+    </div>
+
+  </div>
+
+
+  <!-- Progress Timeline -->
+  <div class="order-progress">
+
+    <!-- Progress background -->
+    <div class="progress-track"></div>
+
+    <!-- Completed progress -->
+    <div class="progress-track-active"></div>
+
+
+    <!-- Step 1 -->
+    <div class="progress-item" [ngClass]="getStepClass(1)">
+
+      <div class="progress-node">
+        <span>✓</span>
+      </div>
+
+      <div class="progress-text">
+
+        <span class="step-number">
+          STEP 01
+        </span>
+
+        <h3>
+          Order Placed
+        </h3>
+
+        <p>
+          Order confirmed
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Step 2 -->
+    <div class="progress-item" [ngClass]="getStepClass(2)">
+
+      <div class="progress-node">
+
+        <span class="food-icon">
+          🍳
+        </span>
+
+        <span class="active-ring"></span>
+
+      </div>
+
+      <div class="progress-text">
+
+        <span class="step-number">
+          STEP 02
+        </span>
+
+        <h3>
+          Preparing Food
+        </h3>
+
+        <div class="live-status">
+
+          <span class="live-dot"></span>
+
+          Kitchen active
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Step 3 -->
+    <div class="progress-item" [ngClass]="getStepClass(3)">
+
+      <div class="progress-node">
+        <span>🛵</span>
+      </div>
+
+      <div class="progress-text">
+
+        <span class="step-number">
+          STEP 03
+        </span>
+
+        <h3>
+          On the Way
+        </h3>
+
+        <p>
+          Rider en route
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Step 4 -->
+    <div class="progress-item" [ngClass]="getStepClass(4)">
+
+      <div class="progress-node">
+        <span>✓</span>
+      </div>
+
+      <div class="progress-text">
+
+        <span class="step-number">
+          STEP 04
+        </span>
+
+        <h3>
+          Delivered
+        </h3>
+
+        <p>
+          Enjoy your meal
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Current Status -->
+  <div class="current-status-card">
+
+    <div class="current-status-icon">
+      {{ statusIcon }}
+    </div>
+
+    <div class="current-status-content">
+
+      <div class="current-status-title">
+
+        <strong>
+          {{ statusHeadline }}
+        </strong>
+
+        <span class="live-badge">
+          LIVE
+        </span>
+
+      </div>
+
+      <p>
+        {{ statusDescription }}
+      </p>
+
+    </div>
+
+    <div class="status-arrow">
+      →
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- Delivery Information -->
+    <section class="delivery-card">
+
+      <div class="card-heading">
+
+        <div>
+          <span class="section-label">DELIVERY</span>
+          <h2>Delivery information</h2>
+        </div>
+
+      </div>
+
+      <div class="delivery-grid">
+
+        <div class="info-box">
+          <span>DELIVERY ADDRESS</span>
+          <strong>{{ address }}, {{ city }}</strong>
+        </div>
+
+        <div class="info-box">
+          <span>PAYMENT METHOD</span>
+         <strong>{{ paymentMethod }}</strong>
+        </div>
+
+        <div class="info-box">
+          <span>DELIVERY FEE</span>
+        <strong>৳{{ deliveryFee }}</strong>
+        </div>
+
+        <div class="info-box">
+          <span>ESTIMATED ARRIVAL</span>
+          <strong>30–40 minutes</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Actions -->
+    <div class="tracking-actions">
+
+      <a
+        routerLink="/orders"
+        class="secondary-button"
+      >
+        View My Orders
+      </a>
+
+      <a
+        routerLink="/food"
+        class="primary-button"
+      >
+        Order More Food
+      </a>
+
+    </div>
+
+  </main>
+
+</div>

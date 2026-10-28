@@ -1,0 +1,243 @@
+<nav class="navbar">
+
+  <div class="navbar-container">
+
+    <!-- =========================
+         BRAND
+    ========================== -->
+    <a routerLink="/" class="brand">
+
+      <div class="brand-logo">
+
+        <svg
+          class="tomato-icon"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Tomato -->
+          <path
+            class="tomato-body"
+            d="M30 38
+               C17 40 11 51 13 66
+               C15 82 28 91 48 90
+               C68 89 85 78 86 61
+               C87 46 76 36 62 35
+               C50 34 42 40 30 38Z" />
+
+          <!-- Tomato highlight -->
+          <ellipse
+            class="tomato-highlight"
+            cx="30"
+            cy="54"
+            rx="7"
+            ry="14" />
+
+          <!-- Top leaves -->
+          <path
+            class="leaf leaf-one"
+            d="M48 36
+               C38 24 29 20 20 24
+               C29 34 38 39 49 42Z" />
+
+          <path
+            class="leaf leaf-two"
+            d="M49 37
+               C47 24 49 16 57 10
+               C62 20 60 30 53 39Z" />
+
+          <path
+            class="leaf leaf-three"
+            d="M54 38
+               C64 25 74 21 84 23
+               C76 34 66 40 54 43Z" />
+
+          <!-- Fork -->
+          <g class="cutlery">
+
+            <path
+              class="fork"
+              d="M39 48
+                 L39 64
+                 C39 68 42 70 45 70
+                 L45 82
+                 C45 84 47 85 49 84
+                 L49 69
+                 C52 68 54 66 54 63
+                 L54 48
+                 M43 48 L43 59
+                 M47 48 L47 59
+                 M51 48 L51 59" />
+
+            <!-- Spoon -->
+            <path
+              class="spoon"
+              d="M62 48
+                 C69 44 76 48 76 56
+                 C76 62 72 67 68 69
+                 L64 83
+                 C64 85 61 85 60 83
+                 L65 66
+                 C61 62 59 56 62 48Z" />
+
+          </g>
+
+          <!-- Bottom leaf -->
+          <path
+            class="bottom-leaf"
+            d="M25 76
+               C42 88 62 87 79 72
+               C65 72 54 76 44 82
+               C38 78 32 76 25 76Z" />
+
+        </svg>
+
+
+        <!-- Delivery lines -->
+        <span class="speed speed-1"></span>
+        <span class="speed speed-2"></span>
+
+      </div>
+
+
+      <div class="brand-text">
+
+        <span class="brand-name">
+          Tomato
+        </span>
+
+        <span class="brand-tagline">
+          FOOD DELIVERY
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <div class="nav-links">
+
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link">
+        Home
+      </a>
+
+      <a
+        routerLink="/restaurants"
+        routerLinkActive="active"
+        class="nav-link">
+        Restaurants
+      </a>
+
+      <a
+        routerLink="/food"
+        routerLinkActive="active"
+        class="nav-link">
+        Foods
+      </a>
+
+      <a
+        routerLink="/offers"
+        routerLinkActive="active"
+        class="nav-link">
+        Offers
+      </a>
+
+    </div>
+
+
+    <!-- =========================
+         RIGHT ACTIONS
+    ========================== -->
+
+    <div class="nav-actions">
+
+      <!-- Search -->
+      <div class="nav-search-container">
+        @if (!isSearchOpen) {
+          <button
+            class="search-button"
+            type="button"
+            (click)="toggleSearch()">
+
+            <span class="search-icon">
+              ⌕
+            </span>
+
+            <span>
+              Search food...
+            </span>
+
+          </button>
+        } @else {
+          <div class="search-input-wrapper">
+            <input 
+              type="text" 
+              [(ngModel)]="searchQuery" 
+              (keyup.enter)="onNavbarSearch()"
+              placeholder="Search dishes..." 
+              class="nav-search-field"
+              autofocus>
+            <button type="button" class="close-search-btn" (click)="toggleSearch()">✕</button>
+          </div>
+        }
+      </div>
+
+
+      <!-- Cart -->
+      <a
+        routerLink="/cart"
+        class="cart-button">
+
+        <span class="cart-icon">
+          🛒
+        </span>
+
+      <span class="cart-count">{{ cartCount }}</span>
+
+      </a>
+
+
+      <!-- Authentication --> 
+
+@if (!isLoggedIn) {
+
+  <a 
+    routerLink="/login" 
+    class="login-button">
+    Login
+  </a>
+
+  <a 
+    routerLink="/register" 
+    class="register-button">
+    Get Started
+  </a>
+
+} @else {
+
+  <a 
+    [routerLink]="dashboardLink" 
+    class="login-button">
+    {{ userRole === 'customer' || !userRole ? 'My Orders' : 'Dashboard' }}
+  </a>
+
+  <button
+    type="button"
+    class="register-button logout-nav-button"
+    (click)="logout()">
+    Logout
+  </button>
+
+}
+    </div>
+
+  </div>
+
+</nav>

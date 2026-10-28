@@ -1,0 +1,568 @@
+<div class="dashboard-page">
+
+  <!-- ================= HERO ================= -->
+  <section class="welcome-hero">
+
+    <div class="hero-left">
+
+      <span class="eyebrow">
+        🍅 TOMATO FOOD DELIVERY
+      </span>
+
+      <h1>
+        Hello,
+        <span>{{ user?.name || 'Customer' }}!</span>
+      </h1>
+
+      <p>
+        What are you craving today?
+        Discover delicious food from your favorite restaurants
+        and get it delivered to your doorstep.
+      </p>
+
+      <div class="hero-actions">
+
+        <a routerLink="/food" class="primary-button">
+          🍔 Explore Food
+          <span>→</span>
+        </a>
+
+        <a routerLink="/restaurants" class="secondary-button">
+          🏪 Find Restaurants
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-right">
+
+      <div class="hero-circle"></div>
+
+      <div class="food-emoji">
+        🍕
+      </div>
+
+      <div class="floating-card delivery-floating">
+        <span class="floating-icon">🚴</span>
+
+        <div>
+          <strong>Fast Delivery</strong>
+          <small>25–35 minutes</small>
+        </div>
+      </div>
+
+      <div class="floating-card rating-floating">
+        <span>⭐</span>
+
+        <div>
+          <strong>4.9 / 5</strong>
+          <small>Customer Rating</small>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= STATS ================= -->
+  <section class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon red">
+        📦
+      </div>
+
+      <div>
+        <span>Total Orders</span>
+        <strong>24</strong>
+        <small>+3 this month</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon green">
+        ❤️
+      </div>
+
+      <div>
+        <span>Favorites</span>
+        <strong>12</strong>
+        <small>Foods & restaurants</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon orange">
+        🎁
+      </div>
+
+      <div>
+        <span>Available Offers</span>
+        <strong>08</strong>
+        <small>Save more today</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon blue">
+        ⭐
+      </div>
+
+      <div>
+        <span>My Reviews</span>
+        <strong>16</strong>
+        <small>Reviews submitted</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SECTION HEADER ================= -->
+  <section class="section-header">
+
+    <div>
+      <span class="section-label">DISCOVER</span>
+      <h2>What are you looking for?</h2>
+    </div>
+
+    <a routerLink="/food">
+      View All →
+    </a>
+
+  </section>
+
+
+  <!-- ================= QUICK CATEGORIES ================= -->
+  <section class="category-grid">
+
+    <a routerLink="/food" class="category-card">
+      <div class="category-image pizza">
+        🍕
+      </div>
+
+      <div>
+        <strong>Pizza</strong>
+        <span>25+ items</span>
+      </div>
+    </a>
+
+
+    <a routerLink="/food" class="category-card">
+      <div class="category-image burger">
+        🍔
+      </div>
+
+      <div>
+        <strong>Burger</strong>
+        <span>18+ items</span>
+      </div>
+    </a>
+
+
+    <a routerLink="/food" class="category-card">
+      <div class="category-image biryani">
+        🍛
+      </div>
+
+      <div>
+        <strong>Biryani</strong>
+        <span>15+ items</span>
+      </div>
+    </a>
+
+
+    <a routerLink="/food" class="category-card">
+      <div class="category-image drinks">
+        🥤
+      </div>
+
+      <div>
+        <strong>Drinks</strong>
+        <span>20+ items</span>
+      </div>
+    </a>
+
+
+    <a routerLink="/food" class="category-card">
+      <div class="category-image dessert">
+        🍰
+      </div>
+
+      <div>
+        <strong>Dessert</strong>
+        <span>12+ items</span>
+      </div>
+    </a>
+
+  </section>
+
+
+  <!-- ================= TWO COLUMN ================= -->
+  <section class="content-grid">
+
+
+    <!-- POPULAR FOOD -->
+    <div class="content-card">
+
+      <div class="card-header">
+
+        <div>
+          <span class="section-label">POPULAR</span>
+          <h2>Popular Foods</h2>
+        </div>
+
+        <a routerLink="/food">
+          See all
+        </a>
+
+      </div>
+
+
+      <div class="food-list">
+
+        <div class="food-item">
+
+          <div class="food-image">
+            🍕
+          </div>
+
+          <div class="food-info">
+            <strong>Chicken Pizza</strong>
+            <span>Italian • ⭐ 4.8</span>
+          </div>
+
+          <div class="food-price">
+            <strong>৳320</strong>
+            <button>+</button>
+          </div>
+
+        </div>
+
+
+        <div class="food-item">
+
+          <div class="food-image">
+            🍔
+          </div>
+
+          <div class="food-info">
+            <strong>Beef Burger</strong>
+            <span>Fast Food • ⭐ 4.7</span>
+          </div>
+
+          <div class="food-price">
+            <strong>৳220</strong>
+            <button>+</button>
+          </div>
+
+        </div>
+
+
+        <div class="food-item">
+
+          <div class="food-image">
+            🍛
+          </div>
+
+          <div class="food-info">
+            <strong>Chicken Biryani</strong>
+            <span>Bangladeshi • ⭐ 4.9</span>
+          </div>
+
+          <div class="food-price">
+            <strong>৳180</strong>
+            <button>+</button>
+          </div>
+
+        </div>
+
+
+        <div class="food-item">
+
+          <div class="food-image">
+            🍜
+          </div>
+
+          <div class="food-info">
+            <strong>Chicken Noodles</strong>
+            <span>Chinese • ⭐ 4.6</span>
+          </div>
+
+          <div class="food-price">
+            <strong>৳250</strong>
+            <button>+</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- RECENT ORDERS -->
+    <div class="content-card">
+
+      <div class="card-header">
+
+        <div>
+          <span class="section-label">HISTORY</span>
+          <h2>Recent Orders</h2>
+        </div>
+
+        <a routerLink="/orders">
+          View all
+        </a>
+
+      </div>
+
+
+      <div class="orders-list">
+
+        <div class="order-item">
+
+          <div class="order-icon">
+            🍕
+          </div>
+
+          <div class="order-info">
+
+            <strong>Chicken Pizza</strong>
+
+            <span>
+              Order #TM1024
+            </span>
+
+          </div>
+
+          <div class="order-status delivered">
+            Delivered
+          </div>
+
+        </div>
+
+
+        <div class="order-item">
+
+          <div class="order-icon">
+            🍔
+          </div>
+
+          <div class="order-info">
+
+            <strong>Beef Burger</strong>
+
+            <span>
+              Order #TM1023
+            </span>
+
+          </div>
+
+          <div class="order-status preparing">
+            Preparing
+          </div>
+
+        </div>
+
+
+        <div class="order-item">
+
+          <div class="order-icon">
+            🍛
+          </div>
+
+          <div class="order-info">
+
+            <strong>Chicken Biryani</strong>
+
+            <span>
+              Order #TM1022
+            </span>
+
+          </div>
+
+          <div class="order-status delivered">
+            Delivered
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= OFFER ================= -->
+  <section class="offer-banner">
+
+    <div class="offer-content">
+
+      <span class="offer-label">
+        🔥 LIMITED TIME OFFER
+      </span>
+
+      <h2>
+        Get 20% OFF on your next order!
+      </h2>
+
+      <p>
+        Use coupon code
+        <strong>TOMATO20</strong>
+        and save up to ৳200.
+      </p>
+
+      <a routerLink="/offers" class="offer-button">
+        View Offers →
+      </a>
+
+    </div>
+
+    <div class="offer-visual">
+      🎁
+    </div>
+
+  </section>
+
+
+  <!-- ================= RESTAURANTS ================= -->
+  <section class="section-header restaurant-heading">
+
+    <div>
+      <span class="section-label">NEAR YOU</span>
+      <h2>Recommended Restaurants</h2>
+    </div>
+
+    <a routerLink="/restaurants">
+      View All →
+    </a>
+
+  </section>
+
+
+  <section class="restaurant-grid">
+
+    <a routerLink="/restaurants" class="restaurant-card">
+
+      <div class="restaurant-cover">
+        🍽️
+
+        <span class="restaurant-badge">
+          20% OFF
+        </span>
+      </div>
+
+      <div class="restaurant-info">
+
+        <h3>Spice Garden</h3>
+
+        <p>
+          🍛 Bangladeshi • ⭐ 4.8
+        </p>
+
+        <span>
+          20–30 min • Free delivery
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <a routerLink="/restaurants" class="restaurant-card">
+
+      <div class="restaurant-cover burger-cover">
+        🍔
+
+        <span class="restaurant-badge">
+          POPULAR
+        </span>
+      </div>
+
+      <div class="restaurant-info">
+
+        <h3>Burger House</h3>
+
+        <p>
+          🍔 Fast Food • ⭐ 4.7
+        </p>
+
+        <span>
+          25–35 min • ৳30 delivery
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <a routerLink="/restaurants" class="restaurant-card">
+
+      <div class="restaurant-cover pizza-cover">
+        🍕
+
+        <span class="restaurant-badge">
+          NEW
+        </span>
+      </div>
+
+      <div class="restaurant-info">
+
+        <h3>Pizza Corner</h3>
+
+        <p>
+          🍕 Italian • ⭐ 4.9
+        </p>
+
+        <span>
+          20–25 min • Free delivery
+        </span>
+
+      </div>
+
+    </a>
+
+  </section>
+
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="bottom-cta">
+
+    <div>
+
+      <span class="section-label">
+        READY TO ORDER?
+      </span>
+
+      <h2>
+        Your next delicious meal is waiting.
+      </h2>
+
+      <p>
+        Explore our menu and discover something you'll love.
+      </p>
+
+    </div>
+
+    <a routerLink="/food" class="primary-button">
+      Start Ordering →
+    </a>
+
+  </section>
+
+</div>

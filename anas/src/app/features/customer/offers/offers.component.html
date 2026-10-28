@@ -1,0 +1,274 @@
+<div class="offers-page">
+
+  <!-- =====================================================
+       HERO SECTION
+  ====================================================== -->
+
+  <section class="offers-hero">
+
+    <div class="hero-content">
+
+      <span class="eyebrow">
+        SPECIAL OFFERS
+      </span>
+
+      <h1>
+        Delicious Deals,
+        <span>Better Prices.</span>
+      </h1>
+
+      <p>
+        Discover exclusive food offers and enjoy your favorite meals
+        at special prices.
+      </p>
+
+      <a
+        routerLink="/food"
+        class="hero-button"
+      >
+        Explore Foods
+      </a>
+
+    </div>
+
+
+    <div class="hero-decoration">
+
+      <span>🍕</span>
+      <span>🍔</span>
+      <span>🍛</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       OFFERS SECTION
+  ====================================================== -->
+
+  <section class="offers-section">
+
+    <div class="section-header">
+
+      <div>
+
+        <span class="section-eyebrow">
+          TODAY'S DEALS
+        </span>
+
+        <h2>
+          Special Offers
+        </h2>
+
+      </div>
+
+      <p>
+        Grab these offers before they are gone.
+      </p>
+
+    </div>
+
+
+    <!-- =================================================
+         OFFER GRID
+    ================================================== -->
+
+    <div class="offers-grid">
+
+      @for (offer of offers; track offer.id) {
+
+        <div class="offer-card">
+
+
+          <!-- ===========================================
+               IMAGE
+          ============================================ -->
+
+          <div class="offer-image">
+
+            <img
+              [src]="offer.image"
+              [alt]="offer.title"
+              loading="lazy"
+            >
+
+
+            <!-- IMAGE OVERLAY -->
+
+            <div class="image-overlay"></div>
+
+
+            <!-- OFFER BADGE -->
+
+            <span class="offer-badge">
+              {{ offer.badge }}
+            </span>
+
+
+            <!-- DISCOUNT -->
+
+            <div class="discount-badge">
+              {{ offer.discount }}
+            </div>
+
+          </div>
+
+
+          <!-- ===========================================
+               OFFER CONTENT
+          ============================================ -->
+
+          <div class="offer-content">
+
+
+            <!-- Restaurant -->
+
+            @if (offer.restaurant) {
+
+              <span class="restaurant-name">
+                {{ offer.restaurant }}
+              </span>
+
+            }
+
+
+            <!-- Title -->
+
+            <h3>
+              {{ offer.title }}
+            </h3>
+
+
+            <!-- Subtitle -->
+
+            @if (offer.subtitle) {
+
+              <h4>
+                {{ offer.subtitle }}
+              </h4>
+
+            }
+
+
+            <!-- Description -->
+
+            <p class="description">
+              {{ offer.description }}
+            </p>
+
+
+            <!-- =========================================
+                 PRICE
+            ========================================== -->
+
+            <div class="price-row">
+
+              @if (offer.price !== null && offer.oldPrice !== null) {
+
+                <span class="current-price">
+                  ৳{{ offer.price }}
+                </span>
+
+                <span class="old-price">
+                  ৳{{ offer.oldPrice }}
+                </span>
+
+              } @else {
+
+                <span class="current-price">
+                  {{ offer.discount }}
+                </span>
+
+              }
+
+            </div>
+
+
+            <!-- =========================================
+                 COUPON
+            ========================================== -->
+
+            <div class="coupon-box">
+
+              <span>
+                Use code:
+              </span>
+
+              <strong>
+                {{ offer.code }}
+              </strong>
+
+            </div>
+
+
+            <!-- =========================================
+                 CART BUTTON
+            ========================================== -->
+
+            <button
+              type="button"
+              class="cart-button"
+              (click)="applyOffer(offer)"
+            >
+
+              <span>
+                {{ offer.price !== null ? '🛒' : '📋' }}
+              </span>
+
+              <span>
+                {{ offer.price !== null ? 'Add to Cart' : 'Copy Code' }}
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      } @empty {
+
+        <p class="empty-offers">
+          No active offers right now. Please check back later.
+        </p>
+
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       BOTTOM CTA
+  ====================================================== -->
+
+  <section class="offers-cta">
+
+    <div>
+
+      <span class="section-eyebrow">
+        HUNGRY FOR MORE?
+      </span>
+
+      <h2>
+        Find your next favorite meal.
+      </h2>
+
+      <p>
+        Browse our full menu and discover something delicious.
+      </p>
+
+    </div>
+
+
+    <a
+      routerLink="/food"
+      class="cta-button"
+    >
+      Browse Foods →
+    </a>
+
+  </section>
+
+</div>

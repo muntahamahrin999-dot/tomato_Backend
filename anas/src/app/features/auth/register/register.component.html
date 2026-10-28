@@ -1,0 +1,827 @@
+<div class="auth-page">
+
+  <div class="auth-card">
+
+    <!-- =====================================================
+         LEFT BRAND PANEL
+         ===================================================== -->
+
+    <div class="brand-panel">
+
+      <div class="brand-content">
+
+        <div class="brand-logo">
+          🍅
+        </div>
+
+        <h2>Tomato</h2>
+
+        <p class="brand-subtitle">
+          Food Delivery Management System
+        </p>
+
+        <div class="brand-line"></div>
+
+        <p class="brand-message">
+          Good Food
+          <br>
+          Fast Delivery
+          <br>
+          Happy You
+        </p>
+
+        <div class="brand-features">
+
+          <div class="brand-feature">
+            <span>🍔</span>
+            <p>Delicious Food</p>
+          </div>
+
+          <div class="brand-feature">
+            <span>🛵</span>
+            <p>Fast Delivery</p>
+          </div>
+
+          <div class="brand-feature">
+            <span>📍</span>
+            <p>Live Tracking</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="brand-footer">
+        © 2026 Tomato Food Delivery
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RIGHT REGISTRATION PANEL
+         ===================================================== -->
+
+    <div class="form-panel">
+
+      <div class="form-container">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="form-title">
+
+          <div class="title-icon">
+            👤
+          </div>
+
+          <div>
+
+            <h1>Registration</h1>
+
+            <p>
+              Create your account and join Tomato
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <form (ngSubmit)="register()">
+
+
+          <!-- =================================================
+               ACCOUNT TYPE
+               ================================================= -->
+
+          <div class="form-section">
+
+            <div class="section-title">
+              👤
+              <span>Account Information</span>
+            </div>
+
+
+            <div class="form-grid">
+
+              <!-- ROLE -->
+
+              <div class="form-group full-width">
+
+                <label for="role">
+                  Account Type *
+                </label>
+
+                <select
+                  id="role"
+                  name="role"
+                  [(ngModel)]="role"
+                  required
+                >
+
+                  <option value="">
+                    Select account type
+                  </option>
+
+                  <option value="customer">
+                    Customer
+                  </option>
+
+                  <option value="restaurant">
+                    Restaurant
+                  </option>
+
+                  <option value="rider">
+                    Rider
+                  </option>
+
+                </select>
+
+                <small class="field-hint">
+                  Select how you want to use Tomato.
+                </small>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               PERSONAL INFORMATION
+               ================================================= -->
+
+          <div class="form-section">
+
+            <div class="section-title">
+              👤
+              <span>Personal Information</span>
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <!-- FULL NAME -->
+
+              <div class="form-group">
+
+                <label for="name">
+                  Full Name *
+                </label>
+
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  [(ngModel)]="name"
+                  placeholder="Enter full name"
+                  required
+                />
+
+              </div>
+
+
+              <!-- PHONE -->
+
+              <div class="form-group">
+
+                <label for="phone">
+                  Phone Number *
+                </label>
+
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  [(ngModel)]="phone"
+                  placeholder="01XXXXXXXXX"
+                  required
+                />
+
+              </div>
+
+
+              <!-- EMAIL -->
+
+              <div class="form-group">
+
+                <label for="email">
+                  Email Address *
+                </label>
+
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  [(ngModel)]="email"
+                  placeholder="Enter your email"
+                  required
+                />
+
+              </div>
+
+
+              <!-- DATE OF BIRTH -->
+
+              <div class="form-group">
+
+                <label for="dateOfBirth">
+                  Date of Birth
+                </label>
+
+                <input
+                  id="dateOfBirth"
+                  type="date"
+                  name="dateOfBirth"
+                  [(ngModel)]="dateOfBirth"
+                />
+
+              </div>
+
+
+              <!-- GENDER -->
+
+              <div class="form-group">
+
+                <label for="gender">
+                  Gender
+                </label>
+
+                <select
+                  id="gender"
+                  name="gender"
+                  [(ngModel)]="gender"
+                >
+
+                  <option value="">
+                    Select gender
+                  </option>
+
+                  <option value="male">
+                    Male
+                  </option>
+
+                  <option value="female">
+                    Female
+                  </option>
+
+                  <option value="other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- CITY -->
+
+              <div class="form-group">
+
+                <label for="city">
+                  City
+                </label>
+
+                <select
+                  id="city"
+                  name="city"
+                  [(ngModel)]="city"
+                >
+
+                  <option value="">
+                    Select city
+                  </option>
+
+                  <option value="dhaka">
+                    Dhaka
+                  </option>
+
+                  <option value="chattogram">
+                    Chattogram
+                  </option>
+
+                  <option value="sylhet">
+                    Sylhet
+                  </option>
+
+                  <option value="rajshahi">
+                    Rajshahi
+                  </option>
+
+                  <option value="khulna">
+                    Khulna
+                  </option>
+
+                  <option value="barishal">
+                    Barishal
+                  </option>
+
+                  <option value="rangpur">
+                    Rangpur
+                  </option>
+
+                  <option value="mymensingh">
+                    Mymensingh
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- ADDRESS -->
+
+              <div class="form-group full-width">
+
+                <label for="address">
+                  Address *
+                </label>
+
+                <textarea
+                  id="address"
+                  name="address"
+                  [(ngModel)]="address"
+                  placeholder="Enter your complete address"
+                  rows="3"
+                  required
+                ></textarea>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               CUSTOMER INFORMATION
+               ================================================= -->
+
+          <div
+            class="form-section"
+            *ngIf="role === 'customer'"
+          >
+
+            <div class="section-title">
+              🛵
+              <span>Delivery Information</span>
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <!-- DELIVERY AREA -->
+
+              <div class="form-group">
+
+                <label for="deliveryArea">
+                  Delivery Area
+                </label>
+
+                <input
+                  id="deliveryArea"
+                  type="text"
+                  name="deliveryArea"
+                  [(ngModel)]="deliveryArea"
+                  placeholder="e.g. Dhanmondi"
+                />
+
+              </div>
+
+
+              <!-- POST CODE -->
+
+              <div class="form-group">
+
+                <label for="postCode">
+                  Post Code
+                </label>
+
+                <input
+                  id="postCode"
+                  type="text"
+                  name="postCode"
+                  [(ngModel)]="postCode"
+                  placeholder="e.g. 1209"
+                />
+
+              </div>
+
+
+              <!-- DELIVERY INSTRUCTION -->
+
+              <div class="form-group full-width">
+
+                <label for="deliveryInstruction">
+                  Delivery Instructions
+                </label>
+
+                <textarea
+                  id="deliveryInstruction"
+                  name="deliveryInstruction"
+                  [(ngModel)]="deliveryInstruction"
+                  placeholder="Any special delivery instruction?"
+                  rows="2"
+                ></textarea>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               RESTAURANT INFORMATION
+               ================================================= -->
+
+          <div
+            class="form-section"
+            *ngIf="role === 'restaurant'"
+          >
+
+            <div class="section-title">
+              🍴
+              <span>Restaurant Information</span>
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <!-- RESTAURANT NAME -->
+
+              <div class="form-group">
+
+                <label for="restaurantName">
+                  Restaurant Name *
+                </label>
+
+                <input
+                  id="restaurantName"
+                  type="text"
+                  name="restaurantName"
+                  [(ngModel)]="restaurantName"
+                  placeholder="Enter restaurant name"
+                  [required]="role === 'restaurant'"
+                />
+
+              </div>
+
+
+              <!-- BUSINESS TYPE -->
+
+              <div class="form-group">
+
+                <label for="businessType">
+                  Business Type
+                </label>
+
+                <select
+                  id="businessType"
+                  name="businessType"
+                  [(ngModel)]="businessType"
+                >
+
+                  <option value="">
+                    Select business type
+                  </option>
+
+                  <option value="restaurant">
+                    Restaurant
+                  </option>
+
+                  <option value="cafe">
+                    Cafe
+                  </option>
+
+                  <option value="fast-food">
+                    Fast Food
+                  </option>
+
+                  <option value="bakery">
+                    Bakery
+                  </option>
+
+                  <option value="other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- RESTAURANT ADDRESS -->
+
+              <div class="form-group full-width">
+
+                <label for="restaurantAddress">
+                  Restaurant Address *
+                </label>
+
+                <textarea
+                  id="restaurantAddress"
+                  name="restaurantAddress"
+                  [(ngModel)]="restaurantAddress"
+                  placeholder="Enter restaurant address"
+                  rows="2"
+                  [required]="role === 'restaurant'"
+                ></textarea>
+
+              </div>
+
+
+              <!-- LICENSE NUMBER -->
+
+              <div class="form-group">
+
+                <label for="licenseNumber">
+                  Business / License No.
+                </label>
+
+                <input
+                  id="licenseNumber"
+                  type="text"
+                  name="licenseNumber"
+                  [(ngModel)]="licenseNumber"
+                  placeholder="Enter license number"
+                />
+
+              </div>
+
+
+              <!-- OPENING TIME -->
+
+              <div class="form-group">
+
+                <label for="openingTime">
+                  Opening Time
+                </label>
+
+                <input
+                  id="openingTime"
+                  type="time"
+                  name="openingTime"
+                  [(ngModel)]="openingTime"
+                />
+
+              </div>
+
+
+              <!-- CLOSING TIME -->
+
+              <div class="form-group">
+
+                <label for="closingTime">
+                  Closing Time
+                </label>
+
+                <input
+                  id="closingTime"
+                  type="time"
+                  name="closingTime"
+                  [(ngModel)]="closingTime"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               RIDER INFORMATION
+               ================================================= -->
+
+          <div
+            class="form-section"
+            *ngIf="role === 'rider'"
+          >
+
+            <div class="section-title">
+              🛵
+              <span>Rider Information</span>
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <!-- VEHICLE TYPE -->
+
+              <div class="form-group">
+
+                <label for="vehicleType">
+                  Vehicle Type *
+                </label>
+
+                <select
+                  id="vehicleType"
+                  name="vehicleType"
+                  [(ngModel)]="vehicleType"
+                  [required]="role === 'rider'"
+                >
+
+                  <option value="">
+                    Select vehicle
+                  </option>
+
+                  <option value="bike">
+                    Motor Bike
+                  </option>
+
+                  <option value="cycle">
+                    Bicycle
+                  </option>
+
+                  <option value="scooter">
+                    Scooter
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- VEHICLE NUMBER -->
+
+              <div class="form-group">
+
+                <label for="vehicleNumber">
+                  Vehicle Number
+                </label>
+
+                <input
+                  id="vehicleNumber"
+                  type="text"
+                  name="vehicleNumber"
+                  [(ngModel)]="vehicleNumber"
+                  placeholder="e.g. DHAKA-METRO-1234"
+                />
+
+              </div>
+
+
+              <!-- DRIVING LICENSE -->
+
+              <div class="form-group">
+
+                <label for="drivingLicense">
+                  Driving License No.
+                </label>
+
+                <input
+                  id="drivingLicense"
+                  type="text"
+                  name="drivingLicense"
+                  [(ngModel)]="drivingLicense"
+                  placeholder="Enter license number"
+                />
+
+              </div>
+
+
+              <!-- EMERGENCY CONTACT -->
+
+              <div class="form-group">
+
+                <label for="emergencyContact">
+                  Emergency Contact
+                </label>
+
+                <input
+                  id="emergencyContact"
+                  type="tel"
+                  name="emergencyContact"
+                  [(ngModel)]="emergencyContact"
+                  placeholder="01XXXXXXXXX"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               ACCOUNT SECURITY
+               ================================================= -->
+
+          <div class="form-section">
+
+            <div class="section-title">
+              🔒
+              <span>Account Security</span>
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <!-- PASSWORD -->
+
+              <div class="form-group">
+
+                <label for="password">
+                  Password *
+                </label>
+
+                <input
+                  id="password"
+                  type="password"
+                  name="password"
+                  [(ngModel)]="password"
+                  placeholder="Create a password"
+                  required
+                />
+
+              </div>
+
+
+              <!-- CONFIRM PASSWORD -->
+
+              <div class="form-group">
+
+                <label for="confirmPassword">
+                  Confirm Password *
+                </label>
+
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  name="confirmPassword"
+                  [(ngModel)]="confirmPassword"
+                  placeholder="Confirm password"
+                  required
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               CREATE ACCOUNT
+               ================================================= -->
+
+          <button
+            type="submit"
+            class="submit-button"
+            [disabled]="!role"
+          >
+
+            <span>👤</span>
+
+            Create
+            {{ role === 'restaurant'
+                ? 'Restaurant'
+                : role === 'rider'
+                ? 'Rider'
+                : 'Customer'
+            }}
+            Account
+
+          </button>
+
+
+        </form>
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <div class="auth-footer">
+
+          <p>
+
+            Already have an account?
+
+            <a routerLink="/login">
+              Login
+            </a>
+
+          </p>
+
+          <a routerLink="/">
+            ← Back to Home
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

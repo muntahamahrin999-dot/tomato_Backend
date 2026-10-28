@@ -1,0 +1,112 @@
+<div class="profile-page">
+
+  <section class="profile-hero">
+    <div class="hero-content">
+      <span class="eyebrow">MY ACCOUNT</span>
+
+      <h1>Your <span>profile.</span></h1>
+
+      <p>
+        Manage your account information and preferences.
+      </p>
+    </div>
+  </section>
+
+
+  <main class="profile-content">
+
+    @if (user) {
+
+    <section class="profile-card">
+
+      <div class="profile-header">
+
+        <div class="profile-avatar">
+          {{ user.name.charAt(0).toUpperCase() }}
+        </div>
+
+        <div>
+          <span class="profile-label">CUSTOMER ACCOUNT</span>
+
+          <h2>{{ user.name }}</h2>
+
+          <p>{{ user.email }}</p>
+        </div>
+
+      </div>
+
+
+      <div class="profile-divider"></div>
+
+
+      <div class="profile-details">
+
+        <div class="detail-item">
+          <span class="detail-label">FULL NAME</span>
+          <strong>{{ user.name }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">EMAIL ADDRESS</span>
+          <strong>{{ user.email }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">PHONE NUMBER</span>
+          <strong>{{ user.phone }}</strong>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">ACCOUNT TYPE</span>
+          <strong>{{ user.role }}</strong>
+        </div>
+
+      </div>
+
+
+      <div class="profile-actions">
+
+        <a routerLink="/orders" class="secondary-button">
+          View My Orders
+        </a>
+
+
+
+        <a routerLink="/reviews" class="secondary-button">
+          My Reviews
+        </a>
+
+
+
+
+        <button type="button" class="logout-button" (click)="logout()">
+          Logout
+        </button>
+
+      </div>
+
+    </section>
+
+    } @else {
+
+    <section class="empty-profile">
+
+      <div class="empty-icon">👤</div>
+
+      <h2>Please login first</h2>
+
+      <p>
+        You need to login to view your profile.
+      </p>
+
+      <a routerLink="/login" class="login-button">
+        Go to Login
+      </a>
+
+    </section>
+
+    }
+
+  </main>
+
+</div>

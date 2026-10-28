@@ -1,0 +1,278 @@
+<div class="restaurant-layout">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+
+    <!-- Logo -->
+    <div class="sidebar-logo">
+
+      <div class="logo-icon">
+        🍅
+      </div>
+
+      <div class="logo-text">
+        <h2>Tomato</h2>
+        <span>Restaurant Panel</span>
+      </div>
+
+    </div>
+
+
+    <!-- ================= MENU ================= -->
+    <nav class="sidebar-menu">
+
+      <p class="menu-title">MAIN MENU</p>
+
+
+      <!-- Dashboard -->
+      <a
+        routerLink="/restaurant/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+
+        <span>📊</span>
+        <span>Dashboard</span>
+
+      </a>
+
+
+      <!-- Orders -->
+      <a
+        routerLink="/restaurant/orders"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+
+        <span>🛒</span>
+        <span>Orders</span>
+
+      </a>
+
+
+      <!-- Food Management -->
+      <a
+        routerLink="/restaurant/food-management"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+
+        <span>🍔</span>
+        <span>Food Management</span>
+
+      </a>
+
+
+      <!-- Categories -->
+      <a
+        routerLink="/restaurant/categories"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+
+        <span>📂</span>
+        <span>Categories</span>
+
+      </a>
+
+
+      <!-- Inventory -->
+      <a
+        routerLink="/restaurant/inventory"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+
+        <span>📦</span>
+        <span>Inventory</span>
+
+      </a>
+
+
+      <!-- Offers -->
+      <a
+        routerLink="/restaurant/offers"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+
+        <span>🏷️</span>
+        <span>Offers</span>
+
+      </a>
+
+
+      <!-- Reports -->
+      <a
+        routerLink="/restaurant/reports"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+
+        <span>📈</span>
+        <span>Reports</span>
+
+      </a>
+
+
+      <!-- ================= ACCOUNT ================= -->
+      <p class="menu-title account-title">
+        ACCOUNT
+      </p>
+
+
+      <!-- Profile -->
+      <a
+        routerLink="/restaurant/profile"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+
+        <span>👤</span>
+        <span>Profile</span>
+
+      </a>
+
+    </nav>
+
+
+    <!-- ================= LOGOUT ================= -->
+    <div class="sidebar-bottom">
+
+      <button
+        type="button"
+        class="logout-btn"
+        (click)="logout()"
+      >
+
+        <span>🚪</span>
+        <span>Logout</span>
+
+      </button>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- ================= MAIN AREA ================= -->
+  <div class="main-area">
+
+
+    <!-- ================= TOP NAVBAR ================= -->
+    <header class="top-navbar">
+
+
+      <!-- Navbar Left -->
+      <div class="navbar-left">
+
+        <h3>
+          Restaurant Panel
+        </h3>
+
+        <p>
+          Manage your restaurant and orders
+        </p>
+
+      </div>
+
+
+
+      <!-- Navbar Right -->
+      <div class="navbar-right">
+
+
+        <!-- Notification -->
+        <button
+          type="button"
+          class="notification-btn"
+        >
+
+          🔔
+
+          <span class="notification-badge">
+            3
+          </span>
+
+        </button>
+
+
+
+        <!-- Profile -->
+        <div class="navbar-profile">
+
+
+          <!-- Avatar -->
+          <div class="profile-avatar">
+            R
+          </div>
+
+
+          <!-- Profile Details -->
+          <div class="profile-details">
+
+            <strong>
+              Restaurant Owner
+            </strong>
+
+            <span>
+              Restaurant
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- ================= PAGE CONTENT ================= -->
+    <main class="page-content">
+
+      <router-outlet></router-outlet>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="restaurant-footer">
+
+
+      <!-- Copyright -->
+      <div>
+
+        © 2026
+        <strong>Tomato</strong>.
+        All rights reserved.
+
+      </div>
+
+
+      <!-- Footer Links -->
+      <div class="footer-links">
+
+        <span>
+          Restaurant Panel
+        </span>
+
+        <span>
+          •
+        </span>
+
+        <span>
+          Food Management System
+        </span>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+</div>

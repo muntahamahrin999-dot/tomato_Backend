@@ -1,0 +1,387 @@
+<div class="delivery-layout">
+
+  <!-- ============================= -->
+  <!-- SIDEBAR -->
+  <!-- ============================= -->
+
+  <aside
+    class="sidebar"
+    [class.closed]="!sidebarOpen"
+  >
+
+    <!-- Logo -->
+
+    <div class="logo-area">
+
+      <div class="logo-icon">
+        🍅
+      </div>
+
+      <div
+        class="logo-content"
+        *ngIf="sidebarOpen"
+      >
+
+        <div class="brand-name">
+          Tomato
+        </div>
+
+        <div class="brand-subtitle">
+          RIDER PANEL
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Navigation -->
+
+    <nav class="sidebar-nav">
+
+      <div
+        class="nav-section-title"
+        *ngIf="sidebarOpen"
+      >
+        DELIVERY
+      </div>
+
+
+      <!-- Dashboard -->
+
+      <a
+        routerLink="/delivery/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-item"
+        title="Dashboard"
+      >
+
+        <span class="nav-icon">
+          ⌂
+        </span>
+
+        <span
+          class="nav-text"
+          *ngIf="sidebarOpen"
+        >
+          Dashboard
+        </span>
+
+      </a>
+
+
+      <!-- Assigned Orders -->
+
+      <a
+        routerLink="/delivery/assigned-orders"
+        routerLinkActive="active"
+        class="nav-item"
+        title="Assigned Orders"
+      >
+
+        <span class="nav-icon">
+          ▣
+        </span>
+
+        <span
+          class="nav-text"
+          *ngIf="sidebarOpen"
+        >
+          Assigned Orders
+        </span>
+
+        <span
+          class="nav-badge"
+          *ngIf="sidebarOpen && assignedOrdersCount > 0"
+        >
+          {{ assignedOrdersCount }}
+        </span>
+
+      </a>
+
+
+      <!-- Active Delivery -->
+
+      <a
+        routerLink="/delivery/active-delivery"
+        routerLinkActive="active"
+        class="nav-item"
+        title="Active Delivery"
+      >
+
+        <span class="nav-icon">
+          🛵
+        </span>
+
+        <span
+          class="nav-text"
+          *ngIf="sidebarOpen"
+        >
+          Active Delivery
+        </span>
+
+      </a>
+
+
+      <!-- Delivery History -->
+
+      <a
+        routerLink="/delivery/delivery-history"
+        routerLinkActive="active"
+        class="nav-item"
+        title="Delivery History"
+      >
+
+        <span class="nav-icon">
+          ◷
+        </span>
+
+        <span
+          class="nav-text"
+          *ngIf="sidebarOpen"
+        >
+          Delivery History
+        </span>
+
+      </a>
+
+
+      <!-- Account -->
+
+      <div
+        class="nav-section-title account-title"
+        *ngIf="sidebarOpen"
+      >
+        ACCOUNT
+      </div>
+
+
+      <!-- Earnings -->
+
+      <a
+        routerLink="/delivery/earnings"
+        routerLinkActive="active"
+        class="nav-item"
+        title="Earnings"
+      >
+
+        <span class="nav-icon">
+          ৳
+        </span>
+
+        <span
+          class="nav-text"
+          *ngIf="sidebarOpen"
+        >
+          Earnings
+        </span>
+
+      </a>
+
+
+      <!-- Profile -->
+
+      <a
+        routerLink="/delivery/profile"
+        routerLinkActive="active"
+        class="nav-item"
+        title="Profile"
+      >
+
+        <span class="nav-icon">
+          ◯
+        </span>
+
+        <span
+          class="nav-text"
+          *ngIf="sidebarOpen"
+        >
+          Profile
+        </span>
+
+      </a>
+
+    </nav>
+
+
+    <!-- Sidebar Footer -->
+
+    <div class="sidebar-footer">
+
+      <button
+        class="logout-btn"
+        (click)="logout()"
+        title="Logout"
+      >
+
+        <span class="logout-icon">
+          ↪
+        </span>
+
+        <span *ngIf="sidebarOpen">
+          Logout
+        </span>
+
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ============================= -->
+  <!-- MAIN -->
+  <!-- ============================= -->
+
+  <main
+    class="main-area"
+    [class.expanded]="!sidebarOpen"
+  >
+
+    <!-- ============================= -->
+    <!-- TOP NAVBAR -->
+    <!-- ============================= -->
+
+    <header class="topbar">
+
+      <!-- Left -->
+
+      <div class="topbar-left">
+
+        <button
+          class="menu-button"
+          (click)="toggleSidebar()"
+          aria-label="Toggle sidebar"
+        >
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </button>
+
+
+        <div class="topbar-title">
+
+          <span class="small-title">
+            TOMATO DELIVERY
+          </span>
+
+          <h2>
+            Rider Workspace
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <!-- Right -->
+
+      <div class="topbar-right">
+
+        <!-- ================================= -->
+        <!-- DYNAMIC AVAILABILITY -->
+        <!-- ================================= -->
+
+        <button
+          type="button"
+          class="availability"
+          [class.unavailable]="!isAvailable"
+          (click)="toggleAvailability()"
+          [attr.aria-label]="
+            isAvailable
+              ? 'Change to unavailable'
+              : 'Change to available'
+          "
+        >
+
+          <span
+            class="online-dot"
+            [class.offline-dot]="!isAvailable"
+          ></span>
+
+          <span>
+            {{ isAvailable ? 'Available' : 'Unavailable' }}
+          </span>
+
+          <span class="availability-arrow">
+            ▾
+          </span>
+
+        </button>
+
+
+        <!-- Divider -->
+
+        <div class="top-divider"></div>
+
+
+        <!-- Notification -->
+
+        <button
+          class="notification-button"
+          aria-label="Notifications"
+        >
+
+          <span class="notification-icon">
+            ♢
+          </span>
+
+          <span class="notification-count">
+            3
+          </span>
+
+        </button>
+
+
+        <!-- Divider -->
+
+        <div class="top-divider"></div>
+
+
+        <!-- Rider -->
+
+        <div class="user-menu">
+
+          <div class="user-avatar">
+            {{ riderInitial }}
+          </div>
+
+          <div class="user-details">
+
+            <strong>
+              {{ riderName }}
+            </strong>
+
+            <span>
+              Delivery Rider
+            </span>
+
+          </div>
+
+          <span class="user-arrow">
+            ▾
+          </span>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ============================= -->
+    <!-- CONTENT -->
+    <!-- ============================= -->
+
+    <section class="content-area">
+
+      <router-outlet></router-outlet>
+
+    </section>
+
+  </main>
+
+</div>

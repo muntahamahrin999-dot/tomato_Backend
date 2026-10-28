@@ -1,0 +1,501 @@
+/* =========================
+   MAIN
+========================= */
+
+.restaurant-orders {
+  min-height: 100vh;
+
+  background: #f6f0e5;
+
+  color: #173f2c;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.orders-hero {
+  background: #173f2c;
+
+  padding: 55px 40px 75px;
+}
+
+.hero-content {
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #d89b3d;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.orders-hero h1 {
+  margin: 0;
+
+  color: #fffaf0;
+
+  font-size: 46px;
+
+  line-height: 1.15;
+
+  font-weight: 700;
+}
+
+.orders-hero h1 span {
+  color: #d97943;
+}
+
+.orders-hero p {
+  margin: 15px 0 0;
+
+  color: #e8e1d6;
+
+  font-size: 16px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats-section {
+  margin-top: -35px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.stats-grid {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 0 20px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.stat-card {
+  min-height: 105px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 22px;
+
+  background: #fffaf0;
+
+  border: 1px solid #e5dac8;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(23, 63, 44, 0.08);
+}
+
+.stat-icon {
+  width: 52px;
+
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 14px;
+
+  font-size: 24px;
+}
+
+.pending-icon {
+  background: #fff0d8;
+
+  color: #a86b00;
+}
+
+.preparing-icon {
+  background: #e5eee6;
+
+  color: #286042;
+}
+
+.delivered-icon {
+  background: #dfeee5;
+
+  color: #28704a;
+
+  font-size: 28px;
+
+  font-weight: 700;
+}
+
+.stat-info span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #7c817b;
+
+  font-size: 13px;
+}
+
+.stat-info strong {
+  color: #173f2c;
+
+  font-size: 27px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   ORDERS SECTION
+========================= */
+
+.orders-section {
+  padding: 40px 20px 70px;
+}
+
+.orders-card {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  background: #fffaf0;
+
+  border: 1px solid #e5dac8;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 25px rgba(23, 63, 44, 0.06);
+}
+
+
+/* =========================
+   ORDERS HEADER
+========================= */
+
+.orders-header {
+  min-height: 85px;
+
+  padding: 22px 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom: 1px solid #e8dfd1;
+}
+
+.orders-header h2 {
+  margin: 0 0 5px;
+
+  color: #173f2c;
+
+  font-size: 22px;
+}
+
+.orders-header p {
+  margin: 0;
+
+  color: #8a8175;
+
+  font-size: 13px;
+}
+
+.order-count {
+  flex-shrink: 0;
+
+  color: #8a8175;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+
+  min-width: 950px;
+
+  border-collapse: collapse;
+}
+
+
+/* =========================
+   TABLE HEAD
+========================= */
+
+thead {
+  background: #f1eadf;
+}
+
+th {
+  padding: 16px 18px;
+
+  color: #59675f;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.6px;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   TABLE BODY
+========================= */
+
+td {
+  padding: 20px 18px;
+
+  color: #4d5b53;
+
+  font-size: 13px;
+
+  border-top: 1px solid #eee5d8;
+
+  white-space: nowrap;
+}
+
+tbody tr {
+  transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+  background: #faf5ec;
+}
+
+
+/* =========================
+   ORDER ID
+========================= */
+
+.order-id {
+  color: #d06f3d;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   CUSTOMER
+========================= */
+
+.customer-name {
+  color: #405149;
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   ITEMS
+========================= */
+
+.order-items {
+  color: #68746d;
+}
+
+
+/* =========================
+   AMOUNT
+========================= */
+
+.order-amount {
+  color: #173f2c;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.order-date {
+  color: #8a8175;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status-badge {
+  display: inline-block;
+
+  padding: 7px 13px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.status-pending {
+  background: #fff0d8;
+
+  color: #a86b00;
+}
+
+.status-preparing {
+  background: #e5eee6;
+
+  color: #286042;
+}
+
+.status-ready {
+  background: #f0e5f8;
+
+  color: #7040a0;
+}
+
+.status-delivered {
+  background: #dfeee5;
+
+  color: #28704a;
+}
+
+
+/* =========================
+   ACTION BUTTON
+========================= */
+
+.action-button {
+  padding: 9px 15px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #173f2c;
+
+  color: #fffaf0;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.action-button:hover {
+  background: #285d43;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   COMPLETED
+========================= */
+
+.completed-text {
+  color: #28704a;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .orders-hero {
+    padding: 50px 25px 70px;
+  }
+
+  .orders-hero h1 {
+    font-size: 38px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .orders-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .orders-hero {
+    padding: 45px 20px 65px;
+  }
+
+  .orders-hero h1 {
+    font-size: 32px;
+  }
+
+  .orders-hero p {
+    font-size: 14px;
+  }
+
+  .orders-header {
+    padding: 20px;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+}

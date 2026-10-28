@@ -1,0 +1,276 @@
+<div class="profile-page">
+
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">ACCOUNT SETTINGS</span>
+      <h1>My Profile</h1>
+      <p>Manage your rider account and personal information.</p>
+    </div>
+
+    <button
+      class="edit-btn"
+      *ngIf="!editMode"
+      (click)="editMode = true"
+    >
+      ✎ Edit Profile
+    </button>
+
+  </div>
+
+
+  <div class="profile-grid">
+
+    <!-- Profile Card -->
+    <div class="profile-card">
+
+      <div class="profile-cover"></div>
+
+      <div class="profile-main">
+
+        <div class="large-avatar">
+          {{ rider.name.charAt(0) }}
+        </div>
+
+        <h2>
+          {{ rider.name }}
+        </h2>
+
+        <span class="role">
+          Tomato Delivery Rider
+        </span>
+
+        <div class="rating">
+          ⭐ <strong>4.8</strong>
+          <span>Rider Rating</span>
+        </div>
+
+      </div>
+
+
+      <div class="profile-stats">
+
+        <div>
+          <strong>128</strong>
+          <span>Deliveries</span>
+        </div>
+
+        <div>
+          <strong>98%</strong>
+          <span>Success Rate</span>
+        </div>
+
+        <div>
+          <strong>4.8</strong>
+          <span>Rating</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Information -->
+    <div class="information-card">
+
+      <div class="card-header">
+
+        <div>
+          <span class="card-label">PERSONAL INFORMATION</span>
+          <h2>Account Details</h2>
+        </div>
+
+      </div>
+
+
+      <div class="form">
+
+        <div class="form-group">
+
+          <label>Full Name</label>
+
+          <input
+            type="text"
+            [(ngModel)]="rider.name"
+            [disabled]="!editMode"
+          >
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label>Email Address</label>
+
+            <input
+              type="email"
+              [(ngModel)]="rider.email"
+              [disabled]="!editMode"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label>Phone Number</label>
+
+            <input
+              type="text"
+              [(ngModel)]="rider.phone"
+              [disabled]="!editMode"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label>Vehicle Type</label>
+
+            <select
+              [(ngModel)]="rider.vehicle"
+              [disabled]="!editMode"
+            >
+              <option>Motorcycle</option>
+              <option>Bicycle</option>
+              <option>Scooter</option>
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Vehicle Number</label>
+
+            <input
+              type="text"
+              [(ngModel)]="rider.vehicleNumber"
+              [disabled]="!editMode"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Joined Tomato</label>
+
+          <input
+            type="text"
+            [(ngModel)]="rider.joined"
+            disabled
+          >
+
+        </div>
+
+
+        <div
+          class="form-actions"
+          *ngIf="editMode"
+        >
+
+          <button
+            class="cancel-btn"
+            (click)="cancelEdit()"
+          >
+            Cancel
+          </button>
+
+          <button
+            class="save-btn"
+            (click)="saveProfile()"
+          >
+            Save Changes
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Account Features -->
+  <div class="features-card">
+
+    <div class="card-header">
+
+      <div>
+        <span class="card-label">ACCOUNT</span>
+        <h2>Account Preferences</h2>
+      </div>
+
+    </div>
+
+
+    <div class="feature-list">
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          🔔
+        </div>
+
+        <div>
+          <strong>Delivery Notifications</strong>
+          <span>Receive new order notifications</span>
+        </div>
+
+        <div class="toggle active">
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          📍
+        </div>
+
+        <div>
+          <strong>Location Services</strong>
+          <span>Allow location tracking during deliveries</span>
+        </div>
+
+        <div class="toggle active">
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          🔐
+        </div>
+
+        <div>
+          <strong>Password & Security</strong>
+          <span>Manage your account security</span>
+        </div>
+
+        <button class="manage-btn">
+          Manage →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

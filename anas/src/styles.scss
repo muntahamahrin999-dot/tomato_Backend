@@ -1,0 +1,110 @@
+/* =========================================
+   TOMATO DESIGN SYSTEM
+========================================= */
+
+:root {
+
+  /* Main Brand */
+  --color-primary-dark: #263d32;
+  --color-primary: #3f6b57;
+  --color-primary-light: #dce8df;
+
+  /* Secondary */
+  --color-olive: #7c9675;
+
+  /* Background */
+  --color-background: #f6f7f2;
+  --color-card: #fffef8;
+
+  /* Accent */
+  --color-gold: #c6a15b;
+  --color-food: #c9795b;
+  --color-danger: #c65d5d;
+
+  /* Text */
+  --color-text: #263d32;
+  --color-text-secondary: #718078;
+  --color-text-light: #8a948e;
+
+  /* Border */
+  --color-border: #dce3dc;
+
+  /* Shadows */
+  --shadow-sm:
+    0 2px 8px rgba(38, 61, 50, 0.06);
+
+  --shadow-md:
+    0 8px 24px rgba(38, 61, 50, 0.10);
+
+  --shadow-lg:
+    0 16px 40px rgba(38, 61, 50, 0.14);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+
+
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  min-height: 100%;
+}
+
+
+body {
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background:
+    var(--color-background);
+
+  color:
+    var(--color-text);
+}
+
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+
+a {
+  color: inherit;
+}
+
+
+/* Remove default focus outline
+   and create clean accessible focus */
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+
+  outline-offset: 3px;
+}

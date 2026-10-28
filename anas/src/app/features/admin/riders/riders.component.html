@@ -1,0 +1,445 @@
+<div class="riders-page">
+
+  <!-- ================= LIST VIEW ================= -->
+  <ng-container *ngIf="!showForm">
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="page-header">
+
+    <div class="header-content">
+      <span class="eyebrow">DELIVERY MANAGEMENT</span>
+
+      <h1>
+        Riders <span>Management</span>
+      </h1>
+
+      <p>
+        Manage delivery riders, their activities and availability.
+      </p>
+    </div>
+
+    <button
+      class="add-rider-btn"
+      type="button"
+      (click)="addRider()"
+    >
+      <span>＋</span>
+      Add Rider
+    </button>
+
+  </section>
+
+
+  <!-- ================= STATS ================= -->
+
+  <section class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon green">
+        🏍️
+      </div>
+
+      <div class="stat-content">
+        <span>Total Riders</span>
+        <strong>{{ totalRiders }}</strong>
+        <small>Registered riders</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon active">
+        ●
+      </div>
+
+      <div class="stat-content">
+        <span>Active Riders</span>
+        <strong>{{ activeRiders }}</strong>
+        <small>Currently available</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon delivery">
+        🚴
+      </div>
+
+      <div class="stat-content">
+        <span>On Delivery</span>
+        <strong>{{ onDeliveryRiders }}</strong>
+        <small>Currently delivering</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon pending">
+        ⏳
+      </div>
+
+      <div class="stat-content">
+        <span>Pending Approval</span>
+        <strong>{{ pendingRiders }}</strong>
+        <small>Need verification</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TOOLBAR ================= -->
+
+  <section class="toolbar-card">
+
+    <div class="search-box">
+
+      <span class="search-icon">⌕</span>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search rider by name, phone, email or zone..."
+      />
+
+      <button
+        *ngIf="searchText"
+        type="button"
+        class="clear-search"
+        (click)="searchText = ''"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="filter-area">
+
+      <label>Status</label>
+
+      <select [(ngModel)]="selectedStatus">
+        <option value="All">All Riders</option>
+        <option value="Active">Active</option>
+        <option value="On Delivery">On Delivery</option>
+        <option value="Pending">Pending</option>
+        <option value="Suspended">Suspended</option>
+      </select>
+
+      <button
+        *ngIf="searchText || selectedStatus !== 'All'"
+        type="button"
+        class="reset-btn"
+        (click)="clearFilters()"
+      >
+        Reset
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TABLE CARD ================= -->
+
+  <section class="riders-card">
+
+    <div class="card-header">
+
+      <div>
+        <h2>All Riders</h2>
+
+        <p>
+          {{ filteredRiders.length }} rider{{ filteredRiders.length !== 1 ? 's' : '' }}
+          found
+        </p>
+      </div>
+
+      <div class="rider-summary">
+        <span class="summary-dot"></span>
+        {{ activeRiders }} active
+      </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>RIDER</th>
+            <th>CONTACT</th>
+            <th>VEHICLE</th>
+            <th>ZONE</th>
+            <th>ORDERS</th>
+            <th>RATING</th>
+            <th>STATUS</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+
+          <tr *ngFor="let rider of filteredRiders; trackBy: trackByRider">
+
+            <!-- RIDER -->
+
+            <td data-label="Rider">
+
+              <div class="rider-cell">
+
+                <div class="rider-avatar">
+                  {{ getInitials(rider.name) }}
+                </div>
+
+                <div class="rider-info">
+
+                  <strong>
+                    {{ rider.name }}
+                  </strong>
+
+                  <span>
+                    Rider #{{ formatRiderId(rider.id) }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- CONTACT -->
+
+            <td data-label="Contact">
+
+              <div class="contact-cell">
+
+                <strong>
+                  {{ rider.phone }}
+                </strong>
+
+                <span>
+                  {{ rider.email }}
+                </span>
+
+              </div>
+
+            </td>
+
+
+            <!-- VEHICLE -->
+
+            <td data-label="Vehicle">
+
+              <span class="vehicle-badge">
+                <span>
+                  {{ rider.vehicle === 'Motorcycle' ? '🏍️' : '🚲' }}
+                </span>
+
+                {{ rider.vehicle }}
+              </span>
+
+            </td>
+
+
+            <!-- ZONE -->
+
+            <td data-label="Zone">
+              <span class="zone">
+                {{ rider.zone }}
+              </span>
+            </td>
+
+
+            <!-- ORDERS -->
+
+            <td data-label="Orders">
+
+              <strong class="orders-count">
+                {{ rider.orders }}
+              </strong>
+
+            </td>
+
+
+            <!-- RATING -->
+
+            <td data-label="Rating">
+
+              <div class="rating">
+
+                <span>★</span>
+
+                <strong>
+                  {{ rider.rating | number:'1.1-1' }}
+                </strong>
+
+              </div>
+
+            </td>
+
+
+            <!-- STATUS -->
+
+            <td data-label="Status">
+
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  'active': rider.status === 'Active',
+                  'delivery': rider.status === 'On Delivery',
+                  'pending': rider.status === 'Pending',
+                  'suspended': rider.status === 'Suspended'
+                }"
+              >
+
+                <span class="status-dot"></span>
+
+                {{ rider.status }}
+
+              </span>
+
+            </td>
+
+
+            <!-- ACTIONS -->
+
+            <td data-label="Actions">
+
+              <div class="actions">
+
+                <button
+                  type="button"
+                  class="action-btn view"
+                  title="View Rider"
+                  (click)="viewRider(rider)"
+                >
+                  👁
+                </button>
+
+                <button
+                  type="button"
+                  class="action-btn edit"
+                  title="Edit Rider"
+                  (click)="editRider(rider)"
+                >
+                  ✎
+                </button>
+
+                <button
+                  *ngIf="rider.status === 'Active' || rider.status === 'Suspended'"
+                  type="button"
+                  class="action-btn toggle"
+                  [title]="rider.status === 'Active' ? 'Suspend Rider' : 'Activate Rider'"
+                  (click)="toggleStatus(rider)"
+                >
+                  {{ rider.status === 'Active' ? '⏸' : '▶' }}
+                </button>
+
+                <button
+                  type="button"
+                  class="action-btn delete"
+                  title="Delete Rider"
+                  (click)="deleteRider(rider)"
+                >
+                  🗑
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+
+          <!-- EMPTY STATE -->
+
+          <tr *ngIf="filteredRiders.length === 0">
+
+            <td colspan="8">
+
+              <div class="empty-state">
+
+                <div class="empty-icon">
+                  🏍️
+                </div>
+
+                <h3>No riders found</h3>
+
+                <p>
+                  Try changing your search or filter.
+                </p>
+
+                <button
+                  type="button"
+                  (click)="clearFilters()"
+                >
+                  Clear Filters
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER INFO ================= -->
+
+  <section class="bottom-info">
+
+    <div class="info-box">
+      <span class="info-icon">✓</span>
+
+      <div>
+        <strong>{{ activeRiders }} riders available</strong>
+        <span>Ready to receive new delivery requests</span>
+      </div>
+    </div>
+
+    <div class="info-box warning">
+      <span class="info-icon">!</span>
+
+      <div>
+        <strong>{{ pendingRiders }} approval requests</strong>
+        <span>Review pending rider applications</span>
+      </div>
+    </div>
+
+  </section>
+
+  </ng-container>
+
+  <!-- ================= FORM VIEW ================= -->
+  <ng-container *ngIf="showForm">
+    <app-add-rider
+      [riderToEdit]="selectedRiderToEdit"
+      (saved)="onFormSaved($event)"
+      (close)="closeForm()">
+    </app-add-rider>
+  </ng-container>
+
+</div>

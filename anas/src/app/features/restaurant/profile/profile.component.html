@@ -1,0 +1,139 @@
+<div class="restaurant-profile-page">
+
+  <!-- ================= HEADER ================= -->
+  <section class="page-header">
+
+    <div>
+      <span class="eyebrow">RESTAURANT ACCOUNT</span>
+
+      <h1>
+        Restaurant <span>Profile</span>
+      </h1>
+
+      <p>
+        Manage your restaurant information and account details.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ================= PROFILE CARD ================= -->
+  <section class="profile-section">
+
+    <div class="profile-card">
+
+      <!-- Profile Top -->
+      <div class="profile-top">
+
+        <div class="restaurant-avatar">
+          🍽️
+        </div>
+
+        <div class="restaurant-heading">
+
+          <span class="profile-label">
+            RESTAURANT OWNER
+          </span>
+
+          <h2>
+            {{ user?.restaurantName || user?.name || 'My Restaurant' }}
+          </h2>
+
+          <p>
+            {{ user?.email || 'restaurant@tomato.com' }}
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Information -->
+      <div class="profile-information">
+
+        <div class="info-group">
+
+          <label>Owner Name</label>
+
+          <div class="info-value">
+            {{ user?.name || 'Restaurant Owner' }}
+          </div>
+
+        </div>
+
+
+        <div class="info-group">
+
+          <label>Email Address</label>
+
+          <div class="info-value">
+            {{ user?.email || 'restaurant@tomato.com' }}
+          </div>
+
+        </div>
+
+
+        <div class="info-group">
+
+          <label>Phone Number</label>
+
+          <div class="info-value">
+            {{ user?.phone || '01700000000' }}
+          </div>
+
+        </div>
+
+
+        <div class="info-group">
+
+          <label>Restaurant Name</label>
+
+          <div class="info-value">
+            {{ user?.restaurantName || 'My Restaurant' }}
+          </div>
+
+        </div>
+
+
+        <div class="info-group full-width">
+
+          <label>Restaurant Address</label>
+
+          <div class="info-value">
+            {{ restaurantAddress }}
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Actions -->
+      <div class="profile-actions">
+
+        <button
+          type="button"
+          class="primary-button"
+          (click)="editProfile()">
+
+          ✏️ Edit Profile
+
+        </button>
+
+        <button
+          type="button"
+          class="secondary-button"
+          (click)="changePassword()">
+
+          🔐 Change Password
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

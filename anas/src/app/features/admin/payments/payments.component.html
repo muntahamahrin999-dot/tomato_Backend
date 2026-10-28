@@ -1,0 +1,384 @@
+<div class="payments-page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">PAYMENT MANAGEMENT</span>
+
+      <h1>Payments</h1>
+
+      <p>
+        Track transactions, payment methods and refund activity.
+      </p>
+    </div>
+
+    <button class="export-btn" type="button">
+      <span>↓</span>
+      Export Report
+    </button>
+
+  </div>
+
+
+  <!-- Statistics -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon revenue-icon">
+        ৳
+      </div>
+
+      <div>
+        <span class="stat-label">Total Revenue</span>
+        <strong>৳{{ totalRevenue }}</strong>
+        <small>Completed payments</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon completed-icon">
+        ✓
+      </div>
+
+      <div>
+        <span class="stat-label">Completed</span>
+        <strong>{{ completedPayments }}</strong>
+        <small>Successful transactions</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon pending-icon">
+        ⏳
+      </div>
+
+      <div>
+        <span class="stat-label">Pending</span>
+        <strong>{{ pendingPayments }}</strong>
+        <small>Awaiting payment</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon refund-icon">
+        ↩
+      </div>
+
+      <div>
+        <span class="stat-label">Refunded</span>
+        <strong>৳{{ refundedAmount }}</strong>
+        <small>Refund amount</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Payment Methods -->
+  <div class="method-section">
+
+    <div class="section-title">
+      <div>
+        <h2>Payment Methods</h2>
+        <p>Today's transaction distribution</p>
+      </div>
+    </div>
+
+    <div class="method-grid">
+
+      <div class="method-card">
+
+        <div class="method-logo bkash">
+          bK
+        </div>
+
+        <div class="method-info">
+          <strong>bKash</strong>
+          <span>Mobile Payment</span>
+        </div>
+
+        <div class="method-value">
+          <strong>৳1,630</strong>
+          <small>2 transactions</small>
+        </div>
+
+      </div>
+
+
+      <div class="method-card">
+
+        <div class="method-logo nagad">
+          N
+        </div>
+
+        <div class="method-info">
+          <strong>Nagad</strong>
+          <span>Mobile Payment</span>
+        </div>
+
+        <div class="method-value">
+          <strong>৳490</strong>
+          <small>1 transaction</small>
+        </div>
+
+      </div>
+
+
+      <div class="method-card">
+
+        <div class="method-logo card">
+          💳
+        </div>
+
+        <div class="method-info">
+          <strong>Card</strong>
+          <span>Debit / Credit Card</span>
+        </div>
+
+        <div class="method-value">
+          <strong>৳1,770</strong>
+          <small>2 transactions</small>
+        </div>
+
+      </div>
+
+
+      <div class="method-card">
+
+        <div class="method-logo cash">
+          ৳
+        </div>
+
+        <div class="method-info">
+          <strong>Cash</strong>
+          <span>Cash on Delivery</span>
+        </div>
+
+        <div class="method-value">
+          <strong>৳540</strong>
+          <small>1 transaction</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Transactions -->
+  <div class="payments-card">
+
+    <div class="card-header">
+
+      <div>
+        <h2>Recent Transactions</h2>
+        <p>Latest payment activities on Tomato.</p>
+      </div>
+
+      <div class="search-box">
+        <span>⌕</span>
+
+        <input
+          type="text"
+          placeholder="Search payment..."
+        />
+      </div>
+
+    </div>
+
+
+    <!-- Filters -->
+    <div class="filter-row">
+
+      <button
+        *ngFor="let filter of filters"
+        type="button"
+        class="filter-btn"
+        [class.active]="selectedFilter === filter"
+        (click)="setFilter(filter)">
+
+        {{ filter }}
+
+      </button>
+
+    </div>
+
+
+    <!-- Table -->
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Payment</th>
+            <th>Order</th>
+            <th>Customer</th>
+            <th>Method</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let payment of filteredPayments">
+
+            <td data-label="Payment">
+              <div class="payment-id">
+                <strong>{{ payment.id }}</strong>
+                <span>Transaction</span>
+              </div>
+            </td>
+
+
+            <td data-label="Order">
+              <span class="order-id">
+                {{ payment.orderId }}
+              </span>
+            </td>
+
+
+            <td data-label="Customer">
+
+              <div class="customer-cell">
+
+                <div class="avatar">
+                  {{ payment.customer.charAt(0) }}
+                </div>
+
+                <span>
+                  {{ payment.customer }}
+                </span>
+
+              </div>
+
+            </td>
+
+
+            <td data-label="Method">
+
+              <span
+                class="method-badge"
+                [ngClass]="getMethodClass(payment.method)">
+
+                {{ payment.method }}
+
+              </span>
+
+            </td>
+
+
+            <td data-label="Amount">
+
+              <strong class="amount">
+                ৳{{ payment.amount }}
+              </strong>
+
+            </td>
+
+
+            <td data-label="Date">
+
+              <div class="date-cell">
+                <strong>{{ payment.date }}</strong>
+                <span>{{ payment.time }}</span>
+              </div>
+
+            </td>
+
+
+            <td data-label="Status">
+
+              <span
+                class="status-badge"
+                [ngClass]="getStatusClass(payment.status)">
+
+                {{ payment.status }}
+
+              </span>
+
+            </td>
+
+
+            <td data-label="Action">
+
+              <button
+                type="button"
+                class="view-btn">
+
+                View
+
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <tr *ngIf="filteredPayments.length === 0">
+
+            <td colspan="8">
+
+              <div class="empty-state">
+                <div>💳</div>
+                <h3>No transactions found</h3>
+                <p>No payments match this filter.</p>
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- Footer -->
+    <div class="table-footer">
+
+      <span>
+        Showing
+        <strong>{{ filteredPayments.length }}</strong>
+        transactions
+      </span>
+
+      <div class="pagination">
+
+        <button type="button" disabled>‹</button>
+
+        <button type="button" class="current">1</button>
+
+        <button type="button">2</button>
+
+        <button type="button">3</button>
+
+        <button type="button">›</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

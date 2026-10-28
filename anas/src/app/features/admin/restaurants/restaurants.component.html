@@ -1,0 +1,364 @@
+<div class="restaurants-page">
+
+  <!-- ================= LIST VIEW ================= -->
+  <ng-container *ngIf="!showForm">
+
+  <!-- ================= HEADER ================= -->
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">RESTAURANT MANAGEMENT</span>
+
+      <h1>
+        Restaurants
+      </h1>
+
+      <p>
+        Manage restaurants, approvals and restaurant performance.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="add-btn"
+      (click)="addRestaurant()">
+
+      + Add Restaurant
+
+    </button>
+
+  </div>
+
+
+  <!-- ================= STATS ================= -->
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon red">
+        🍽️
+      </div>
+
+      <div class="stat-content">
+        <span>TOTAL RESTAURANTS</span>
+        <strong>{{ restaurants.length }}</strong>
+        <small>Registered restaurants</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon green">
+        ✅
+      </div>
+
+      <div class="stat-content">
+        <span>ACTIVE</span>
+        <strong>{{ activeCount }}</strong>
+        <small>Currently active</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon orange">
+        ⏳
+      </div>
+
+      <div class="stat-content">
+        <span>PENDING</span>
+        <strong>{{ pendingCount }}</strong>
+        <small>Waiting for approval</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon purple">
+        ⭐
+      </div>
+
+      <div class="stat-content">
+        <span>AVERAGE RATING</span>
+        <strong>{{ averageRating }}</strong>
+        <small>Customer rating</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RESTAURANT LIST ================= -->
+
+  <div class="restaurant-card">
+
+    <div class="card-header">
+
+      <div>
+        <span class="card-label">
+          RESTAURANT DIRECTORY
+        </span>
+
+        <h2>
+          All Restaurants
+        </h2>
+
+        <p>
+          View and manage registered restaurants.
+        </p>
+      </div>
+
+
+      <div class="header-tools">
+
+        <select [(ngModel)]="selectedStatus">
+
+          <option value="All">
+            All Status
+          </option>
+
+          <option value="Active">
+            Active
+          </option>
+
+          <option value="Pending">
+            Pending
+          </option>
+
+          <option value="Inactive">
+            Inactive
+          </option>
+
+        </select>
+
+
+        <input
+          type="text"
+          placeholder="Search restaurant..."
+          [(ngModel)]="searchText"
+        />
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= TABLE ================= -->
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Restaurant</th>
+
+            <th>Owner</th>
+
+            <th>Location</th>
+
+            <th>Orders</th>
+
+            <th>Rating</th>
+
+            <th>Status</th>
+
+            <th>Actions</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="let restaurant of filteredRestaurants">
+
+            <!-- Restaurant -->
+
+            <td>
+
+              <div class="restaurant-info">
+
+                <div class="restaurant-avatar">
+                  {{ restaurant.name.charAt(0) }}
+                </div>
+
+                <div>
+
+                  <strong>
+                    {{ restaurant.name }}
+                  </strong>
+
+                  <span>
+                    {{ restaurant.category }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- Owner -->
+
+            <td>
+
+              <span class="owner-name">
+                {{ restaurant.owner }}
+              </span>
+
+            </td>
+
+
+            <!-- Location -->
+
+            <td>
+
+              <span class="location">
+                📍 {{ restaurant.location }}
+              </span>
+
+            </td>
+
+
+            <!-- Orders -->
+
+            <td>
+
+              <strong class="orders-count">
+                {{ restaurant.orders | number }}
+              </strong>
+
+            </td>
+
+
+            <!-- Rating -->
+
+            <td>
+
+              <span class="rating">
+                ⭐ {{ restaurant.rating }}
+              </span>
+
+            </td>
+
+
+            <!-- Status -->
+
+            <td>
+
+              <span
+                class="status-badge"
+                [class.active]="restaurant.status === 'Active'"
+                [class.pending]="restaurant.status === 'Pending'"
+                [class.inactive]="restaurant.status === 'Inactive'">
+
+                {{ restaurant.status }}
+
+              </span>
+
+            </td>
+
+
+            <!-- Actions -->
+
+            <td>
+
+              <div class="action-buttons">
+
+                <button
+                  type="button"
+                  class="view-action"
+                  title="View"
+                  (click)="viewRestaurant(restaurant.id)">
+
+                  👁️
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="edit-action"
+                  title="Edit"
+                  (click)="editRestaurant(restaurant.id)">
+
+                  ✏️
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="delete-action"
+                  title="Delete"
+                  (click)="deleteRestaurant(restaurant.id)">
+
+                  🗑️
+
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Empty State -->
+
+          <tr *ngIf="filteredRestaurants.length === 0">
+
+            <td
+              colspan="7"
+              class="empty-state">
+
+              <div class="empty-icon">
+                🍽️
+              </div>
+
+              <strong>
+                No restaurants found
+              </strong>
+
+              <span>
+                Try changing your search or filter.
+              </span>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  </ng-container>
+
+  <!-- ================= FORM VIEW ================= -->
+  <ng-container *ngIf="showForm">
+    <app-add-restaurant
+      [restaurantToEdit]="selectedRestaurantToEdit"
+      (saved)="onFormSaved($event)"
+      (close)="closeForm()">
+    </app-add-restaurant>
+  </ng-container>
+
+</div>

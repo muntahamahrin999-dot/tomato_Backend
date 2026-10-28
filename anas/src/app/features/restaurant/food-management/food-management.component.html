@@ -1,0 +1,220 @@
+<div class="restaurant-food-page">
+
+  <!-- ================= FORM VIEW ================= -->
+  @if (showForm) {
+    <section class="food-form-section">
+      <div class="form-header">
+        <h2>{{ editingFoodId ? 'Edit Food Item' : 'Add New Food Item' }}</h2>
+        <p>Enter the food details, price, category and availability below.</p>
+      </div>
+
+      <div class="form-card">
+        <form (ngSubmit)="onSaveFood()" class="food-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="foodName">Food Name *</label>
+              <input
+                id="foodName"
+                type="text"
+                [(ngModel)]="foodFormData.name"
+                name="name"
+                placeholder="e.g. Crispy Chicken Burger"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label for="foodCategory">Category</label>
+              <select id="foodCategory" [(ngModel)]="foodFormData.category" name="category">
+                @for (cat of categories; track cat) {
+                  <option [value]="cat">{{ cat }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="foodPrice">Price (৳) *</label>
+              <input
+                id="foodPrice"
+                type="number"
+                min="1"
+                [(ngModel)]="foodFormData.price"
+                name="price"
+                placeholder="250"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label for="prepTime">Preparation Time (minutes)</label>
+              <input
+                id="prepTime"
+                type="number"
+                min="5"
+                [(ngModel)]="foodFormData.preparationTime"
+                name="preparationTime"
+                placeholder="20" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="foodIcon">Food Emoji / Icon</label>
+              <input
+                id="foodIcon"
+                type="text"
+                [(ngModel)]="foodFormData.icon"
+                name="icon"
+                placeholder="🍔 / 🍕 / 🍛" />
+            </div>
+
+            <div class="form-group">
+              <label for="foodAvailability">Initial Availability</label>
+              <select id="foodAvailability" [(ngModel)]="foodFormData.available" name="available">
+                <option [ngValue]="true">Available</option>
+                <option [ngValue]="false">Unavailable</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="foodImage">Food Image URL</label>
+            <input
+              id="foodImage"
+              type="url"
+              [(ngModel)]="foodFormData.image"
+              name="image"
+              placeholder="https://images.unsplash.com/photo-..." />
+            <div class="sample-images-row" style="margin-top: 8px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <span style="font-size: 11px; color: #64748b; font-weight: 600;">Quick Presets:</span>
+              @for (img of sampleImages; track img.label) {
+                <button type="button" class="preset-btn" (click)="selectSampleImage(img.url)" style="background: #f1f5f9; border: 1px solid #cbd5e1; padding: 3px 8px; border-radius: 6px; font-size: 11px; cursor: pointer;">
+                  {{ img.label }}
+                </button>
+              }
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="foodDesc">Description</label>
+            <textarea
+              id="foodDesc"
+              [(ngModel)]="foodFormData.description"
+              name="description"
+              rows="3"
+              placeholder="Delicious ingredients, serving size, etc..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+            <button type="submit" class="btn-save">
+              {{ editingFoodId ? 'Update Food' : 'Save Food Item' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  } @else {
+    <!-- ================= HEADER ================= -->
+    <section class="page-header">
+      <div>
+        <span class="eyebrow">MENU MANAGEMENT</span>
+        <h1>Food <span>Management</span></h1>
+        <p>Add, update and manage your restaurant food items.</p>
+      </div>
+
+      <button
+        type="button"
+        class="add-button"
+        (click)="addFood()">
+        + Add Food
+      </button>
+    </section>
+
+    <!-- ================= STATISTICS ================= -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">🍔</div>
+        <div>
+          <span>TOTAL FOODS</span>
+          <h2>{{ foods.length }}</h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon available">✅</div>
+        <div>
+          <span>AVAILABLE</span>
+          <h2>{{ availableCount }}</h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon unavailable">❌</div>
+        <div>
+          <span>UNAVAILABLE</span>
+          <h2>{{ unavailableCount }}</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOD LIST ================= -->
+    <section class="content-card">
+      <div class="card-header">
+        <div class="search-box">
+          <span>🔍</span>
+          <input
+            type="text"
+            placeholder="Search food by name or category..."
+            [(ngModel)]="searchText" />
+        </div>
+      </div>
+
+      <div class="food-table">
+        <div class="table-header">
+          <span>ITEM</span>
+          <span>CATEGORY</span>
+          <span>PRICE</span>
+          <span>STATUS</span>
+          <span>ACTIONS</span>
+        </div>
+
+        @for (food of filteredFoods; track food.id) {
+          <div class="table-row">
+            <div class="food-info">
+              <div class="food-image">{{ food.icon || '🍽️' }}</div>
+              <div>
+                <strong>{{ food.name }}</strong>
+                <small>{{ food.description }}</small>
+              </div>
+            </div>
+
+            <span>{{ food.category || food.categoryName }}</span>
+            <strong>৳{{ food.price }}</strong>
+
+            <span>
+              <button
+                type="button"
+                class="availability-btn"
+                [class.available]="food.available"
+                [class.unavailable]="!food.available"
+                (click)="toggleAvailability(food.id)">
+                {{ food.available ? 'Available' : 'Unavailable' }}
+              </button>
+            </span>
+
+            <div class="action-buttons">
+              <button type="button" title="Edit" (click)="editFood(food.id)">✏️</button>
+              <button type="button" title="Delete" (click)="deleteFood(food.id)">🗑️</button>
+            </div>
+          </div>
+        } @empty {
+          <div class="empty-state" style="padding: 40px; text-align: center; color: #64748b;">
+            <p>No food items found.</p>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+</div>

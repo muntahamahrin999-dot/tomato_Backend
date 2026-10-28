@@ -1,0 +1,176 @@
+<div class="form-page">
+
+  <!-- ================= HEADER ================= -->
+  <div class="form-header">
+    <div class="title-group">
+      <h1>{{ formData.id ? 'Edit Coupon Campaign' : 'Create New Coupon' }}</h1>
+      <p>
+        {{ formData.id ? 'Modify promotional discount rules, usage limits or campaign dates.' : 'Create a promotional discount code for customer orders.' }}
+      </p>
+    </div>
+  </div>
+
+  <!-- ================= FORM CARD ================= -->
+  <div class="form-card">
+    <form (ngSubmit)="onSubmit()" class="form-content">
+
+      <div *ngIf="errorMessage" class="error-banner">
+        ⚠️ {{ errorMessage }}
+      </div>
+
+      <!-- SECTION 1: PROMO CODE & TITLE -->
+      <div class="section-title">
+        <h3>1. Coupon Identification</h3>
+        <p>Promo code string and public campaign title</p>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="couponCode">Coupon Code <span class="required">*</span></label>
+          <input
+            id="couponCode"
+            type="text"
+            [(ngModel)]="formData.code"
+            name="code"
+            placeholder="e.g. WELCOME20 / SAVE100"
+            style="text-transform: uppercase; font-weight: 700; letter-spacing: 1px;"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="couponTitle">Campaign Title</label>
+          <input
+            id="couponTitle"
+            type="text"
+            [(ngModel)]="formData.title"
+            name="title"
+            placeholder="e.g. Weekend Mega Treat" />
+        </div>
+      </div>
+
+      <!-- SECTION 2: DISCOUNT RULES -->
+      <div class="section-title">
+        <h3>2. Discount Rules & Limits</h3>
+        <p>Percentage or flat discount, minimum order and cap</p>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="discountType">Discount Type</label>
+          <select id="discountType" [(ngModel)]="formData.discountType" name="discountType">
+            <option value="Percentage">Percentage (%)</option>
+            <option value="Fixed">Flat Amount (৳)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="discountVal">
+            {{ formData.discountType === 'Percentage' ? 'Discount Percentage (%) *' : 'Discount Amount (৳) *' }}
+          </label>
+          <input
+            id="discountVal"
+            type="number"
+            min="1"
+            [(ngModel)]="formData.discount"
+            name="discount"
+            required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="minOrder">Min Order Amount (৳)</label>
+          <input
+            id="minOrder"
+            type="number"
+            min="0"
+            [(ngModel)]="formData.minOrder"
+            name="minOrder"
+            placeholder="0" />
+        </div>
+
+        <div class="form-group">
+          <label for="maxDiscount">Max Discount Cap (৳)</label>
+          <input
+            id="maxDiscount"
+            type="number"
+            min="0"
+            [(ngModel)]="formData.maxDiscount"
+            name="maxDiscount"
+            placeholder="200" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="usageLimit">Max Usage Limit</label>
+          <input
+            id="usageLimit"
+            type="number"
+            min="1"
+            [(ngModel)]="formData.usageLimit"
+            name="usageLimit" />
+        </div>
+
+        <div class="form-group">
+          <label for="couponStatus">Campaign Status</label>
+          <select id="couponStatus" [(ngModel)]="formData.status" name="status">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="Expired">Expired</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SECTION 3: VALIDITY SCHEDULE -->
+      <div class="section-title">
+        <h3>3. Validity & Conditions</h3>
+        <p>Valid from, expiry date and campaign terms</p>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input
+            id="startDate"
+            type="text"
+            [(ngModel)]="formData.startDate"
+            name="startDate"
+            placeholder="e.g. Oct 12, 2026" />
+        </div>
+
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date</label>
+          <input
+            id="expiryDate"
+            type="text"
+            [(ngModel)]="formData.expiryDate"
+            name="expiryDate"
+            placeholder="e.g. Nov 30, 2026" />
+        </div>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="couponDesc">Description / Offer Terms</label>
+        <textarea
+          id="couponDesc"
+          [(ngModel)]="formData.description"
+          name="description"
+          rows="2"
+          placeholder="Brief terms and conditions for customers..."></textarea>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()" [disabled]="isSubmitting">
+          Cancel
+        </button>
+        <button type="submit" class="btn-submit" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Saving...' : (formData.id ? 'Update Coupon' : 'Create Coupon') }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

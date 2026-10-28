@@ -1,0 +1,1079 @@
+/* =========================================
+   ORDER TRACKING PAGE
+========================================= */
+
+.tracking-page {
+  min-height: 100vh;
+  background: #f4efe6;
+  color: #1d3b2c;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.tracking-hero {
+  padding: 90px 7% 70px;
+  background: #1d3b2c;
+  color: #fffaf1;
+}
+
+.hero-content {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: #c49a52;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.tracking-hero h1 {
+  margin: 0;
+
+  font-size: clamp(44px, 6vw, 72px);
+
+  line-height: 1.05;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+}
+
+.tracking-hero h1 span {
+  color: #c96b45;
+}
+
+.tracking-hero p {
+  max-width: 600px;
+
+  margin: 22px 0 0;
+
+  color: #dce4d8;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.tracking-content {
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  padding: 55px 24px 90px;
+}
+
+
+/* =========================================
+   COMMON
+========================================= */
+
+.section-label {
+  display: inline-block;
+
+  color: #68746c;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+}
+
+
+/* =========================================
+   ORDER HEADER
+========================================= */
+
+.order-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 24px;
+}
+
+.order-header h2 {
+  margin: 8px 0 0;
+
+  color: #1d3b2c;
+
+  font-size: 28px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+.status-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 9px 16px;
+
+  border-radius: 30px;
+
+  background: #dce4d8;
+
+  color: #1d3b2c;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+.status-badge::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #c96b45;
+
+  box-shadow: 0 0 0 4px rgba(201, 107, 69, 0.12);
+}
+
+
+/* =========================================
+   COMMON CARDS
+========================================= */
+
+.restaurant-card,
+.tracking-card,
+.delivery-card {
+  background: #fffaf1;
+
+  border: 1px solid #e5dfd2;
+
+  border-radius: 22px;
+
+  padding: 30px;
+
+  margin-bottom: 24px;
+
+  box-shadow:
+    0 10px 30px rgba(29, 59, 44, 0.055);
+}
+
+
+/* =========================================
+   RESTAURANT CARD
+========================================= */
+
+.restaurant-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+.restaurant-icon {
+  width: 60px;
+  height: 60px;
+
+  min-width: 60px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 16px;
+
+  background: #dce4d8;
+
+  font-size: 27px;
+}
+
+.restaurant-card span {
+  color: #68746c;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.6px;
+}
+
+.restaurant-card h3 {
+  margin: 6px 0;
+
+  color: #1d3b2c;
+
+  font-size: 21px;
+
+  font-weight: 800;
+}
+
+.restaurant-card p {
+  margin: 0;
+
+  color: #68746c;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   ORDER PROGRESS CARD
+========================================= */
+
+.tracking-card {
+  padding: 34px;
+}
+
+
+/* HEADER */
+
+.progress-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 30px;
+
+  margin-bottom: 48px;
+}
+
+.progress-header h2 {
+  margin: 8px 0 5px;
+
+  color: #1d3b2c;
+
+  font-size: 27px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.4px;
+}
+
+.progress-subtitle {
+  margin: 0;
+
+  color: #68746c;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   ETA CARD
+========================================= */
+
+.eta-card {
+  min-width: 150px;
+
+  padding: 13px 17px;
+
+  background: #f4efe6;
+
+  border: 1px solid #e6dfd3;
+
+  border-radius: 14px;
+
+  text-align: right;
+}
+
+.eta-card span {
+  display: block;
+
+  color: #68746c;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+}
+
+.eta-card strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #c96b45;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   ORDER PROGRESS
+========================================= */
+
+.order-progress {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  align-items: start;
+
+  padding: 0 8px;
+}
+
+
+/* Background Line */
+
+.progress-track {
+  position: absolute;
+
+  top: 31px;
+
+  left: 12.5%;
+
+  right: 12.5%;
+
+  height: 4px;
+
+  border-radius: 20px;
+
+  background: #e3ded4;
+
+  z-index: 0;
+}
+
+
+/* Active Line */
+
+.progress-track-active {
+  position: absolute;
+
+  top: 31px;
+
+  left: 12.5%;
+
+  width: 37.5%;
+
+  height: 4px;
+
+  border-radius: 20px;
+
+  background: linear-gradient(
+    90deg,
+    #1d3b2c 0%,
+    #356348 55%,
+    #c96b45 100%
+  );
+
+  z-index: 1;
+
+  box-shadow:
+    0 2px 7px rgba(29, 59, 44, 0.12);
+}
+
+
+/* =========================================
+   PROGRESS ITEM
+========================================= */
+
+.progress-item {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   PROGRESS NODE
+========================================= */
+
+.progress-node {
+  position: relative;
+
+  width: 62px;
+  height: 62px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #eeeae2;
+
+  border: 6px solid #fffaf1;
+
+  box-shadow:
+    0 0 0 1px #dcd5c9;
+
+  color: #8c938d;
+
+  font-size: 18px;
+
+  transition: all 0.3s ease;
+}
+
+
+/* Completed */
+
+.progress-item.completed .progress-node {
+  background: #1d3b2c;
+
+  color: #fffaf1;
+
+  box-shadow:
+    0 0 0 5px #dce4d8,
+    0 7px 18px rgba(29, 59, 44, 0.16);
+}
+
+
+/* Active */
+
+.progress-item.active .progress-node {
+  background: #c96b45;
+
+  color: #fffaf1;
+
+  transform: scale(1.1);
+
+  box-shadow:
+    0 0 0 6px #f3dfd5,
+    0 9px 25px rgba(201, 107, 69, 0.25);
+}
+
+
+/* =========================================
+   ACTIVE PULSE
+========================================= */
+
+.active-ring {
+  position: absolute;
+
+  inset: -9px;
+
+  border: 2px solid rgba(201, 107, 69, 0.35);
+
+  border-radius: 50%;
+
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+
+  0% {
+    transform: scale(0.88);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(1.16);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.16);
+    opacity: 0;
+  }
+}
+
+
+/* =========================================
+   STEP TEXT
+========================================= */
+
+.progress-text {
+  margin-top: 18px;
+}
+
+.step-number {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #a1a7a1;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+}
+
+.progress-text h3 {
+  margin: 0;
+
+  color: #1d3b2c;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+.progress-text p {
+  margin: 6px 0 0;
+
+  color: #8a918b;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   LIVE STATUS
+========================================= */
+
+.live-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 7px;
+
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  background: #f3dfd5;
+
+  color: #a64f30;
+
+  font-size: 9px;
+
+  font-weight: 800;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #c96b45;
+
+  box-shadow:
+    0 0 0 4px rgba(201, 107, 69, 0.13);
+
+  animation: live-dot-pulse 1.7s infinite;
+}
+
+@keyframes live-dot-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+
+/* =========================================
+   CURRENT STATUS CARD
+========================================= */
+
+.current-status-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 45px;
+
+  padding: 18px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4efe6,
+      #f8f3ea
+    );
+
+  border: 1px solid #e7dfd3;
+
+  border-left: 4px solid #c96b45;
+
+  border-radius: 16px;
+}
+
+
+/* Icon */
+
+.current-status-icon {
+  width: 47px;
+  height: 47px;
+
+  min-width: 47px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 13px;
+
+  background: #fffaf1;
+
+  box-shadow:
+    0 4px 12px rgba(29, 59, 44, 0.07);
+
+  font-size: 21px;
+}
+
+
+/* Content */
+
+.current-status-content {
+  flex: 1;
+}
+
+.current-status-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+.current-status-title strong {
+  color: #1d3b2c;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+.current-status-content p {
+  margin: 5px 0 0;
+
+  color: #68746c;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* Live badge */
+
+.live-badge {
+  padding: 4px 7px;
+
+  border-radius: 6px;
+
+  background: #1d3b2c;
+
+  color: #fffaf1;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+/* Arrow */
+
+.status-arrow {
+  width: 36px;
+  height: 36px;
+
+  min-width: 36px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 10px;
+
+  background: #fffaf1;
+
+  color: #c96b45;
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   DELIVERY INFORMATION
+========================================= */
+
+.card-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+.card-heading h2 {
+  margin: 8px 0 0;
+
+  color: #1d3b2c;
+
+  font-size: 26px;
+
+  font-weight: 800;
+}
+
+.delivery-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.info-box {
+  padding: 19px 20px;
+
+  background: #f4efe6;
+
+  border: 1px solid #ebe4d8;
+
+  border-radius: 15px;
+}
+
+.info-box span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #68746c;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+}
+
+.info-box strong {
+  color: #1d3b2c;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.tracking-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 35px;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 180px;
+
+  padding: 14px 24px;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.primary-button {
+  background: #1d3b2c;
+
+  color: #fffaf1;
+
+  box-shadow:
+    0 5px 15px rgba(29, 59, 44, 0.12);
+}
+
+.secondary-button {
+  background: transparent;
+
+  color: #1d3b2c;
+
+  border: 1px solid #1d3b2c;
+}
+
+.primary-button:hover {
+  background: #356348;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(29, 59, 44, 0.16);
+}
+
+.secondary-button:hover {
+  background: #dce4d8;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+
+  .tracking-hero {
+    padding: 70px 24px 55px;
+  }
+
+  .tracking-content {
+    padding: 45px 18px 70px;
+  }
+
+  .tracking-card,
+  .restaurant-card,
+  .delivery-card {
+    padding: 24px;
+  }
+
+  .progress-header {
+    flex-direction: column;
+
+    margin-bottom: 38px;
+  }
+
+  .eta-card {
+    width: 100%;
+
+    text-align: left;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .tracking-hero h1 {
+    font-size: 44px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .tracking-hero p {
+    font-size: 14px;
+  }
+
+
+  /* Header */
+
+  .order-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  /* Restaurant */
+
+  .restaurant-card {
+    gap: 14px;
+  }
+
+  .restaurant-icon {
+    width: 54px;
+    height: 54px;
+
+    min-width: 54px;
+
+    font-size: 24px;
+  }
+
+
+  /* Vertical Progress */
+
+  .order-progress {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+
+    padding: 0;
+  }
+
+  .progress-track {
+    top: 29px;
+    bottom: 29px;
+
+    left: 28px;
+    right: auto;
+
+    width: 4px;
+
+    height: auto;
+  }
+
+  .progress-track-active {
+    top: 29px;
+
+    left: 28px;
+
+    width: 4px;
+
+    height: 40%;
+  }
+
+  .progress-item {
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 16px;
+
+    text-align: left;
+  }
+
+  .progress-node {
+    width: 58px;
+    height: 58px;
+
+    min-width: 58px;
+  }
+
+  .progress-text {
+    margin-top: 0;
+  }
+
+
+  /* Current status */
+
+  .current-status-card {
+    align-items: flex-start;
+  }
+
+  .status-arrow {
+    display: none;
+  }
+
+
+  /* Delivery */
+
+  .delivery-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* Buttons */
+
+  .tracking-actions {
+    flex-direction: column;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 450px) {
+
+  .tracking-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .tracking-card,
+  .restaurant-card,
+  .delivery-card {
+    padding: 20px;
+  }
+
+  .tracking-hero {
+    padding: 60px 20px 48px;
+  }
+
+  .tracking-hero h1 {
+    font-size: 38px;
+  }
+
+  .tracking-hero p {
+    font-size: 13px;
+  }
+
+  .progress-header h2 {
+    font-size: 23px;
+  }
+
+  .current-status-title {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+}

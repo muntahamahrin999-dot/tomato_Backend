@@ -1,0 +1,618 @@
+<div class="dashboard">
+
+  <!-- =====================================================
+       WELCOME SECTION
+  ====================================================== -->
+  <section class="welcome-section">
+
+    <div class="welcome-content">
+
+      <span class="welcome-label">
+        GOOD MORNING 👋
+      </span>
+
+      <h1>
+        Welcome back, Rider!
+      </h1>
+
+      <p>
+        Here's what's happening with your deliveries today.
+      </p>
+
+    </div>
+
+    <div class="date-box">
+      <span>Today</span>
+      <strong>{{ today | date:'MM/dd/yyyy' }}</strong>
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       STATISTICS
+  ====================================================== -->
+  <section class="stats-grid">
+
+    <div
+      class="stat-card"
+      *ngFor="let stat of stats">
+
+      <div class="stat-top">
+
+        <div
+          class="stat-icon"
+          [ngClass]="stat.type">
+
+          {{ stat.icon }}
+
+        </div>
+
+        <span class="stat-menu">
+          •••
+        </span>
+
+      </div>
+
+      <div class="stat-content">
+
+        <span class="stat-title">
+          {{ stat.title }}
+        </span>
+
+        <h2>
+          {{ stat.value }}
+        </h2>
+
+        <span
+          class="stat-change"
+          [ngClass]="stat.type">
+
+          {{ stat.change }}
+
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       AVAILABLE ORDERS
+       Comes directly after statistics
+  ====================================================== -->
+  <section class="available-orders-card">
+
+    <!-- HEADER -->
+    <div class="available-header">
+
+      <div class="available-heading">
+
+        <div class="available-title-row">
+
+          <div>
+
+            <span class="card-label">
+              DELIVERY REQUESTS
+            </span>
+
+            <h2>
+              Available Orders
+            </h2>
+
+          </div>
+
+          <span class="request-count">
+            {{ availableOrderCount }}
+            {{ availableOrderCount === 1 ? 'Order' : 'Orders' }}
+          </span>
+
+        </div>
+
+        <p>
+          New delivery requests available for you to accept.
+        </p>
+
+      </div>
+
+
+      <!-- LIVE STATUS -->
+      <div
+        class="live-indicator"
+        [class.offline]="!isAvailable">
+
+        <span class="live-dot"></span>
+
+        <span>
+          {{ isAvailable ? 'Live Requests' : 'Unavailable' }}
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         UNAVAILABLE STATE
+    ================================================== -->
+    <div
+      class="unavailable-state"
+      *ngIf="!isAvailable">
+
+      <div class="unavailable-icon">
+        🛵
+      </div>
+
+      <div class="unavailable-content">
+
+        <h3>
+          You're currently unavailable
+        </h3>
+
+        <p>
+          Set your status to Available from the top navigation
+          to receive new delivery requests.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         AVAILABLE ORDER LIST
+    ================================================== -->
+    <div
+      class="request-list"
+      *ngIf="isAvailable && availableOrders.length > 0">
+
+      <article
+        class="request-card"
+        *ngFor="let order of availableOrders">
+
+
+        <!-- ORDER TOP -->
+        <div class="request-top">
+
+          <div class="restaurant-info">
+
+            <div class="restaurant-icon">
+              🍽️
+            </div>
+
+            <div class="restaurant-details">
+
+              <span class="request-label">
+                PICKUP FROM
+              </span>
+
+              <h3>
+                {{ order.restaurant }}
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="order-earning">
+
+            <span>
+              Earning
+            </span>
+
+            <strong>
+              {{ order.amount }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- DELIVERY ROUTE -->
+        <div class="request-route">
+
+          <!-- PICKUP -->
+          <div class="route-point">
+
+            <span class="route-dot pickup-dot"></span>
+
+            <div class="route-info">
+
+              <small>
+                Pickup
+              </small>
+
+              <strong>
+                {{ order.restaurant }}
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- CONNECTING LINE -->
+          <div class="route-line"></div>
+
+
+          <!-- DELIVERY -->
+          <div class="route-point">
+
+            <span class="route-dot delivery-dot"></span>
+
+            <div class="route-info">
+
+              <small>
+                Deliver to
+              </small>
+
+              <strong>
+                {{ order.address }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ORDER META -->
+        <div class="request-meta">
+
+          <span class="meta-item">
+            📍 {{ order.distance }}
+          </span>
+
+          <span class="meta-item">
+            ⏱ {{ order.eta }}
+          </span>
+
+          <span class="meta-item">
+            📦 {{ order.items }}
+          </span>
+
+          <span class="order-id">
+            {{ order.id }}
+          </span>
+
+        </div>
+
+
+        <!-- ORDER FOOTER -->
+        <div class="request-bottom">
+
+          <div class="new-request">
+
+            <span class="request-live-dot"></span>
+
+            New request
+
+          </div>
+
+
+          <button
+            type="button"
+            class="accept-btn"
+            (click)="acceptOrder(order)">
+
+            <span>
+              Accept Order
+            </span>
+
+            <b>
+              →
+            </b>
+
+          </button>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <!-- =================================================
+         NO ORDERS
+    ================================================== -->
+    <div
+      class="no-orders-state"
+      *ngIf="isAvailable && availableOrders.length === 0">
+
+      <div class="no-orders-icon">
+        ✓
+      </div>
+
+      <h3>
+        You're all caught up!
+      </h3>
+
+      <p>
+        There are no new delivery requests right now.
+        Stay available and we'll notify you when one arrives.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       RECENT ORDERS + QUICK ACTIONS
+  ====================================================== -->
+  <section class="dashboard-grid">
+
+
+    <!-- =================================================
+         RECENT ORDERS
+    ================================================== -->
+    <div class="orders-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <span class="card-label">
+            DELIVERY ACTIVITY
+          </span>
+
+          <h2>
+            Recent Orders
+          </h2>
+
+        </div>
+
+        <a
+          routerLink="/delivery/assigned-orders"
+          class="view-all">
+
+          View All
+
+          <span>
+            →
+          </span>
+
+        </a>
+
+      </div>
+
+
+      <div class="orders-list">
+
+        <div
+          class="order-row"
+          *ngFor="let order of recentOrders">
+
+
+          <!-- ORDER ICON -->
+          <div class="order-icon">
+            🛵
+          </div>
+
+
+          <!-- ORDER INFORMATION -->
+          <div class="order-info">
+
+            <div class="order-title">
+
+              <strong>
+                {{ order.id }}
+              </strong>
+
+              <span
+                class="status"
+                [ngClass]="getStatusClass(order.status)">
+
+                {{ order.status }}
+
+              </span>
+
+            </div>
+
+            <p>
+              {{ order.customer }}
+            </p>
+
+            <small>
+              {{ order.restaurant }}
+              ·
+              {{ order.address }}
+            </small>
+
+          </div>
+
+
+          <!-- ORDER RIGHT -->
+          <div class="order-right">
+
+            <strong>
+              {{ order.amount }}
+            </strong>
+
+            <span>
+              {{ order.time }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         QUICK ACTIONS
+    ================================================== -->
+    <div class="quick-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <span class="card-label">
+            QUICK ACCESS
+          </span>
+
+          <h2>
+            Quick Actions
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="quick-actions">
+
+
+        <!-- ASSIGNED ORDERS -->
+        <a
+          routerLink="/delivery/assigned-orders"
+          class="quick-action">
+
+          <div class="quick-icon red">
+            📦
+          </div>
+
+          <div class="quick-text">
+
+            <strong>
+              Assigned Orders
+            </strong>
+
+            <span>
+              View new orders
+            </span>
+
+          </div>
+
+          <b>
+            →
+          </b>
+
+        </a>
+
+
+        <!-- ACTIVE DELIVERY -->
+        <a
+          routerLink="/delivery/active-delivery"
+          class="quick-action">
+
+          <div class="quick-icon green">
+            🛵
+          </div>
+
+          <div class="quick-text">
+
+            <strong>
+              Active Delivery
+            </strong>
+
+            <span>
+              Track current delivery
+            </span>
+
+          </div>
+
+          <b>
+            →
+          </b>
+
+        </a>
+
+
+        <!-- EARNINGS -->
+        <a
+          routerLink="/delivery/earnings"
+          class="quick-action">
+
+          <div class="quick-icon yellow">
+            ৳
+          </div>
+
+          <div class="quick-text">
+
+            <strong>
+              My Earnings
+            </strong>
+
+            <span>
+              Check your income
+            </span>
+
+          </div>
+
+          <b>
+            →
+          </b>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       PERFORMANCE
+  ====================================================== -->
+  <section class="performance-card">
+
+
+    <div class="performance-left">
+
+      <div class="card-label">
+        YOUR PERFORMANCE
+      </div>
+
+      <h2>
+        Great job! 🎉
+      </h2>
+
+      <p>
+        You have completed
+        <strong>8 deliveries</strong>
+        today. Keep up the great work!
+      </p>
+
+    </div>
+
+
+    <div class="progress-area">
+
+      <div class="progress-info">
+
+        <span>
+          Today's Goal
+        </span>
+
+        <strong>
+          8 / 12
+        </strong>
+
+      </div>
+
+      <div class="progress-bar">
+
+        <div class="progress-fill"></div>
+
+      </div>
+
+      <span class="progress-text">
+        4 more deliveries to reach your goal
+      </span>
+
+    </div>
+
+  </section>
+
+</div>

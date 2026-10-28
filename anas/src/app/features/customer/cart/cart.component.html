@@ -1,0 +1,161 @@
+<div class="cart-page">
+
+  <section class="cart-hero">
+    <div class="hero-content">
+      <span class="eyebrow">YOUR ORDER</span>
+
+      <h1>Your <span>shopping cart.</span></h1>
+
+      <p>
+        Review your selected food items before checkout.
+      </p>
+    </div>
+  </section>
+
+  <main class="cart-content">
+
+    @if (cartItems.length > 0) {
+
+      <div class="cart-layout">
+
+        <section class="cart-items">
+
+          <div class="section-heading">
+            <div>
+              <span class="section-label">CART ITEMS</span>
+              <h2>Your selected foods</h2>
+            </div>
+
+            <button
+              type="button"
+              class="clear-button"
+              (click)="clearCart()"
+            >
+              Clear cart
+            </button>
+          </div>
+
+          @for (item of cartItems; track item.id) {
+
+            <article class="cart-item">
+
+              <img
+                [src]="item.image"
+                [alt]="item.name"
+              />
+
+              <div class="item-info">
+                <span>{{ item.restaurant }}</span>
+                <h3>{{ item.name }}</h3>
+                <strong>৳{{ item.price }}</strong>
+              </div>
+
+              <div class="quantity-control">
+
+                <button
+                  type="button"
+                  (click)="decreaseQuantity(item.id)"
+                >
+                  −
+                </button>
+
+                <span>{{ item.quantity }}</span>
+
+                <button
+                  type="button"
+                  (click)="increaseQuantity(item.id)"
+                >
+                  +
+                </button>
+
+              </div>
+
+              <div class="item-total">
+                ৳{{ item.price * item.quantity }}
+              </div>
+
+              <button
+                type="button"
+                class="remove-button"
+                (click)="removeItem(item.id)"
+                aria-label="Remove item"
+              >
+                ×
+              </button>
+
+            </article>
+
+          }
+
+        </section>
+
+        <aside class="summary-card">
+
+          <span class="section-label">ORDER SUMMARY</span>
+
+          <h2>Summary</h2>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong>৳{{ subtotal }}</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Delivery fee</span>
+            <strong>৳{{ deliveryFee }}</strong>
+          </div>
+
+          <div class="summary-divider"></div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <strong>৳{{ total }}</strong>
+          </div>
+
+          <button
+            type="button"
+            class="checkout-button"
+             routerLink="/checkout"
+          >
+            Proceed to Checkout
+          </button>
+
+          <a
+            routerLink="/food"
+            class="continue-link"
+          >
+            ← Continue shopping
+          </a>
+
+        </aside>
+
+      </div>
+
+    } @else {
+
+      <section class="empty-cart">
+
+        <div class="empty-icon">🛒</div>
+
+        <span class="section-label">YOUR CART</span>
+
+        <h2>Your cart is empty</h2>
+
+        <p>
+          Looks like you haven't added any delicious food yet.
+        </p>
+
+        <a
+          routerLink="/food"
+          class="browse-button"
+        >
+          Browse Foods
+        </a>
+
+      </section>
+
+    }
+
+  </main>
+
+</div>

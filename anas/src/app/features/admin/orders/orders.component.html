@@ -1,0 +1,326 @@
+<div class="orders-page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">ORDER MANAGEMENT</span>
+
+      <h1>Orders</h1>
+
+      <p>
+        Monitor and manage all food delivery orders from one place.
+      </p>
+    </div>
+
+    <button class="refresh-btn" type="button" (click)="loadOrders()">
+      <span>↻</span>
+      Refresh
+    </button>
+
+  </div>
+
+
+  <!-- Statistics -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon orders-icon">
+        🛍️
+      </div>
+
+      <div>
+        <span class="stat-label">Total Orders</span>
+        <strong>{{ totalOrders }}</strong>
+        <small>Today's orders</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon pending-icon">
+        ⏳
+      </div>
+
+      <div>
+        <span class="stat-label">Pending</span>
+        <strong>{{ pendingOrders }}</strong>
+        <small>Need attention</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon active-icon">
+        🚚
+      </div>
+
+      <div>
+        <span class="stat-label">Active Orders</span>
+        <strong>{{ activeOrders }}</strong>
+        <small>Currently processing</small>
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon delivered-icon">
+        ✓
+      </div>
+
+      <div>
+        <span class="stat-label">Delivered</span>
+        <strong>{{ deliveredOrders }}</strong>
+        <small>Successfully completed</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Orders Card -->
+  <div class="orders-card">
+
+    <!-- Card Header -->
+    <div class="card-header">
+
+      <div>
+        <h2>All Orders</h2>
+        <p>Track every order placed on Tomato.</p>
+      </div>
+
+      <div class="search-box">
+        <span>⌕</span>
+        <input
+          type="text"
+          placeholder="Search order, customer, restaurant..."
+          [(ngModel)]="searchTerm"
+        />
+      </div>
+
+    </div>
+
+
+    <!-- Filters -->
+    <div class="filter-row">
+
+      <button
+        *ngFor="let filter of filters"
+        type="button"
+        class="filter-btn"
+        [class.active]="selectedFilter === filter"
+        (click)="setFilter(filter)">
+
+        {{ filter }}
+
+      </button>
+
+    </div>
+
+
+    <!-- Table -->
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Order</th>
+            <th>Customer</th>
+            <th>Restaurant</th>
+            <th>Items</th>
+            <th>Amount</th>
+            <th>Payment</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr *ngFor="let order of filteredOrders">
+
+            <!-- Order -->
+            <td data-label="Order">
+
+              <div class="order-id">
+                <strong>{{ order.id }}</strong>
+                <span>
+                  {{ order.date }} · {{ order.time }}
+                </span>
+              </div>
+
+            </td>
+
+
+            <!-- Customer -->
+            <td data-label="Customer">
+
+              <div class="customer-cell">
+
+                <div class="customer-avatar">
+                  {{ order.customer.charAt(0) }}
+                </div>
+
+                <span>
+                  {{ order.customer }}
+                </span>
+
+              </div>
+
+            </td>
+
+
+            <!-- Restaurant -->
+            <td data-label="Restaurant">
+              <span class="restaurant-name">
+                {{ order.restaurant }}
+              </span>
+            </td>
+
+
+            <!-- Items -->
+            <td data-label="Items">
+              {{ order.items }} items
+            </td>
+
+
+            <!-- Amount -->
+            <td data-label="Amount">
+
+              <strong class="amount">
+                ৳{{ order.amount }}
+              </strong>
+
+            </td>
+
+
+            <!-- Payment -->
+            <td data-label="Payment">
+
+              <span
+                class="payment-badge"
+                [class.paid]="order.payment === 'Paid'"
+                [class.unpaid]="order.payment === 'Pending'">
+
+                <span class="payment-dot"></span>
+
+                {{ order.payment }}
+
+              </span>
+
+            </td>
+
+
+            <!-- Status -->
+            <td data-label="Status">
+
+              <span
+                class="status-badge"
+                [ngClass]="getStatusClass(order.status)">
+
+                {{ order.status }}
+
+              </span>
+
+            </td>
+
+
+            <!-- Action -->
+            <td data-label="Action">
+
+              <button
+                class="view-btn"
+                type="button"
+                (click)="viewOrder(order)">
+                View
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Empty State -->
+          <tr *ngIf="filteredOrders.length === 0">
+
+            <td colspan="8">
+
+              <div class="empty-state">
+
+                <div class="empty-icon">
+                  📦
+                </div>
+
+                <h3>No orders found</h3>
+
+                <p>
+                  There are no orders under this status.
+                </p>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- Footer -->
+    <div class="table-footer">
+
+      <span>
+        Showing
+        <strong>{{ filteredOrders.length }}</strong>
+        of
+        <strong>{{ totalOrders }}</strong>
+        orders
+      </span>
+
+      <div class="pagination">
+
+        <button type="button" disabled>
+          ‹
+        </button>
+
+        <button
+          type="button"
+          class="current">
+          1
+        </button>
+
+        <button type="button">
+          2
+        </button>
+
+        <button type="button">
+          3
+        </button>
+
+        <button type="button">
+          ›
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

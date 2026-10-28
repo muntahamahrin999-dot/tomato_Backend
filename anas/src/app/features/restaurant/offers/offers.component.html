@@ -1,0 +1,189 @@
+<div class="restaurant-offers-page">
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="page-header">
+
+    <div>
+
+      <span class="eyebrow">
+        PROMOTIONS
+      </span>
+
+      <h1>
+        Special <span>Offers</span>
+      </h1>
+
+      <p>
+        Create and manage special offers for your customers.
+      </p>
+
+    </div>
+
+
+    <button
+      type="button"
+      class="add-button"
+      (click)="addOffer()">
+
+      + Create Offer
+
+    </button>
+
+  </section>
+
+
+  <!-- ================= OFFER STATS ================= -->
+
+  <section class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        🏷️
+      </div>
+
+      <div>
+
+        <span>
+          TOTAL OFFERS
+        </span>
+
+        <h2>
+          {{ offers.length }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ✅
+      </div>
+
+      <div>
+
+        <span>
+          ACTIVE OFFERS
+        </span>
+
+        <h2>
+          {{ activeOffers }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        📈
+      </div>
+
+      <div>
+
+        <span>
+          USED COUPONS
+        </span>
+
+        <h2>
+          {{ usedCoupons }}
+        </h2>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= OFFERS ================= -->
+
+  <section class="offers-grid">
+
+    @for (offer of offers; track offer.id) {
+
+      <div class="offer-card">
+
+        <div class="offer-top">
+
+          <div class="discount-badge">
+            {{ offer.discount }}% OFF
+          </div>
+
+          <span
+            class="status"
+            [class.active]="offer.active"
+            [class.inactive]="!offer.active">
+
+            {{ offer.active ? 'Active' : 'Inactive' }}
+
+          </span>
+
+        </div>
+
+
+        <h2>
+          {{ offer.title }}
+        </h2>
+
+
+        <p>
+          {{ offer.description }}
+        </p>
+
+
+        <div class="promo-code">
+
+          <span>
+            Promo Code
+          </span>
+
+          <strong>
+            {{ offer.code }}
+          </strong>
+
+        </div>
+
+
+        <div class="offer-footer">
+
+          <span>
+            Valid until {{ offer.validUntil }}
+          </span>
+
+
+          <div class="offer-actions">
+
+            <button
+              type="button"
+              (click)="editOffer(offer.id)">
+
+              ✏️
+
+            </button>
+
+            <button
+              type="button"
+              (click)="deleteOffer(offer.id)">
+
+              🗑️
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+  </section>
+
+</div>

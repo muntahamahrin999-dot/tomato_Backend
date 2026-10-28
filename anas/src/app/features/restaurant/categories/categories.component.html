@@ -1,0 +1,241 @@
+<div class="categories-page">
+
+  <!-- Header -->
+  <section class="page-header">
+
+    <div>
+      <span class="eyebrow">RESTAURANT PANEL</span>
+
+      <h1>Categories</h1>
+
+      <p>
+        Organize and manage your restaurant food categories.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- Summary -->
+  <section class="summary-grid">
+
+    <div class="summary-card">
+
+      <div class="summary-icon">
+        📂
+      </div>
+
+      <div>
+        <span>Total Categories</span>
+        <strong>{{ categories.length }}</strong>
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-icon active-icon">
+        ✓
+      </div>
+
+      <div>
+        <span>Active Categories</span>
+        <strong>{{ activeCategories }}</strong>
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-icon item-icon">
+        🍔
+      </div>
+
+      <div>
+        <span>Total Food Items</span>
+        <strong>{{ totalItems }}</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Add Category -->
+  <section class="add-category-card">
+
+    <div class="section-title">
+
+      <div>
+        <h2>Add New Category</h2>
+
+        <p>
+          Create a category for your restaurant food items.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+      <div class="form-group">
+
+        <label>Category Name</label>
+
+        <input
+          type="text"
+          [(ngModel)]="categoryName"
+          placeholder="e.g. Desserts"
+        />
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Description</label>
+
+        <input
+          type="text"
+          [(ngModel)]="categoryDescription"
+          placeholder="Short category description"
+        />
+
+      </div>
+
+
+      <div class="button-wrapper">
+
+        <button
+          type="button"
+          class="add-button"
+          (click)="addCategory()"
+        >
+          + Add Category
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Category List -->
+  <section class="category-section">
+
+    <div class="section-heading">
+
+      <div>
+        <h2>Your Categories</h2>
+
+        <p>
+          Manage your restaurant food categories.
+        </p>
+      </div>
+
+      <span class="category-count">
+        {{ categories.length }} Categories
+      </span>
+
+    </div>
+
+
+    <div class="category-grid">
+
+      @for (category of categories; track category.id) {
+
+        <div
+          class="category-card"
+          [class.inactive]="!category.active"
+        >
+
+          <div class="category-top">
+
+            <div class="category-icon">
+              📁
+            </div>
+
+            <span
+              class="status"
+              [class.inactive-status]="!category.active"
+            >
+              {{ category.active ? 'Active' : 'Inactive' }}
+            </span>
+
+          </div>
+
+
+          <div class="category-info">
+
+            <h3>
+              {{ category.name }}
+            </h3>
+
+            <p>
+              {{ category.description }}
+            </p>
+
+          </div>
+
+
+          <div class="category-meta">
+
+            <span>
+              🍽️ {{ category.items }} Food Items
+            </span>
+
+          </div>
+
+
+          <div class="category-actions">
+
+            <button
+              type="button"
+              class="toggle-button"
+              (click)="toggleCategory(category)"
+            >
+              {{ category.active ? 'Deactivate' : 'Activate' }}
+            </button>
+
+            <button
+              type="button"
+              class="delete-button"
+              (click)="deleteCategory(category.id)"
+            >
+              Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+
+    @if (categories.length === 0) {
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          📂
+        </div>
+
+        <h3>No Categories Yet</h3>
+
+        <p>
+          Add your first food category to get started.
+        </p>
+
+      </div>
+
+    }
+
+  </section>
+
+</div>

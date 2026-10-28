@@ -1,0 +1,136 @@
+<div class="orders-page">
+
+    <section class="orders-hero">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">MY ORDERS</span>
+
+            <h1>
+                Your
+                <span>orders.</span>
+            </h1>
+
+            <p>
+                Keep track of your recent food orders and delivery status.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <main class="orders-content">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-label">ORDER HISTORY</span>
+                <h2>Recent orders</h2>
+            </div>
+
+            <a routerLink="/food" class="order-food-button">
+                + Order Food
+            </a>
+
+        </div>
+
+
+        <section class="orders-list">
+
+            @for (order of orders; track order.id) {
+
+            <article class="order-card">
+
+                <div class="order-top">
+
+                    <div>
+                        <span class="order-label">ORDER ID</span>
+                        <h3>{{ order.id }}</h3>
+                    </div>
+
+                    <span class="status" [ngClass]="getStatusClass(order.status)">
+                        {{ order.status }}
+                    </span>
+
+                </div>
+
+
+                <div class="order-details">
+
+                    <div class="restaurant-info">
+
+                        <div class="restaurant-icon">
+                            🍽️
+                        </div>
+
+                        <div>
+                            <span class="detail-label">RESTAURANT</span>
+                            <h4>{{ order.restaurant }}</h4>
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-items">
+
+                        <span class="detail-label">ITEMS</span>
+
+                        <p>
+                            {{ order.items }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="order-date">
+
+                        <span class="detail-label">DATE</span>
+
+                        <strong>{{ order.date }}</strong>
+
+                    </div>
+
+
+                    <div class="order-total">
+
+                        <span class="detail-label">TOTAL</span>
+
+                        <strong>৳{{ order.total }}</strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="order-bottom">
+
+                    <span>
+                        Payment: {{ order.paymentMethod }}
+                    </span>
+
+                    @if (order.status !== 'Delivered') {
+
+                    <a routerLink="/order-tracking" [queryParams]="order.rawId ? { orderId: order.rawId } : null" class="track-button">
+                        Track Order →
+                    </a>
+
+                    } @else {
+
+                    <span class="delivered-text">
+                        ✓ Order Delivered
+                    </span>
+
+                    }
+
+                </div>
+
+            </article>
+
+            }
+
+        </section>
+
+    </main>
+
+</div>

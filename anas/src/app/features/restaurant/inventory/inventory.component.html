@@ -1,0 +1,303 @@
+<div class="restaurant-inventory-page">
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="page-header">
+
+    <div>
+
+      <span class="eyebrow">
+        STOCK MANAGEMENT
+      </span>
+
+      <h1>
+        Food <span>Inventory</span>
+      </h1>
+
+      <p>
+        Monitor food ingredients and stock availability.
+      </p>
+
+    </div>
+
+
+    <button
+      type="button"
+      class="add-button"
+      (click)="openAddModal()">
+
+      + Add Stock
+
+    </button>
+
+  </section>
+
+
+  <!-- ================= STOCK STATS ================= -->
+
+  <section class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        📦
+      </div>
+
+      <div>
+
+        <span>
+          TOTAL ITEMS
+        </span>
+
+        <h2>
+          {{ inventory.length }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card warning">
+
+      <div class="stat-icon">
+        ⚠️
+      </div>
+
+      <div>
+
+        <span>
+          LOW STOCK
+        </span>
+
+        <h2>
+          {{ lowStockCount }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card danger">
+
+      <div class="stat-icon">
+        ❌
+      </div>
+
+      <div>
+
+        <span>
+          OUT OF STOCK
+        </span>
+
+        <h2>
+          {{ outOfStockCount }}
+        </h2>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= INVENTORY TABLE ================= -->
+
+  <section class="inventory-card">
+
+    <div class="card-header">
+
+      <div>
+
+        <span class="card-label">
+          INVENTORY LIST
+        </span>
+
+        <h2>
+          Current Stock
+        </h2>
+
+      </div>
+
+
+      <input
+        type="text"
+        placeholder="Search ingredient..."
+        [(ngModel)]="searchText"
+      />
+
+    </div>
+
+
+    <div class="inventory-table">
+
+      <div class="table-header">
+
+        <span>Ingredient</span>
+        <span>Category</span>
+        <span>Stock</span>
+        <span>Status</span>
+        <span>Action</span>
+
+      </div>
+
+
+      @for (item of filteredInventory; track item.id) {
+
+        <div class="table-row">
+
+          <span class="item-name">
+            {{ item.name }}
+          </span>
+
+          <span>
+            {{ item.category }}
+          </span>
+
+          <span>
+            {{ item.quantity }} {{ item.unit }}
+          </span>
+
+          <span>
+
+            <span
+              class="stock-status"
+              [class.good]="item.status === 'Good'"
+              [class.low]="item.status === 'Low'"
+              [class.out]="item.status === 'Out of Stock'">
+
+              {{ item.status }}
+
+            </span>
+
+          </span>
+
+          <div class="action-buttons" style="display: flex; gap: 6px; align-items: center;">
+            <button
+              type="button"
+              class="restock-btn"
+              (click)="openRestockModal(item)">
+              Restock
+            </button>
+            <button
+              type="button"
+              class="edit-btn"
+              style="background:#f1f5f9; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;"
+              (click)="openEditModal(item)"
+              title="Edit">
+              ✏️
+            </button>
+            <button
+              type="button"
+              class="delete-btn"
+              style="background:#fee2e2; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;"
+              (click)="deleteStock(item.id)"
+              title="Delete">
+              🗑️
+            </button>
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- ADD STOCK MODAL -->
+  @if (showAddModal) {
+    <div class="modal-backdrop" (click)="closeAddModal()">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <h3>Add New Stock / Ingredient</h3>
+        <div class="form-group">
+          <label>Ingredient Name</label>
+          <input type="text" [(ngModel)]="newItem.name" placeholder="e.g. Chicken, Cheese, Onion" />
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <input type="text" [(ngModel)]="newItem.category" list="category-list" placeholder="Select or type custom category..." />
+          <datalist id="category-list">
+            @for (cat of categories; track cat) {
+              <option [value]="cat"></option>
+            }
+          </datalist>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" [(ngModel)]="newItem.quantity" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Unit</label>
+            <select [(ngModel)]="newItem.unit">
+              @for (u of units; track u) {
+                <option [value]="u">{{ u }}</option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeAddModal()">Cancel</button>
+          <button type="button" class="btn-save" (click)="saveNewStock()">Save Stock</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- RESTOCK MODAL -->
+  @if (showRestockModal && selectedItemForRestock) {
+    <div class="modal-backdrop" (click)="closeRestockModal()">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <h3>Restock Item: {{ selectedItemForRestock.name }}</h3>
+        <p>Current Stock: {{ selectedItemForRestock.quantity }} {{ selectedItemForRestock.unit }}</p>
+        <div class="form-group">
+          <label>Add Quantity</label>
+          <input type="number" [(ngModel)]="restockAmount" min="1" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeRestockModal()">Cancel</button>
+          <button type="button" class="btn-save" (click)="confirmRestock()">Confirm Restock</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- EDIT STOCK MODAL -->
+  @if (showEditModal && editingItem) {
+    <div class="modal-backdrop" (click)="closeEditModal()">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <h3>Edit Stock Item</h3>
+        <div class="form-group">
+          <label>Ingredient Name</label>
+          <input type="text" [(ngModel)]="editingItem.name" />
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <input type="text" [(ngModel)]="editingItem.category" list="category-list" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" [(ngModel)]="editingItem.quantity" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Unit</label>
+            <select [(ngModel)]="editingItem.unit">
+              @for (u of units; track u) {
+                <option [value]="u">{{ u }}</option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeEditModal()">Cancel</button>
+          <button type="button" class="btn-save" (click)="saveEditedStock()">Update Stock</button>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

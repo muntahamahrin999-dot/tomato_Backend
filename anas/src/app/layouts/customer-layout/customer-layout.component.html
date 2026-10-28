@@ -1,0 +1,290 @@
+<div class="customer-layout">
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar">
+
+
+<!-- Logo -->
+<div class="sidebar-logo">
+  <div class="logo-icon">🍅</div>
+
+  <div class="logo-text">
+    <h2>Tomato</h2>
+    <span>FOOD DELIVERY</span>
+  </div>
+</div>
+
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="sidebar-nav">
+
+  <!-- MAIN MENU -->
+  <p class="nav-title">MAIN MENU</p>
+
+  <!-- Dashboard -->
+  <a
+    routerLink="/customer/dashboard"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="nav-item">
+
+    <span class="nav-icon">🏠</span>
+    <span class="nav-text">Dashboard</span>
+
+  </a>
+
+  <!-- Restaurants -->
+  <a
+    routerLink="/customer/restaurants"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">🏪</span>
+    <span class="nav-text">Restaurants</span>
+
+  </a>
+
+  <!-- Food -->
+  <a
+    routerLink="/customer/food"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">🍔</span>
+    <span class="nav-text">Food</span>
+
+  </a>
+
+  <!-- Offers -->
+  <a
+    routerLink="/customer/offers"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">🎁</span>
+    <span class="nav-text">Offers</span>
+
+  </a>
+
+  <!-- Favorites -->
+  <a
+    routerLink="/customer/favorites"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">❤️</span>
+    <span class="nav-text">Favorites</span>
+
+  </a>
+
+
+  <!-- ORDERS -->
+  <p class="nav-title">ORDERS</p>
+
+  <!-- Cart -->
+  <a
+    routerLink="/cart"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">🛒</span>
+    <span class="nav-text">Cart</span>
+
+    <span class="badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
+
+  </a>
+
+  <!-- Checkout -->
+  <a
+    routerLink="/customer/checkout"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">💳</span>
+    <span class="nav-text">Checkout</span>
+
+  </a>
+
+  <!-- Orders -->
+  <a
+    routerLink="/customer/orders"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">📦</span>
+    <span class="nav-text">Orders</span>
+
+  </a>
+
+  <!-- Order Tracking -->
+  <a
+    routerLink="/customer/order-tracking"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">🚴</span>
+    <span class="nav-text">Order Tracking</span>
+
+  </a>
+
+  <!-- Reviews -->
+  <a
+    routerLink="/customer/reviews"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">⭐</span>
+    <span class="nav-text">Reviews</span>
+
+  </a>
+
+
+  <!-- ACCOUNT -->
+  <p class="nav-title">ACCOUNT</p>
+
+  <!-- Profile -->
+  <a
+    routerLink="/customer/profile"
+    routerLinkActive="active"
+    class="nav-item">
+
+    <span class="nav-icon">👤</span>
+    <span class="nav-text">Profile</span>
+
+  </a>
+
+</nav>
+
+
+<!-- ================= SIDEBAR BOTTOM ================= -->
+<div class="sidebar-bottom">
+
+  <!-- Logout -->
+  <a
+    (click)="logout()"
+    class="nav-item logout"
+    style="cursor: pointer;">
+
+    <span class="nav-icon">🚪</span>
+    <span class="nav-text">Logout</span>
+
+  </a>
+
+  <!-- Help -->
+  <div class="help-box">
+
+    <div class="help-icon">
+      💬
+    </div>
+
+    <div class="help-content">
+      <strong>Need Help?</strong>
+      <span>Contact support</span>
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </aside>
+
+  <!-- ================= MAIN AREA ================= -->
+
+  <div class="main-area">
+
+
+<!-- ================= TOP NAVBAR ================= -->
+<header class="top-navbar">
+
+  <!-- Mobile Brand -->
+  <div class="mobile-brand">
+
+    <div class="mobile-logo">
+      🍅
+    </div>
+
+    <div>
+      <strong>Tomato</strong>
+      <span>FOOD DELIVERY</span>
+    </div>
+
+  </div>
+
+
+  <!-- Search -->
+  <div class="search-box">
+
+    <span class="search-icon">🔍</span>
+
+    <input
+      type="text"
+      placeholder="Search food, restaurants..."
+    />
+
+  </div>
+
+
+  <!-- Navbar Actions -->
+  <div class="navbar-actions">
+
+    <!-- Notification -->
+    <button
+      type="button"
+      class="icon-button">
+
+      🔔
+
+      <span class="notification-dot"></span>
+
+    </button>
+
+
+    <!-- Cart -->
+    <a
+      routerLink="/cart"
+      class="icon-button">
+
+      🛒
+
+      <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+
+    </a>
+
+
+    <!-- User -->
+    <a
+      routerLink="/customer/profile"
+      class="user-menu">
+
+      <div class="user-avatar">
+        👨🏻
+      </div>
+
+      <div class="user-details">
+
+        <strong>{{user!.name}}</strong>
+        <span>Customer</span>
+
+      </div>
+
+
+    </a>
+
+  </div>
+
+</header>
+
+
+<!-- ================= PAGE CONTENT ================= -->
+<main class="customer-content">
+
+  <router-outlet></router-outlet>
+
+</main>
+
+
+  </div>
+
+</div>

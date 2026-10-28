@@ -1,0 +1,353 @@
+<div class="restaurant-orders">
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="orders-hero">
+
+    <div class="hero-content">
+
+      <span class="eyebrow">
+        RESTAURANT PANEL
+      </span>
+
+      <h1>
+        Manage your <span>Orders.</span>
+      </h1>
+
+      <p>
+        Manage and track your restaurant orders from one place.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= STATS ================= -->
+
+  <section class="stats-section">
+
+    <div class="stats-grid">
+
+
+      <!-- Pending -->
+
+      <div class="stat-card">
+
+        <div class="stat-icon pending-icon">
+          ⏳
+        </div>
+
+        <div class="stat-info">
+
+          <span>
+            Pending
+          </span>
+
+          <strong>
+            {{ pendingOrders }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- Preparing -->
+
+      <div class="stat-card">
+
+        <div class="stat-icon preparing-icon">
+          🍳
+        </div>
+
+        <div class="stat-info">
+
+          <span>
+            Preparing
+          </span>
+
+          <strong>
+            {{ preparingOrders }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- Delivered -->
+
+      <div class="stat-card">
+
+        <div class="stat-icon delivered-icon">
+          ✓
+        </div>
+
+        <div class="stat-info">
+
+          <span>
+            Delivered
+          </span>
+
+          <strong>
+            {{ deliveredOrders }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= RECENT ORDERS ================= -->
+
+  <section class="orders-section">
+
+    <div class="orders-card">
+
+
+      <!-- Section Header -->
+
+      <div class="orders-header">
+
+        <div>
+
+          <h2>
+            Recent Orders
+          </h2>
+
+          <p>
+            View and manage your latest customer orders.
+          </p>
+
+        </div>
+
+        <span class="order-count">
+          {{ orders.length }} Orders
+        </span>
+
+      </div>
+
+
+      <!-- Table -->
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Order
+              </th>
+
+              <th>
+                Customer
+              </th>
+
+              <th>
+                Items
+              </th>
+
+              <th>
+                Amount
+              </th>
+
+              <th>
+                Date
+              </th>
+
+              <th>
+                Status
+              </th>
+
+              <th>
+                Action
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            @if (orders.length === 0) {
+              <tr>
+                <td colspan="7" style="text-align: center; padding: 3rem 1rem; color: #888;">
+                  {{ isLoading ? 'Loading orders from server...' : 'No orders received yet.' }}
+                </td>
+              </tr>
+            }
+
+            @for (order of orders; track order.id) {
+
+              <tr>
+
+
+                <!-- Order -->
+
+                <td>
+
+                  <span class="order-id">
+                    #{{ order.id }}
+                  </span>
+
+                </td>
+
+
+                <!-- Customer -->
+
+                <td>
+
+                  <span class="customer-name">
+                    {{ order.customer }}
+                  </span>
+
+                </td>
+
+
+                <!-- Items -->
+
+                <td>
+
+                  <span class="order-items">
+                    {{ order.items }}
+                  </span>
+
+                </td>
+
+
+                <!-- Amount -->
+
+                <td>
+
+                  <strong class="order-amount">
+                    ৳{{ order.amount }}
+                  </strong>
+
+                </td>
+
+
+                <!-- Date -->
+
+                <td>
+
+                  <span class="order-date">
+                    {{ order.date }}
+                  </span>
+
+                </td>
+
+
+                <!-- Status -->
+
+                <td>
+
+                  <span
+                    class="status-badge"
+                    [class.status-pending]="order.status === 'Pending'"
+                    [class.status-preparing]="order.status === 'Preparing'"
+                    [class.status-ready]="order.status === 'Ready'"
+                    [class.status-delivered]="order.status === 'Delivered'"
+                  >
+
+                    {{ order.status }}
+
+                  </span>
+
+                </td>
+
+
+                <!-- Action -->
+
+                <td>
+
+                  @if (order.status === 'Pending') {
+
+                    <button
+                      type="button"
+                      class="action-button"
+                      (click)="acceptOrder(order)"
+                    >
+                      Accept
+                    </button>
+
+                  }
+
+                  @else if (order.status === 'Preparing') {
+
+                    <button
+                      type="button"
+                      class="action-button"
+                      (click)="markReady(order)"
+                    >
+                      Mark Ready
+                    </button>
+
+                  }
+
+                  @else if (order.status === 'Ready') {
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                      <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <select [(ngModel)]="order.selectedRiderId" class="rider-select" style="padding: 0.3rem 0.5rem; border-radius: 4px; border: 1px solid #ccc; font-size: 0.85rem;">
+                          <option [value]="undefined">Select Rider</option>
+                          @for (rider of riders; track rider.id) {
+                            <option [value]="rider.id">{{ rider.name }} ({{ rider.vehicle }})</option>
+                          }
+                        </select>
+                        <button
+                          type="button"
+                          class="action-button"
+                          (click)="assignRider(order)"
+                          style="background-color: #2b6cb0;"
+                        >
+                          Assign
+                        </button>
+                      </div>
+                      @if (order.assignedRider) {
+                        <small style="color: #2f855a; font-weight: 500;">Assigned: {{ order.assignedRider }}</small>
+                      }
+                      <button
+                        type="button"
+                        class="action-button"
+                        (click)="completeOrder(order)"
+                      >
+                        Complete
+                      </button>
+                    </div>
+
+                  }
+
+                  @else {
+
+                    <span class="completed-text">
+                      Completed
+                    </span>
+
+                  }
+
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

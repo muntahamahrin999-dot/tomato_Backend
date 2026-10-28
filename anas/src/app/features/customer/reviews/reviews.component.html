@@ -1,0 +1,176 @@
+<div class="reviews-page">
+
+  <section class="reviews-hero">
+    <div class="hero-content">
+
+      <span class="eyebrow">CUSTOMER REVIEWS</span>
+
+      <h1>Share your <span>experience.</span></h1>
+
+      <p>
+        Tell us what you think about your food and delivery experience.
+      </p>
+
+    </div>
+  </section>
+
+
+  <main class="reviews-content">
+
+    <section class="review-form-card">
+
+      <div class="section-heading">
+        <span class="section-label">WRITE A REVIEW</span>
+
+        <h2>How was your experience?</h2>
+      </div>
+
+      <form (ngSubmit)="submitReview()">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Restaurant</label>
+
+            <input
+              type="text"
+              name="restaurant"
+              [(ngModel)]="newRestaurant"
+              placeholder="Restaurant name"
+            />
+          </div>
+
+
+          <div class="form-group">
+            <label>Food Item</label>
+
+            <input
+              type="text"
+              name="food"
+              [(ngModel)]="newFood"
+              placeholder="Food item"
+            />
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+          <label>Rating</label>
+
+          <select
+            name="rating"
+            [(ngModel)]="newRating"
+          >
+            <option [ngValue]="5">5 - Excellent</option>
+            <option [ngValue]="4">4 - Very Good</option>
+            <option [ngValue]="3">3 - Good</option>
+            <option [ngValue]="2">2 - Fair</option>
+            <option [ngValue]="1">1 - Poor</option>
+          </select>
+        </div>
+
+
+        <div class="form-group">
+          <label>Your Review</label>
+
+          <textarea
+            name="comment"
+            [(ngModel)]="newComment"
+            placeholder="Write your experience..."
+            rows="4"
+          ></textarea>
+        </div>
+
+
+        <button
+          type="submit"
+          class="submit-button"
+        >
+          Submit Review
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <section class="reviews-section">
+
+      <div class="section-heading">
+        <span class="section-label">YOUR REVIEWS</span>
+
+        <h2>Recent reviews</h2>
+      </div>
+
+
+      <div class="reviews-list">
+
+        @for (review of reviews; track review.id) {
+
+          <article class="review-card">
+
+            <div class="review-top">
+
+              <div>
+                <span class="restaurant-name">
+                  {{ review.restaurant }}
+                </span>
+
+                <h3>{{ review.food }}</h3>
+              </div>
+
+              <span class="review-date">
+                {{ review.date }}
+              </span>
+
+            </div>
+
+
+            <div class="stars">
+              {{ getStars(review.rating) }}
+            </div>
+
+
+            <p class="review-comment">
+              {{ review.comment }}
+            </p>
+
+
+            <button
+              type="button"
+              class="delete-button"
+              (click)="deleteReview(review.id)"
+            >
+              Delete Review
+            </button>
+
+          </article>
+
+        }
+
+      </div>
+
+    </section>
+
+
+    <section class="browse-section">
+
+      <h2>Want to order again?</h2>
+
+      <p>
+        Explore restaurants and discover your next favorite meal.
+      </p>
+
+      <a
+        routerLink="/restaurants"
+        class="browse-button"
+      >
+        Explore Restaurants
+      </a>
+
+    </section>
+
+  </main>
+
+</div>

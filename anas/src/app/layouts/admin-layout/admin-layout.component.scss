@@ -1,0 +1,538 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.admin-shell {
+  min-height: 100vh;
+  display: flex;
+  background: #f7f8f6;
+  color: #18352f;
+  overflow-x: hidden;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.admin-sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #173f35;
+  color: #ffffff;
+
+  padding: 22px 15px;
+
+  z-index: 1000;
+
+  transition:
+    width 0.3s ease,
+    min-width 0.3s ease;
+}
+
+.admin-sidebar.collapsed {
+  width: 82px;
+  min-width: 82px;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 4px 8px 25px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand-logo {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #e5483f;
+
+  flex-shrink: 0;
+
+  box-shadow:
+    0 8px 20px rgba(229, 72, 63, 0.28);
+}
+
+.tomato-icon {
+  font-size: 25px;
+}
+
+.brand-text h2 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.brand-text span {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 11px;
+
+  color: #b7cbc5;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.sidebar-nav {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding-top: 20px;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+
+.nav-label {
+  margin: 16px 12px 9px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  color: #8fa8a1;
+}
+
+
+.nav-item {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  margin: 4px 0;
+  padding: 0 13px;
+
+  border-radius: 12px;
+
+  color: #c7d5d1;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+
+  transform: translateX(2px);
+}
+
+.nav-item.active {
+  background: #e5483f;
+  color: #ffffff;
+
+  box-shadow:
+    0 7px 18px rgba(229, 72, 63, 0.25);
+}
+
+.nav-icon {
+  width: 28px;
+  min-width: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+.nav-text {
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   SIDEBAR BOTTOM
+===================================================== */
+
+.sidebar-bottom {
+  padding-top: 15px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn {
+  width: 100%;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 0 13px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: transparent;
+
+  color: #c7d5d1;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(229, 72, 63, 0.16);
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.admin-main {
+  width: calc(100% - 260px);
+
+  margin-left: 260px;
+
+  min-height: 100vh;
+  min-width: 0;
+
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.admin-sidebar.collapsed ~ .admin-main {
+  margin-left: 82px;
+  width: calc(100% - 82px);
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.admin-navbar {
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 30px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e8ece9;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left {
+  gap: 18px;
+}
+
+.navbar-right {
+  gap: 14px;
+}
+
+
+/* Menu */
+
+.menu-btn {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid #e3e8e5;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  color: #34534c;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.menu-btn:hover {
+  background: #f3f7f5;
+  border-color: #d6dfdb;
+}
+
+
+/* Page Heading */
+
+.page-heading h3 {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 750;
+
+  color: #173f35;
+}
+
+.page-heading span {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 12px;
+
+  color: #84928e;
+}
+
+
+/* =====================================================
+   NAVBAR BUTTONS
+===================================================== */
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e6ebe8;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: #f5f8f6;
+  transform: translateY(-1px);
+}
+
+.notification-dot {
+  width: 7px;
+  height: 7px;
+
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  border-radius: 50%;
+
+  background: #e5483f;
+
+  border: 2px solid #ffffff;
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-left: 4px;
+
+  padding-left: 14px;
+
+  border-left: 1px solid #e6ebe8;
+
+  cursor: pointer;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e5483f;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.profile-info strong {
+  display: block;
+
+  font-size: 13px;
+
+  color: #18352f;
+}
+
+.profile-info span {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 10px;
+
+  color: #87948f;
+}
+
+.profile-arrow {
+  margin-left: 2px;
+
+  color: #87948f;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.admin-content {
+  min-height: calc(100vh - 78px);
+
+  padding: 28px 30px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .admin-sidebar {
+    width: 82px;
+    min-width: 82px;
+  }
+
+  .admin-main {
+    margin-left: 82px;
+  }
+
+  .brand-text,
+  .nav-label,
+  .nav-text {
+    display: none;
+  }
+
+  .admin-navbar {
+    padding: 0 18px;
+  }
+
+  .page-heading span {
+    display: none;
+  }
+
+  .profile-info,
+  .profile-arrow {
+    display: none;
+  }
+
+  .admin-content {
+    padding: 22px 18px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .admin-sidebar {
+    transform: translateX(-100%);
+    width: 260px;
+  }
+
+  .admin-sidebar:not(.collapsed) {
+    transform: translateX(0);
+  }
+
+  .admin-main {
+    margin-left: 0;
+  }
+
+  .admin-sidebar.collapsed ~ .admin-main {
+    margin-left: 0;
+  }
+
+  .admin-navbar {
+    height: 70px;
+  }
+
+  .page-heading h3 {
+    font-size: 15px;
+  }
+
+  .admin-content {
+    padding: 18px 14px;
+  }
+}

@@ -1,0 +1,634 @@
+<div class="reviews-page">
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="page-header">
+
+    <div class="header-content">
+
+      <span class="eyebrow">
+        CUSTOMER FEEDBACK
+      </span>
+
+      <h1>
+        Reviews <span>Management</span>
+      </h1>
+
+      <p>
+        Manage customer reviews, ratings and feedback across Tomato.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= STATS ================= -->
+
+  <section class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon red">
+        ★
+      </div>
+
+      <div class="stat-content">
+
+        <span>Total Reviews</span>
+
+        <strong>
+          {{ totalReviews }}
+        </strong>
+
+        <small>
+          Customer feedback
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon orange">
+        ★
+      </div>
+
+      <div class="stat-content">
+
+        <span>Average Rating</span>
+
+        <strong>
+          {{ averageRating | number:'1.1-1' }}
+        </strong>
+
+        <small>
+          Out of 5.0
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon green">
+        ✦
+      </div>
+
+      <div class="stat-content">
+
+        <span>5 Star Reviews</span>
+
+        <strong>
+          {{ fiveStarReviews }}
+        </strong>
+
+        <small>
+          Excellent feedback
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon yellow">
+        ⏳
+      </div>
+
+      <div class="stat-content">
+
+        <span>Pending Reviews</span>
+
+        <strong>
+          {{ pendingReviews }}
+        </strong>
+
+        <small>
+          Need attention
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= RATING OVERVIEW ================= -->
+
+  <section class="rating-overview">
+
+    <div class="overview-left">
+
+      <h2>
+        Rating Overview
+      </h2>
+
+      <p>
+        Customer rating distribution
+      </p>
+
+      <div class="rating-bars">
+
+        <div
+          class="rating-row"
+          *ngFor="let rating of [5, 4, 3, 2, 1]"
+        >
+
+          <div class="rating-label">
+            {{ rating }}
+            <span>★</span>
+          </div>
+
+          <div class="rating-progress">
+
+            <div
+              class="rating-fill"
+              [style.width.%]="getRatingPercentage(rating)"
+            ></div>
+
+          </div>
+
+          <div class="rating-count">
+            {{ getRatingCount(rating) }}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="overall-rating">
+
+      <strong>
+        {{ averageRating | number:'1.1-1' }}
+      </strong>
+
+      <div class="overall-stars">
+
+        <span
+          *ngFor="let star of getStars()"
+          [class.filled]="star <= roundedRating"
+        >
+          ★
+        </span>
+
+      </div>
+
+      <small>
+        Based on {{ totalReviews }} reviews
+      </small>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SEARCH / FILTER ================= -->
+
+  <section class="toolbar-card">
+
+    <div class="search-box">
+
+      <span class="search-icon">
+        🔍
+      </span>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search customer, restaurant or review..."
+      />
+
+      <button
+        *ngIf="searchText"
+        type="button"
+        class="clear-search"
+        (click)="searchText = ''"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="filters">
+
+      <div class="filter-item">
+
+        <label>
+          Rating
+        </label>
+
+        <select [(ngModel)]="selectedRating">
+
+          <option value="All">
+            All Ratings
+          </option>
+
+          <option value="5">
+            5 Stars
+          </option>
+
+          <option value="4">
+            4 Stars
+          </option>
+
+          <option value="3">
+            3 Stars
+          </option>
+
+          <option value="2">
+            2 Stars
+          </option>
+
+          <option value="1">
+            1 Star
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter-item">
+
+        <label>
+          Status
+        </label>
+
+        <select [(ngModel)]="selectedStatus">
+
+          <option value="All">
+            All Status
+          </option>
+
+          <option value="Published">
+            Published
+          </option>
+
+          <option value="Pending">
+            Pending
+          </option>
+
+          <option value="Hidden">
+            Hidden
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="reset-btn"
+        (click)="clearFilters()"
+      >
+        Reset
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= REVIEWS TABLE ================= -->
+
+  <section class="reviews-card">
+
+    <div class="card-header">
+
+      <div>
+
+        <h2>
+          Customer Reviews
+        </h2>
+
+        <p>
+          {{ filteredReviews.length }} reviews found
+        </p>
+
+      </div>
+
+
+      <div class="published-summary">
+
+        <span></span>
+
+        {{ publishedReviews }} Published
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Customer</th>
+
+            <th>Restaurant</th>
+
+            <th>Rating</th>
+
+            <th>Review</th>
+
+            <th>Date</th>
+
+            <th>Status</th>
+
+            <th>Actions</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let review of filteredReviews;
+              trackBy: trackByReview
+            "
+          >
+
+            <!-- CUSTOMER -->
+
+            <td data-label="Customer">
+
+              <div class="customer-cell">
+
+                <div class="customer-avatar">
+                  {{ getInitials(review.customer) }}
+                </div>
+
+                <div class="customer-info">
+
+                  <strong>
+                    {{ review.customer }}
+                  </strong>
+
+                  <span>
+                    {{ review.email }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- RESTAURANT -->
+
+            <td data-label="Restaurant">
+
+              <div class="restaurant-cell">
+
+                <div class="restaurant-icon">
+                  🍽️
+                </div>
+
+                <span>
+                  {{ review.restaurant }}
+                </span>
+
+              </div>
+
+            </td>
+
+
+            <!-- RATING -->
+
+            <td data-label="Rating">
+
+              <div class="review-rating">
+
+                <div class="stars">
+
+                  <span
+                    *ngFor="let star of getStars()"
+                    [class.filled]="star <= review.rating"
+                  >
+                    ★
+                  </span>
+
+                </div>
+
+                <strong>
+                  {{ review.rating }}.0
+                </strong>
+
+              </div>
+
+            </td>
+
+
+            <!-- COMMENT -->
+
+            <td data-label="Review">
+
+              <div class="review-text">
+
+                <p>
+                  {{ review.comment }}
+                </p>
+
+              </div>
+
+            </td>
+
+
+            <!-- DATE -->
+
+            <td data-label="Date">
+
+              <span class="review-date">
+                {{ review.date }}
+              </span>
+
+            </td>
+
+
+            <!-- STATUS -->
+
+            <td data-label="Status">
+
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  'published': review.status === 'Published',
+                  'pending': review.status === 'Pending',
+                  'hidden': review.status === 'Hidden'
+                }"
+              >
+
+                <span class="status-dot"></span>
+
+                {{ review.status }}
+
+              </span>
+
+            </td>
+
+
+            <!-- ACTIONS -->
+
+            <td data-label="Actions">
+
+              <div class="actions">
+
+                <button
+                  type="button"
+                  class="action-btn view"
+                  title="View Review"
+                  (click)="viewReview(review)"
+                >
+                  👁
+                </button>
+
+
+                <button
+                  *ngIf="review.status === 'Pending'"
+                  type="button"
+                  class="action-btn approve"
+                  title="Approve Review"
+                  (click)="approveReview(review)"
+                >
+                  ✓
+                </button>
+
+
+                <button
+                  *ngIf="review.status === 'Published'"
+                  type="button"
+                  class="action-btn hide"
+                  title="Hide Review"
+                  (click)="hideReview(review)"
+                >
+                  ⏸
+                </button>
+
+
+                <button
+                  type="button"
+                  class="action-btn delete"
+                  title="Delete Review"
+                  (click)="deleteReview(review)"
+                >
+                  🗑
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+
+          <!-- EMPTY -->
+
+          <tr *ngIf="filteredReviews.length === 0">
+
+            <td colspan="7">
+
+              <div class="empty-state">
+
+                <div class="empty-icon">
+                  ⭐
+                </div>
+
+                <h3>
+                  No Reviews Found
+                </h3>
+
+                <p>
+                  Try changing your search or filters.
+                </p>
+
+                <button
+                  type="button"
+                  (click)="clearFilters()"
+                >
+                  Clear Filters
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= INFO ================= -->
+
+  <section class="bottom-info">
+
+    <div class="info-box">
+
+      <div class="info-icon">
+        ★
+      </div>
+
+      <div>
+
+        <strong>
+          {{ fiveStarReviews }} Excellent Reviews
+        </strong>
+
+        <span>
+          Customers gave a 5-star rating.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="info-box warning">
+
+      <div class="info-icon">
+        !
+      </div>
+
+      <div>
+
+        <strong>
+          {{ pendingReviews }} Reviews Need Attention
+        </strong>
+
+        <span>
+          Reviews waiting for approval.
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

@@ -1,0 +1,868 @@
+<div class="settings-page">
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="page-header">
+
+    <div class="header-content">
+
+      <span class="eyebrow">
+        SYSTEM CONFIGURATION
+      </span>
+
+      <h1>
+        Admin <span>Settings</span>
+      </h1>
+
+      <p>
+        Manage your Tomato system preferences, account and platform settings.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SETTINGS LAYOUT ================= -->
+
+  <section class="settings-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="settings-sidebar">
+
+      <div class="sidebar-title">
+        <span>SETTINGS</span>
+      </div>
+
+      <nav>
+
+        <button
+          type="button"
+          *ngFor="let section of sections"
+          class="settings-nav-item"
+          [class.active]="activeSection === section.id"
+          (click)="selectSection(section.id)"
+        >
+
+          <span class="nav-icon">
+            {{ section.icon }}
+          </span>
+
+          <span class="nav-text">
+            {{ section.title }}
+          </span>
+
+          <span
+            class="nav-arrow"
+            *ngIf="activeSection === section.id"
+          >
+            ›
+          </span>
+
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-help">
+
+        <div class="help-icon">
+          ?
+        </div>
+
+        <div>
+
+          <strong>
+            Need Help?
+          </strong>
+
+          <span>
+            Contact Tomato support.
+          </span>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ================= CONTENT ================= -->
+
+    <main class="settings-content">
+
+
+      <!-- ================= GENERAL ================= -->
+
+      <section
+        class="settings-card"
+        *ngIf="activeSection === 'general'"
+      >
+
+        <div class="card-heading">
+
+          <div class="heading-icon green">
+            ⚙
+          </div>
+
+          <div>
+
+            <h2>
+              General Settings
+            </h2>
+
+            <p>
+              Manage your basic Tomato platform information.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>
+              Platform Name
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="settings.restaurantName"
+              placeholder="Enter platform name"
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Support Email
+            </label>
+
+            <input
+              type="email"
+              [(ngModel)]="settings.supportEmail"
+              placeholder="Enter support email"
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Support Phone
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="settings.supportPhone"
+              placeholder="Enter support phone"
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Currency
+            </label>
+
+            <select [(ngModel)]="settings.currency">
+
+              <option value="BDT">
+                BDT - Bangladeshi Taka
+              </option>
+
+              <option value="USD">
+                USD - US Dollar
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label>
+              Platform Address
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="settings.address"
+              placeholder="Enter platform address"
+            />
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label>
+              Timezone
+            </label>
+
+            <select [(ngModel)]="settings.timezone">
+
+              <option value="Asia/Dhaka">
+                Asia/Dhaka (GMT +6)
+              </option>
+
+              <option value="Asia/Kolkata">
+                Asia/Kolkata (GMT +5:30)
+              </option>
+
+              <option value="UTC">
+                UTC
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= ACCOUNT ================= -->
+
+      <section
+        class="settings-card"
+        *ngIf="activeSection === 'account'"
+      >
+
+        <div class="card-heading">
+
+          <div class="heading-icon blue">
+            👤
+          </div>
+
+          <div>
+
+            <h2>
+              Account Settings
+            </h2>
+
+            <p>
+              Manage administrator account information.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-preview">
+
+          <div class="profile-avatar">
+            {{ settings.adminName.charAt(0).toUpperCase() }}
+          </div>
+
+          <div>
+
+            <strong>
+              {{ settings.adminName }}
+            </strong>
+
+            <span>
+              System Administrator
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>
+              Admin Name
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="settings.adminName"
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Admin Email
+            </label>
+
+            <input
+              type="email"
+              [(ngModel)]="settings.adminEmail"
+            />
+
+          </div>
+
+        </div>
+
+
+        <div class="password-section">
+
+          <h3>
+            Change Password
+          </h3>
+
+          <p>
+            Update your administrator account password.
+          </p>
+
+          <button
+            type="button"
+            class="secondary-btn"
+          >
+            Change Password
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= NOTIFICATIONS ================= -->
+
+      <section
+        class="settings-card"
+        *ngIf="activeSection === 'notifications'"
+      >
+
+        <div class="card-heading">
+
+          <div class="heading-icon orange">
+            🔔
+          </div>
+
+          <div>
+
+            <h2>
+              Notification Settings
+            </h2>
+
+            <p>
+              Choose which notifications you want to receive.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="toggle-list">
+
+          <div class="toggle-row">
+
+            <div class="toggle-info">
+
+              <strong>
+                Email Notifications
+              </strong>
+
+              <span>
+                Receive important system updates by email.
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.emailNotifications"
+              (click)="toggleSetting('emailNotifications')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div class="toggle-info">
+
+              <strong>
+                New Order Notifications
+              </strong>
+
+              <span>
+                Get notified whenever a new order is placed.
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.orderNotifications"
+              (click)="toggleSetting('orderNotifications')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div class="toggle-info">
+
+              <strong>
+                Review Notifications
+              </strong>
+
+              <span>
+                Receive alerts when customers submit reviews.
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.reviewNotifications"
+              (click)="toggleSetting('reviewNotifications')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div class="toggle-info">
+
+              <strong>
+                User Registration Notifications
+              </strong>
+
+              <span>
+                Get notified about new customer registrations.
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.userNotifications"
+              (click)="toggleSetting('userNotifications')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= DELIVERY ================= -->
+
+      <section
+        class="settings-card"
+        *ngIf="activeSection === 'delivery'"
+      >
+
+        <div class="card-heading">
+
+          <div class="heading-icon red">
+            🏍
+          </div>
+
+          <div>
+
+            <h2>
+              Delivery Settings
+            </h2>
+
+            <p>
+              Configure delivery fees and estimated delivery time.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>
+              Standard Delivery Fee
+            </label>
+
+            <div class="input-with-symbol">
+
+              <span>
+                ৳
+              </span>
+
+              <input
+                type="number"
+                [(ngModel)]="settings.deliveryFee"
+              />
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Free Delivery Above
+            </label>
+
+            <div class="input-with-symbol">
+
+              <span>
+                ৳
+              </span>
+
+              <input
+                type="number"
+                [(ngModel)]="settings.freeDeliveryAmount"
+              />
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Estimated Delivery Time
+            </label>
+
+            <div class="input-with-symbol">
+
+              <input
+                type="number"
+                [(ngModel)]="settings.estimatedDeliveryTime"
+              />
+
+              <span class="right-symbol">
+                min
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-banner">
+
+          <div class="info-banner-icon">
+            i
+          </div>
+
+          <div>
+
+            <strong>
+              Delivery Information
+            </strong>
+
+            <span>
+              These settings will be used as the default delivery configuration for customer orders.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= PAYMENT ================= -->
+
+      <section
+        class="settings-card"
+        *ngIf="activeSection === 'payment'"
+      >
+
+        <div class="card-heading">
+
+          <div class="heading-icon purple">
+            💳
+          </div>
+
+          <div>
+
+            <h2>
+              Payment Settings
+            </h2>
+
+            <p>
+              Manage the payment methods available to customers.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="toggle-list">
+
+          <div class="toggle-row">
+
+            <div class="payment-method">
+
+              <div class="payment-icon cash">
+                ৳
+              </div>
+
+              <div class="toggle-info">
+
+                <strong>
+                  Cash on Delivery
+                </strong>
+
+                <span>
+                  Allow customers to pay when the order arrives.
+                </span>
+
+              </div>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.cashOnDelivery"
+              (click)="toggleSetting('cashOnDelivery')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div class="payment-method">
+
+              <div class="payment-icon online">
+                ↯
+              </div>
+
+              <div class="toggle-info">
+
+                <strong>
+                  Online Payment
+                </strong>
+
+                <span>
+                  Allow secure online payment processing.
+                </span>
+
+              </div>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.onlinePayment"
+              (click)="toggleSetting('onlinePayment')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div class="payment-method">
+
+              <div class="payment-icon card">
+                ▣
+              </div>
+
+              <div class="toggle-info">
+
+                <strong>
+                  Card Payment
+                </strong>
+
+                <span>
+                  Accept debit and credit card payments.
+                </span>
+
+              </div>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.cardPayment"
+              (click)="toggleSetting('cardPayment')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SECURITY ================= -->
+
+      <section
+        class="settings-card"
+        *ngIf="activeSection === 'security'"
+      >
+
+        <div class="card-heading">
+
+          <div class="heading-icon dark">
+            🔒
+          </div>
+
+          <div>
+
+            <h2>
+              Security Settings
+            </h2>
+
+            <p>
+              Protect your administrator account and system access.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="toggle-list">
+
+          <div class="toggle-row">
+
+            <div class="toggle-info">
+
+              <strong>
+                Two-Factor Authentication
+              </strong>
+
+              <span>
+                Add an extra security layer to administrator login.
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.twoFactorAuth"
+              (click)="toggleSetting('twoFactorAuth')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div class="toggle-info">
+
+              <strong>
+                Login Alerts
+              </strong>
+
+              <span>
+                Receive notifications when a new login occurs.
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              class="toggle-switch"
+              [class.on]="settings.loginAlerts"
+              (click)="toggleSetting('loginAlerts')"
+            >
+              <span></span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="security-warning">
+
+          <div class="warning-icon">
+            !
+          </div>
+
+          <div>
+
+            <strong>
+              Security Reminder
+            </strong>
+
+            <span>
+              Keep your administrator credentials private and use a strong password.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= ACTIONS ================= -->
+
+      <div class="settings-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          (click)="resetSettings()"
+        >
+          Reset
+        </button>
+
+        <button
+          type="button"
+          class="save-btn"
+          (click)="saveChanges()"
+        >
+          ✓
+          Save Changes
+        </button>
+
+      </div>
+
+    </main>
+
+  </section>
+
+</div>

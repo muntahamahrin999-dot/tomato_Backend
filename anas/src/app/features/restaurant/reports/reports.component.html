@@ -1,0 +1,345 @@
+<div class="restaurant-reports-page">
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="page-header">
+
+    <div>
+
+      <span class="eyebrow">
+        BUSINESS ANALYTICS
+      </span>
+
+      <h1>
+        Restaurant <span>Reports</span>
+      </h1>
+
+      <p>
+        Monitor your restaurant performance, sales and orders.
+      </p>
+
+    </div>
+
+
+    <div class="report-filter">
+
+      <select [(ngModel)]="selectedPeriod">
+
+        <option value="today">
+          Today
+        </option>
+
+        <option value="week">
+          This Week
+        </option>
+
+        <option value="month">
+          This Month
+        </option>
+
+        <option value="year">
+          This Year
+        </option>
+
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= STATISTICS ================= -->
+
+  <section class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        💰
+      </div>
+
+      <div>
+
+        <span>
+          TOTAL REVENUE
+        </span>
+
+        <h2>
+          ৳{{ totalRevenue | number }}
+        </h2>
+
+        <small>
+          +12.5% from last period
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        📦
+      </div>
+
+      <div>
+
+        <span>
+          TOTAL ORDERS
+        </span>
+
+        <h2>
+          {{ totalOrders }}
+        </h2>
+
+        <small>
+          +8.2% from last period
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        🛒
+      </div>
+
+      <div>
+
+        <span>
+          COMPLETED ORDERS
+        </span>
+
+        <h2>
+          {{ completedOrders }}
+        </h2>
+
+        <small>
+          Successfully delivered
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ⭐
+      </div>
+
+      <div>
+
+        <span>
+          AVERAGE RATING
+        </span>
+
+        <h2>
+          {{ averageRating }}
+        </h2>
+
+        <small>
+          From {{ totalReviews }} reviews
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= ANALYTICS ================= -->
+
+  <section class="analytics-grid">
+
+    <!-- Sales -->
+    <div class="report-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <span class="card-label">
+            SALES
+          </span>
+
+          <h2>
+            Sales Overview
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="sales-chart">
+
+        @for (item of salesData; track item.label) {
+
+          <div class="chart-item">
+
+            <div class="bar-wrapper">
+
+              <div
+                class="bar"
+                [style.height.%]="item.value">
+              </div>
+
+            </div>
+
+            <span>
+              {{ item.label }}
+            </span>
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- Order Status -->
+    <div class="report-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <span class="card-label">
+            ORDERS
+          </span>
+
+          <h2>
+            Order Status
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="order-status-list">
+
+        <div class="status-row">
+
+          <span>
+            Pending
+          </span>
+
+          <strong>
+            {{ pendingOrders }}
+          </strong>
+
+        </div>
+
+
+        <div class="status-row">
+
+          <span>
+            Preparing
+          </span>
+
+          <strong>
+            {{ preparingOrders }}
+          </strong>
+
+        </div>
+
+
+        <div class="status-row">
+
+          <span>
+            Completed
+          </span>
+
+          <strong>
+            {{ completedOrders }}
+          </strong>
+
+        </div>
+
+
+        <div class="status-row">
+
+          <span>
+            Cancelled
+          </span>
+
+          <strong>
+            {{ cancelledOrders }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TOP FOODS ================= -->
+
+  <section class="report-card top-foods">
+
+    <div class="card-header">
+
+      <div>
+
+        <span class="card-label">
+          PERFORMANCE
+        </span>
+
+        <h2>
+          Top Selling Foods
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="food-table">
+
+      <div class="table-header">
+
+        <span>Food</span>
+        <span>Orders</span>
+        <span>Revenue</span>
+
+      </div>
+
+
+      @for (food of topFoods; track food.name) {
+
+        <div class="table-row">
+
+          <span>
+            {{ food.name }}
+          </span>
+
+          <span>
+            {{ food.orders }}
+          </span>
+
+          <strong>
+            ৳{{ food.revenue | number }}
+          </strong>
+
+        </div>
+
+      }
+
+    </div>
+
+  </section>
+
+</div>
